@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<egvpepfetcher>
+	<common>
+	</common>
+	<postboxes>
+		<!-- Verfassungsgerichtshof Rheinland-Pfalz -->
+		<postbox id="safe-sp1-1422886512247-015767265">
+			<export>
+				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\Export</path>
+			</export>
+		<postbox>
+	</postboxes>
+</egvpepfetcher>
