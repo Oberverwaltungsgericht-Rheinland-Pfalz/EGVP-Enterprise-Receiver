@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="urn:de:bos-bremen:egvp:ws" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" targetNamespace="urn:de:bos-bremen:egvp:ws" xmlns="http://www.w3.org/2001/XMLSchema">
+  <simpleType name="GetStateReturnCodeType">
+    <restriction base="string">
+      <enumeration value="OK">
+        <annotation>
+          <documentation>Operation completed without error.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="NO_SUCH_ACCOUNT">
+        <annotation>
+          <documentation>Account (userID) does not exist.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="USERID_INVALID">
+        <annotation>
+          <documentation>Account (userID) is invalid.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="NO_SUCH_MESSAGE_OR_CUSTOM_ID">
+        <annotation>
+          <documentation>No message or send order found for the given message or custom id.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="USERID_REQUIRED">
+        <annotation>
+          <documentation>The required userID was not specified.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="MESSAGE_OR_CUSTOM_ID_REQUIRED">
+        <annotation>
+          <documentation>The required id of the message or send order was not specified.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GENERAL_SQL_ERROR">
+        <annotation>
+          <documentation>General error while accessing the database.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GENERAL_ERROR">
+        <annotation>
+          <documentation>An unspecified error occurred.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="WEBSERVICE_DISABLED">
+        <annotation>
+          <documentation>The requested web service is disabled.</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <element name="getStateRequest">
+    <complexType>
+      <sequence>
+        <element name="userID" type="string">
+          <annotation>
+            <documentation>The account to use.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="customOrMessageID" type="string">
+          <annotation>
+            <documentation>The custom or message id to get state for.</documentation>
+          </annotation>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getStateResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" name="customID" type="string">
+          <annotation>
+            <documentation>The custom id to get state for.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="messageID" type="string">
+          <annotation>
+            <documentation>The message id to get state for.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="senderID" type="string">
+          <annotation>
+            <documentation>The sender id belonging to the request</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="receiverID" type="string">
+          <annotation>
+            <documentation>The receiver id belonging to the request</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="state" type="tns:JEntryTypeType">
+          <annotation>
+            <documentation>The current state of message/custom id.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" name="time" type="dateTime">
+          <annotation>
+            <documentation>The time, that the state got current.</documentation>
+          </annotation>
+        </element>
+        <element name="returnCode" type="tns:GetStateReturnCodeType">
+          <annotation>
+            <documentation>The result of the operation.</documentation>
+          </annotation>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  <simpleType name="JEntryTypeType">
+    <annotation>
+      <documentation>see "Fachkonzept EGVP".
+				WS_ASEND, OSCI_SENT, WS_ASENT, WS_UNSENDABLE, WS_CANCELLED,
+				OSCI_DELIVERED, OSCI_RECEIVED, WS_RECEIVED, WS_UNPROCESSABLE
+			</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="WS_ASEND" />
+      <enumeration value="OSCI_SENT" />
+      <enumeration value="WS_ASENT" />
+      <enumeration value="WS_UNSENDABLE" />
+      <enumeration value="WS_CANCELLED" />
+      <enumeration value="OSCI_RECEIVED" />
+      <enumeration value="OSCI_DELIVERED" />
+      <enumeration value="WS_RECEIVED" />
+      <enumeration value="WS_UNPROCESSABLE" />
+    </restriction>
+  </simpleType>
+</schema>
