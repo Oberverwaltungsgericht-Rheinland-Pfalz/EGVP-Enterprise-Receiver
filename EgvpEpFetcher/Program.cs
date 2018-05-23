@@ -1,4 +1,5 @@
-﻿using OvgRlp.EgvpEpFetcher.Services;
+﻿using OvgRlp.EgvpEpFetcher.Models;
+using OvgRlp.EgvpEpFetcher.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,18 @@ namespace OvgRlp.EgvpEpFetcher
         private static void Main(string[] args)
         {
             var configService = ConfigurationService.Load<ConfigurationService>(Properties.Settings.Default.configfile);
-            configService.GetCommonValue("testprop");
+            List<EgvpPostbox> egvpPostBoxes = configService.GetAllPostboxes();
+
+            foreach (EgvpPostbox egvpPostBox in egvpPostBoxes)
+            {
+                Console.WriteLine(egvpPostBox.Name);
+                foreach (string exp in egvpPostBox.ExportPath)
+                    Console.WriteLine(exp);
+
+                var receiveMessageService = new ReceiveMessageService(egvpPostBox);
+                receiveMessageService.ReceiveMessages();
+            }
+
             Console.ReadLine();
         }
     }

@@ -14,17 +14,17 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
         public static EgvpPostbox GetPostboxParamsFromId(string Id, EgvpPostbox postbox = null)
         {
-            var requ = new EgvpEnterpriseSoap.searchReceiverRequest();
-            var resp = new EgvpEnterpriseSoap.searchReceiverResponse();
+            var requ = new searchReceiverRequest();
+            var resp = new searchReceiverResponse();
 
             if (null == postbox)
                 postbox = new EgvpPostbox();
 
             // Suche nach der eigenen ID starten
             requ.userID = Id;
-            requ.searchCriteria = new EgvpEnterpriseSoap.BusinessCardType()
+            requ.searchCriteria = new BusinessCardType()
             {
-                userID = new EgvpEnterpriseSoap.BCItem() { Value = Id }
+                userID = new BCItem() { Value = Id }
             };
             resp = egvpClient.searchReceiver(requ);
 
