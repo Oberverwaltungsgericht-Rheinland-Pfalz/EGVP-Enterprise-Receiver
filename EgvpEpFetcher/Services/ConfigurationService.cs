@@ -25,22 +25,32 @@ namespace OvgRlp.EgvpEpFetcher.Services
         public List<EgvpPostbox> GetAllPostboxes()
         {
             List<EgvpPostbox> postboxes = null;
+            string debugKontext = "";
 
             XmlNodeList PostboxIDs = xmlDocument.SelectNodes(XPATH_Postboxes + "/" + TAG_Postbox);
             foreach (XmlNode pb in PostboxIDs)
             {
-                if (null != pb.Attributes["Id"])
+                try
                 {
-                    var id = pb.Attributes["Id"].Value;
-                    EgvpPostbox epb = PostboxServices.GetPostboxParamsFromId(id);
+                    if (null != pb.Attributes["Id"])
+                    {
+                        var id = pb.Attributes["Id"].Value;
+                        debugKontext = id;
+                        EgvpPostbox epb = PostboxServices.GetPostboxParamsFromId(id);
 
-                    XmlNodeList exports = pb.SelectNodes("export/path");
-                    foreach (XmlNode exp in exports)
-                        epb.ExportPath.Add(exp.InnerText);
+                        XmlNodeList exports = pb.SelectNodes("export/path");
+                        foreach (XmlNode exp in exports)
+                            epb.ExportPath.Add(exp.InnerText);
 
-                    if (null == postboxes)
-                        postboxes = new List<EgvpPostbox>();
-                    postboxes.Add(epb);
+                        if (null == postboxes)
+                            postboxes = new List<EgvpPostbox>();
+                        postboxes.Add(epb);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //nur in die Console Loggen, ansonsten würden die Logs zu unübersichtlich
+                    Console.WriteLine(String.Format("### FEHLER ###\nBeim lesen von Postfächern aus der Konfig ({0}):\n{1}", debugKontext, ex.Message));
                 }
             }
 
