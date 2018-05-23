@@ -58,6 +58,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\CommonHelper.cs" />
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ConfigurationServiceBase.cs" />
     <Compile Include="Services\PostboxServices.cs" />
