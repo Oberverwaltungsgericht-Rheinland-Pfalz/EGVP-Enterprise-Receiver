@@ -10,7 +10,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
 {
     public abstract class ConfigurationServiceBase
     {
-        private readonly XmlDocument xmlDocument;
+        internal readonly XmlDocument xmlDocument;
 
         protected virtual string XPATH_Common
         {

@@ -4,10 +4,10 @@
 	</common>
 	<postboxes>
 		<!-- Verfassungsgerichtshof Rheinland-Pfalz -->
-		<postbox id="safe-sp1-1422886512247-015767265">
+		<postbox Id="safe-sp1-1422886512247-015767265">
 			<export>
 				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\Export</path>
 			</export>
-		<postbox>
+		</postbox>
 	</postboxes>
 </egvpepfetcher>
