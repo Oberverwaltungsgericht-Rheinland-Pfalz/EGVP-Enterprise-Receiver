@@ -196,6 +196,7 @@ FakesAssemblies/
 #OVGRLP specifications
 [Tt]est*/[Tt]emp/
 [Tt]est*/[Tt]mp/
+[Tt]est*/[Ee]xport/
 ![Rr]elease/**/bin/
 ![Rr]elease/
 
