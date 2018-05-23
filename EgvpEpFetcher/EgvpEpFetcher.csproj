@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ConfigurationServiceBase.cs" />
+    <Compile Include="Services\PostboxServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

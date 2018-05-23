@@ -13,5 +13,11 @@ namespace OvgRlp.EgvpEpFetcher.Models
         public String Name;
 
         public List<String> ExportPath;
+
+        public EgvpPostbox()
+        {
+            //Defaults
+            this.ExportPath = new List<string>();
+        }
     }
 }
