@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -60,6 +61,7 @@
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ConfigurationServiceBase.cs" />
     <Compile Include="Services\PostboxServices.cs" />
+    <Compile Include="Services\ReceiveMessageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
