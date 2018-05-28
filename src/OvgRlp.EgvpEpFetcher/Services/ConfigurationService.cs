@@ -56,5 +56,20 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             return postboxes;
         }
+
+        public EgvpPostbox GetPostbox(string Id)
+        {
+            EgvpPostbox egvpPostbox = null;
+            List<EgvpPostbox> egvpPostBoxes = this.GetAllPostboxes();
+
+            if (null != egvpPostBoxes)
+            {
+                var foo = egvpPostBoxes.Where(pb => pb.Id == Id);
+                if (null != foo && foo.Count() > 0)
+                    egvpPostbox = foo.First();
+            }
+
+            return egvpPostbox;
+        }
     }
 }

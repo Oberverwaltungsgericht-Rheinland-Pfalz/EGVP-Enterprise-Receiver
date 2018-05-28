@@ -42,7 +42,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
             }
         }
 
-        private void ReceiveMessage(string messageId)
+        public void ReceiveMessage(string messageId)
         {
             string logKontext = messageId;
             LogEntry logEntry = new LogEntry(String.Format("MessageId: {0}", messageId), LogEventLevel.Information);
@@ -78,6 +78,8 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 }
                 catch (Exception ex)
                 { throw new Exception("Fehler bei CommitMessage aufgetreten", ex); }
+
+                Logger.Log(logEntry, logKontext, logMetadata);
             }
             catch (Exception ex)
             {
@@ -92,18 +94,27 @@ namespace OvgRlp.EgvpEpFetcher.Services
         {
             string zipFullFilename = Path.Combine(Properties.Settings.Default.tempDir, resp.messageID + ".zip");
 
-            logEntry.AddSubEntry(String.Format("Nachricht temporär zwischenspeichern nach {0}", zipFullFilename), LogEventLevel.Information);
-            File.WriteAllBytes(zipFullFilename, resp.messageZIP);
-
-            foreach (string expPath in this.EgvpPostbox.ExportPath)
+            try
             {
-                string fullfilename = Path.Combine(expPath, resp.messageID);
-                logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
-                ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
-            }
+                logEntry.AddSubEntry(String.Format("Nachricht temporär zwischenspeichern nach {0}", zipFullFilename), LogEventLevel.Information);
+                File.WriteAllBytes(zipFullFilename, resp.messageZIP);
 
-            logEntry.AddSubEntry(String.Format("Temporär zwischengespeicherte Nachrich wieder löschen", zipFullFilename), LogEventLevel.Information);
-            File.Delete(zipFullFilename);
+                foreach (string expPath in this.EgvpPostbox.ExportPath)
+                {
+                    string fullfilename = Path.Combine(expPath, resp.messageID);
+                    logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
+                    ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
+                }
+
+                logEntry.AddSubEntry(String.Format("Temporär zwischengespeicherte Nachrich wieder löschen", zipFullFilename), LogEventLevel.Information);
+                File.Delete(zipFullFilename);
+            }
+            catch (Exception ex)
+            {
+                try { File.Delete(zipFullFilename); }
+                catch { /*ohne Fehlerbehandlung*/}
+                throw ex;
+            }
         }
 
         private void CommitMessage(string messageId)
