@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2008 rel. 2 (http://www.altova.com) von Bremen Online Services GmbH (Bremen Online Services GmbH) bearbeitet -->
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by ouda (bremen online services GmbH & Co. KG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="ExportMsgType">
+		<xs:annotation>
+			<xs:documentation>Information concerning Message Parts, Statuses of Signatures and Certificates, Sender and Receiver</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MessageID" type="xs:NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>EGVP Message Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServerEntryTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Time Message was received by OSCI Manager</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Originator" type="ExchangeParticipant" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Sender of Message (Content not set if Sender opted out)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AddresseeCertProps" type="EncCertProps">
+				<xs:annotation>
+					<xs:documentation>Infos about Encryption Certtificate of Addressee of Message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OSCISubject" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Type of Message, defined in other Documents. Derived from "Subject" of OSCI Transport Header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MsgSubject" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Subject of Message ("Betreff")</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AuthorSignature" type="SignaturePropertiesType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Author Signatures of OSCI Content Parts and Attachments</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OSCIContent" type="OSCIContentType" maxOccurs="unbounded"/>
+			<xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>EGVP Message Attachments and applied Signatures</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="status" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="valid"/>
+					<xs:enumeration value="invalid"/>
+					<xs:enumeration value="unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:element name="EGVPMessageProps" type="ExportMsgType">
+		<xs:annotation>
+			<xs:documentation>The Root Element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SignaturePropertiesType">
+		<xs:annotation>
+			<xs:documentation>Statuses of Signatures and Certificates.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CertCheckTime" type="xs:dateTime"/>
+			<xs:element name="SigningTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Signing Time derived from Signature Element (Attachment) Govello meta Data (OSCI Content)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SigCertName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Name of X509-Certificate; if known, Attribute "quality" indicates quality of Signature Certificate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:sequence minOccurs="0">
+				<xs:element name="X509SubjectName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Owner of Certificate</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="X509SerialNumber" type="xs:integer">
+					<xs:annotation>
+						<xs:documentation>Serial Number of Certificate</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="X509IssuerName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Issuer of Certificate</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="integrity" type="xs:boolean" use="required"/>
+		<xs:attribute name="certValidity" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="valid"/>
+					<xs:enumeration value="invalid"/>
+					<xs:enumeration value="unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="qualifiedSignature" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>Quality of Signature: qualified, advanced; none if no Signature</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AttachmentType">
+		<xs:annotation>
+			<xs:documentation>Signed and unsigned Attachments</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Filename" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Attachment Name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SignatureProperties" type="SignaturePropertiesType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Signatures of this Attachment</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="status">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="valid"/>
+					<xs:enumeration value="invalid"/>
+					<xs:enumeration value="unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="error_message" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Error message</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="container" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Container Name (zip file name)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OSCIContentType">
+		<xs:sequence>
+			<xs:element name="OSCIContentName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Name of OSCi Content Part</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stylesheet" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Corresponding Stylesheet for OSCIContent; if none, default is assumed ("nachricht.xsd")</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExchangeParticipant">
+		<xs:sequence>
+			<xs:element name="EncryptionCertificate" type="EncCertProps"/>
+			<xs:element name="BusinessCard" type="BusinessCardType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EncCertProps">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Common Name of Sender derived from Ceritifcate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Organization" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Common Name of Sender derived from Ceritifcate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EncCertName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Filenename of this Certificate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BusinessCardType">
+		<xs:annotation>
+			<xs:documentation>BusinessCard Attributes</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Address" type="xs:string"/>
+			<xs:element name="Title" type="xs:string" minOccurs="0"/>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="ChristianName" type="xs:string" minOccurs="0"/>
+			<xs:element name="Organization" type="xs:string" minOccurs="0"/>
+			<xs:element name="OrganisationalUnit" type="xs:string"/>
+			<xs:element name="Street" type="xs:string"/>
+			<xs:element name="StreetNumber" type="xs:string"/>
+			<xs:element name="ZipCode" type="xs:string"/>
+			<xs:element name="City" type="xs:string"/>
+			<xs:element name="Country" type="xs:string"/>
+			<xs:element name="FederalState" type="xs:string"/>
+			<xs:element name="Email" type="xs:string" minOccurs="0"/>
+			<xs:element name="CellPhone" type="xs:string" minOccurs="0"/>
+			<xs:element name="Phone" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fax" type="xs:string" minOccurs="0"/>
+			<xs:element name="UserID" type="xs:NMTOKEN"/>
+			<xs:element name="FilterID" type="xs:string"/>
+			<xs:element name="Role" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Models\EGVPMessageProps.cs" />
+    <Compile Include="Models\EGVPMessagePropsType.cs">
+      <DependentUpon>EGVPMessagePropsType.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
     <Compile Include="Models\EgvpPostbox.cs" />
     <Compile Include="Models\LogMetadata.cs" />
     <Compile Include="Program.cs" />
@@ -190,6 +195,9 @@
     </None>
     <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpFetcher.EgvpEnterpriseSoap.verifyMessageResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Models\EGVPMessagePropsType.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
