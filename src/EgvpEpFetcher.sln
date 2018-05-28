@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EgvpEpFetcher", "EgvpEpFetcher\EgvpEpFetcher.csproj", "{CC5C6A0A-6F51-4AB9-903A-7FE4BE51F9F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpFetcher", "OvgRlp.EgvpEpFetcher\OvgRlp.EgvpEpFetcher.csproj", "{CC5C6A0A-6F51-4AB9-903A-7FE4BE51F9F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
