@@ -22,7 +22,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             // Suche nach der eigenen ID starten
             requ.userID = Id;
-            requ.searchCriteria = new BusinessCardType()
+            requ.searchCriteria = new EgvpEnterpriseSoap.BusinessCardType()
             {
                 userID = new BCItem() { Value = Id }
             };

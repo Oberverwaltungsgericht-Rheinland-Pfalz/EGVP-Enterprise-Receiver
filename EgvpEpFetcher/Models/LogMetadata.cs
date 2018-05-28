@@ -14,9 +14,6 @@ namespace OvgRlp.EgvpEpFetcher.Models
         public string Sender;
         public string SenderName;
         public string Subject;
-        public string SaveTempPath;
-        public string SaveTempFilename;
-        public string ReferenceNumber;
         public string MessageType;
         public string MessageSizeKB;
         public string AppVersion;

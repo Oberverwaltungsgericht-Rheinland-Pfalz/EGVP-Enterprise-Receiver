@@ -50,6 +50,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             requ.messageID = messageId;
             requ.userID = this.EgvpPostbox.Id;
+            ProtocolService.CreateLogMetadata("", ref logMetadata, messageId, this.EgvpPostbox);
 
             try
             {
@@ -58,7 +59,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
                     throw new Exception(string.Format("Fehler bei receiveMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
 
                 logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
-                ProtocolService.CreateLogMetadata(resp, ref logMetadata);
+                ProtocolService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
 
                 try
                 {
