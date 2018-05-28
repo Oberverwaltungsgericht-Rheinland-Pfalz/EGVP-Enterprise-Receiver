@@ -36,6 +36,8 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             foreach (var msg in resp.uncommittedMessages)
             {
+                if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID))
+                    continue;
                 ReceiveMessage(msg.messageID);
             }
         }
@@ -82,6 +84,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 logEntry.AddSubEntry(String.Format("Abbruch bei Verarbeitung der Nachricht ({0})", ex.Message), LogEventLevel.Error);
                 LoggingHelper.AddInnerExceptionToLogEntry(logEntry, ex);
                 Logger.Log(logEntry, logKontext, logMetadata);
+                ProtocolService.CreateDBMessageErrorFlag(messageId, ex.Message);
             }
         }
 
