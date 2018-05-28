@@ -1,4 +1,4 @@
-﻿using OvgRlp.EgvpEpFetcher.Models;
+﻿using OvgRlp.EgvpEpFetcher.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

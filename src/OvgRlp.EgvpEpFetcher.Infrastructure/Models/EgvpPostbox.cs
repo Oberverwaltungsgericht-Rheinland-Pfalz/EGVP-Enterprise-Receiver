@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OvgRlp.EgvpEpFetcher.Models
+namespace OvgRlp.EgvpEpFetcher.Infrastructure.Models
 {
     public class EgvpPostbox
     {

@@ -70,13 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Models\EGVPMessageProps.cs" />
-    <Compile Include="Models\EGVPMessagePropsType.cs">
-      <DependentUpon>EGVPMessagePropsType.xsd</DependentUpon>
-      <SubType>code</SubType>
-    </Compile>
-    <Compile Include="Models\EgvpPostbox.cs" />
-    <Compile Include="Models\LogMetadata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -197,9 +190,6 @@
     <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpFetcher.EgvpEnterpriseSoap.verifyMessageResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Models\EGVPMessagePropsType.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -223,6 +213,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OvgRlp.EgvpEpFetcher.Infrastructure\OvgRlp.EgvpEpFetcher.Infrastructure.csproj">
+      <Project>{f091b2ab-6408-48b6-a345-13966a0e1176}</Project>
+      <Name>OvgRlp.EgvpEpFetcher.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

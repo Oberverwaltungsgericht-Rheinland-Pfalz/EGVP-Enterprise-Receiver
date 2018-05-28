@@ -1,5 +1,5 @@
 ﻿using OvgRlp.EgvpEpFetcher.EgvpEnterpriseSoap;
-using OvgRlp.EgvpEpFetcher.Models;
+using OvgRlp.EgvpEpFetcher.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
 using System;
 using System.Collections.Generic;

@@ -11,7 +11,7 @@
 // 
 // Dieser Quellcode wurde automatisch generiert von xsd, Version=4.6.1055.0.
 // 
-namespace OvgRlp.EgvpEpFetcher.Models {
+namespace OvgRlp.EgvpEpFetcher.Infrastructure.Models {
     using System.Xml.Serialization;
     
 

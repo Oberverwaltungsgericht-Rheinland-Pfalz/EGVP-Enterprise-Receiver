@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace OvgRlp.EgvpEpFetcher.Models
+namespace OvgRlp.EgvpEpFetcher.Infrastructure.Models
 {
     public class EGVPMessageProps : ExportMsgType
     {

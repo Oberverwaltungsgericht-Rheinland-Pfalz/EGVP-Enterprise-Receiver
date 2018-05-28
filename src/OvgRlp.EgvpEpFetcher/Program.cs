@@ -1,4 +1,4 @@
-﻿using OvgRlp.EgvpEpFetcher.Models;
+﻿using OvgRlp.EgvpEpFetcher.Infrastructure.Models;
 using OvgRlp.EgvpEpFetcher.Services;
 using OvgRlp.Libs.Logging;
 using System;
