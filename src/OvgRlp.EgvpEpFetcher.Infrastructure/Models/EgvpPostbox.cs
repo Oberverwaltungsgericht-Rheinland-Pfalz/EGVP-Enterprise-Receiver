@@ -14,10 +14,13 @@ namespace OvgRlp.EgvpEpFetcher.Infrastructure.Models
 
         public List<String> ExportPath;
 
+        public List<String> ArchivPath;
+
         public EgvpPostbox()
         {
             //Defaults
             this.ExportPath = new List<string>();
+            this.ArchivPath = new List<string>();
         }
     }
 }

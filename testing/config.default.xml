@@ -8,6 +8,11 @@
 			<export>
 				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\Export</path>
 			</export>
+			<archiv>
+				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\export\Archiv\[yyyy]_[MM]</path>
+			</archiv>
+			
+			
 		</postbox>
 	</postboxes>
 </egvpepfetcher>

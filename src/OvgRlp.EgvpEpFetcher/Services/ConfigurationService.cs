@@ -42,6 +42,10 @@ namespace OvgRlp.EgvpEpFetcher.Services
                         foreach (XmlNode exp in exports)
                             epb.ExportPath.Add(exp.InnerText);
 
+                        XmlNodeList archiv = pb.SelectNodes("archiv/path");
+                        foreach (XmlNode arch in archiv)
+                            epb.ArchivPath.Add(arch.InnerText);
+
                         if (null == postboxes)
                             postboxes = new List<EgvpPostbox>();
                         postboxes.Add(epb);

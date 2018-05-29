@@ -98,6 +98,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
         private void ExtractFiles(receiveMessageResponse resp, LogEntry logEntry)
         {
             string zipFullFilename = Path.Combine(Properties.Settings.Default.tempDir, resp.messageID + ".zip");
+            string fullfilename = "";
 
             try
             {
@@ -106,9 +107,24 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
                 foreach (string expPath in this.EgvpPostbox.ExportPath)
                 {
-                    string fullfilename = Path.Combine(expPath, resp.messageID);
+                    fullfilename = Path.Combine(expPath, resp.messageID);
                     logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
                     ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
+                }
+
+                try
+                {
+                    foreach (string archPath in this.EgvpPostbox.ArchivPath)
+                    {
+                        fullfilename = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(archPath, DateTime.Now), resp.messageID);
+                        logEntry.AddSubEntry(String.Format("Nachricht Archivieren nach {0}", fullfilename), LogEventLevel.Information);
+                        ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string ft = String.Format("Nachricht konnte nicht in das Archivverzeichnis {0} kopiert werden: {1}", fullfilename, ex.Message);
+                    logEntry.AddSubEntry(ft, LogEventLevel.Warning);
                 }
 
                 logEntry.AddSubEntry(String.Format("Temporär zwischengespeicherte Nachrich wieder löschen", zipFullFilename), LogEventLevel.Information);
