@@ -1,4 +1,5 @@
-﻿using OvgRlp.EgvpEpFetcher.Infrastructure;
+﻿using OvgRlp.EgvpEpFetcher.EgvpEnterpriseSoap;
+using OvgRlp.EgvpEpFetcher.Infrastructure;
 using OvgRlp.EgvpEpFetcher.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
 using System;
@@ -13,8 +14,15 @@ namespace OvgRlp.EgvpEpFetcher.Services
 {
     public class ProtocolService
     {
+        private EgvpPortTypeClient EgvpClient = null;
+
+        public ProtocolService(EgvpPortTypeClient egvpClient)
+        {
+            this.EgvpClient = egvpClient;
+        }
+
         // Logging Metadaten aufbereiten
-        public static void CreateLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox EgvpPostbox = null, string MessageSizeKB = null)
+        public void CreateLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null, string messageSizeKB = null)
         {
             if (null == logMetadata)
                 logMetadata = new LogMetadata();
@@ -22,13 +30,15 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             if (null != messageID)
                 logMetadata.MessageId = messageID;
-            if (null != MessageSizeKB)
-                logMetadata.MessageSizeKB = MessageSizeKB;
-            if (null != EgvpPostbox)
+            if (null != messageSizeKB)
+                logMetadata.MessageSizeKB = messageSizeKB;
+            if (null != egvpPostbox)
             {
-                logMetadata.Recipient = EgvpPostbox.Id;
-                logMetadata.RecipientName = EgvpPostbox.Name;
+                logMetadata.Recipient = egvpPostbox.Id;
+                logMetadata.RecipientName = egvpPostbox.Name;
             }
+
+            ExtendedLogMetadataFromState(messageID, egvpPostbox, ref logMetadata);
 
             if (null != msgProps)
             {
@@ -54,15 +64,15 @@ namespace OvgRlp.EgvpEpFetcher.Services
         }
 
         // Logging Metadaten aufbereiten
-        public static void CreateLogMetadata(EgvpEnterpriseSoap.receiveMessageResponse resp, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox EgvpPostbox = null)
+        public void CreateLogMetadata(EgvpEnterpriseSoap.receiveMessageResponse resp, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
         {
             EGVPMessageProps msgProps = null;
-            string MessageSizeKB = "";
+            string messageSizeKB = "";
 
             if (null != resp)
             {
-                try { MessageSizeKB = Convert.ToString((Convert.ToInt32(resp.messageZIP.Length) / 1024)); }
-                catch { MessageSizeKB = ""; }
+                try { messageSizeKB = Convert.ToString((Convert.ToInt32(resp.messageZIP.Length) / 1024)); }
+                catch { messageSizeKB = ""; }
 
                 using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
                 {
@@ -74,19 +84,19 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 }
             }
 
-            CreateLogMetadata(msgProps, ref logMetadata, messageID, EgvpPostbox, MessageSizeKB);
+            CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB);
         }
 
         // Logging Metadaten aufbereiten
-        public static void CreateLogMetadata(string zipFullFilename, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox EgvpPostbox = null)
+        public void CreateLogMetadata(string zipFullFilename, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
         {
             EGVPMessageProps msgProps = null;
-            string MessageSizeKB = "";
+            string messageSizeKB = "";
 
             if (!string.IsNullOrEmpty(zipFullFilename))
             {
-                try { MessageSizeKB = Convert.ToString((Convert.ToInt32(new FileInfo(zipFullFilename).Length) / 1024)); }
-                catch { MessageSizeKB = ""; }
+                try { messageSizeKB = Convert.ToString((Convert.ToInt32(new FileInfo(zipFullFilename).Length) / 1024)); }
+                catch { messageSizeKB = ""; }
 
                 using (ZipArchive za = ZipFile.OpenRead(zipFullFilename))
                 {
@@ -98,7 +108,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 }
             }
 
-            CreateLogMetadata(msgProps, ref logMetadata, messageID, EgvpPostbox, MessageSizeKB);
+            CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB);
         }
 
         // Hinweis auf einen Fehlerhaften Nachrichtenabruf in die Datenbank aufnehmen
@@ -166,6 +176,33 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 Logger.Log(ex.Message, "CheckDBMessageErrorFlag: Fehler beim Prüfen eines Fehlerhinweises zu Nachricht " + messageID, LogEventLevel.Warning);
             }
             return rval;
+        }
+
+        // weitere Metadaten per Soap abrufen
+        private void ExtendedLogMetadataFromState(string messageID, EgvpPostbox egvpPostbox, ref LogMetadata logMetadata)
+        {
+            try
+            {
+                if (null != EgvpClient)
+                {
+                    var requ = new getStateRequest();
+                    var resp = new getStateResponse();
+                    requ.customOrMessageID = messageID;
+                    requ.userID = egvpPostbox.Id;
+                    resp = this.EgvpClient.getState(requ);
+                    if (resp.returnCode != GetStateReturnCodeType.OK)
+                        throw new Exception(resp.returnCode.ToString());
+
+                    logMetadata.Recipient = resp.receiverID;
+                    logMetadata.Sender = resp.senderID;
+                    logMetadata.OsciState = resp.state.ToString();
+                    logMetadata.OsciDatetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message, "ExtendedLogMetadataFromState: Fehler beim Abrufen des Nachrichtenstatus - MessageId: " + messageID, LogEventLevel.Warning);
+            }
         }
     }
 }

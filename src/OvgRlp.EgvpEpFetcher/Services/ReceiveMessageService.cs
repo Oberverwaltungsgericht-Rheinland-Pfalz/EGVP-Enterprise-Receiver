@@ -13,7 +13,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
 {
     public class ReceiveMessageService
     {
-        private static EgvpPortTypeClient egvpClient = new EgvpEnterpriseSoap.EgvpPortTypeClient();
+        private static EgvpPortTypeClient EgvpClient = new EgvpEnterpriseSoap.EgvpPortTypeClient();
         public EgvpPostbox EgvpPostbox { get; set; }
 
         public ReceiveMessageService(EgvpPostbox postbox)
@@ -30,7 +30,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 throw new ArgumentNullException("EgvpPostbox");
 
             requ.userID = this.EgvpPostbox.Id;
-            resp = egvpClient.getUncommittedMessageIDs(requ);
+            resp = EgvpClient.getUncommittedMessageIDs(requ);
             if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
                 throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", this.EgvpPostbox.Name, resp.returnCode.ToString()));
 
@@ -52,19 +52,20 @@ namespace OvgRlp.EgvpEpFetcher.Services
             var logMetadata = new LogMetadata();
             var requ = new receiveMessageRequest();
             var resp = new receiveMessageResponse();
+            var protService = new ProtocolService(EgvpClient);
 
             requ.messageID = messageId;
             requ.userID = this.EgvpPostbox.Id;
-            ProtocolService.CreateLogMetadata("", ref logMetadata, messageId, this.EgvpPostbox);
+            protService.CreateLogMetadata("", ref logMetadata, messageId, this.EgvpPostbox);
 
             try
             {
-                resp = egvpClient.receiveMessage(requ);
+                resp = EgvpClient.receiveMessage(requ);
                 if (resp.returnCode != ReceiveReturnCodeType.OK)
                     throw new Exception(string.Format("Fehler bei receiveMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
 
                 logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
-                ProtocolService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
+                protService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
 
                 try
                 {
@@ -129,7 +130,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
             requ.messageID = messageId;
             requ.userID = this.EgvpPostbox.Id;
 
-            resp = egvpClient.commitReceivedMessage(requ);
+            resp = EgvpClient.commitReceivedMessage(requ);
             if (resp.returnCode != CommitReturnCodeType.OK)
             {
                 string ft = string.Format("Fehler bei commitReceivedMessage - ID {0}: {1}", messageId, resp.returnCode.ToString());

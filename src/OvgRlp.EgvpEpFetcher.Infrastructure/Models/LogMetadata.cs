@@ -17,5 +17,7 @@ namespace OvgRlp.EgvpEpFetcher.Infrastructure.Models
         public string MessageType;
         public string MessageSizeKB;
         public string AppVersion;
+        public string OsciState;
+        public string OsciDatetime;
     }
 }

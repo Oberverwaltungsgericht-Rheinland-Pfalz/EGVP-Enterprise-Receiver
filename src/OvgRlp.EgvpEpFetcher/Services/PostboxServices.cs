@@ -10,7 +10,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
 {
     public class PostboxServices
     {
-        private static EgvpPortTypeClient egvpClient = new EgvpEnterpriseSoap.EgvpPortTypeClient();
+        private static EgvpPortTypeClient EgvpClient = new EgvpEnterpriseSoap.EgvpPortTypeClient();
 
         public static EgvpPostbox GetPostboxParamsFromId(string Id, EgvpPostbox postbox = null)
         {
@@ -26,7 +26,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
             {
                 userID = new BCItem() { Value = Id }
             };
-            resp = egvpClient.searchReceiver(requ);
+            resp = EgvpClient.searchReceiver(requ);
 
             // Auswerten ob ein eindeutiges Postfach gefunden werden konnte
             if (resp.count == 0)
