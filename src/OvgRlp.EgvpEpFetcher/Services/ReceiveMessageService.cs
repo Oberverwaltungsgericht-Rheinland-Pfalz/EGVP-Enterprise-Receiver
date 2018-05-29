@@ -34,11 +34,14 @@ namespace OvgRlp.EgvpEpFetcher.Services
             if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
                 throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", this.EgvpPostbox.Name, resp.returnCode.ToString()));
 
-            foreach (var msg in resp.uncommittedMessages)
+            if (null != resp.uncommittedMessages)
             {
-                if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID))
-                    continue;
-                ReceiveMessage(msg.messageID);
+                foreach (var msg in resp.uncommittedMessages)
+                {
+                    if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID))
+                        continue;
+                    ReceiveMessage(msg.messageID);
+                }
             }
         }
 
@@ -74,11 +77,12 @@ namespace OvgRlp.EgvpEpFetcher.Services
                 try
                 {
                     logEntry.AddSubEntry("Nachricht als empfangen markieren", LogEventLevel.Information);
-                    //CommitMessage(messageId);
+                    CommitMessage(messageId, logEntry);
                 }
                 catch (Exception ex)
                 { throw new Exception("Fehler bei CommitMessage aufgetreten", ex); }
 
+                logEntry.AddSubEntry("Nachricht wurde erfolgreich verarbeitet!", LogEventLevel.Information);
                 Logger.Log(logEntry, logKontext, logMetadata);
             }
             catch (Exception ex)
@@ -117,7 +121,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
             }
         }
 
-        private void CommitMessage(string messageId)
+        private void CommitMessage(string messageId, LogEntry logEntry)
         {
             var requ = new commitReceivedMessageRequest();
             var resp = new commitReceivedMessageResponse();
@@ -127,7 +131,13 @@ namespace OvgRlp.EgvpEpFetcher.Services
 
             resp = egvpClient.commitReceivedMessage(requ);
             if (resp.returnCode != CommitReturnCodeType.OK)
-                throw new Exception(string.Format("Fehler bei commitReceivedMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
+            {
+                string ft = string.Format("Fehler bei commitReceivedMessage - ID {0}: {1}", messageId, resp.returnCode.ToString());
+                if (resp.returnCode != CommitReturnCodeType.MESSAGE_ALREADY_COMMITTED)
+                { throw new Exception(ft); }
+                else
+                { logEntry.AddSubEntry(ft, LogEventLevel.Warning); }
+            }
         }
     }
 }
