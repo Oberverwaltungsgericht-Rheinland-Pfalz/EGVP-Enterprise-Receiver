@@ -42,7 +42,7 @@
 					<xs:documentation>Author Signatures of OSCI Content Parts and Attachments</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="OSCIContent" type="OSCIContentType" maxOccurs="unbounded"/>
+			<xs:element name="OSCIContent" type="OSCIContentType" maxOccurs="unbounded" />
 			<xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>EGVP Message Attachments and applied Signatures</xs:documentation>
@@ -52,13 +52,13 @@
 		<xs:attribute name="status" use="required">
 			<xs:simpleType>
 				<xs:restriction base="xs:NMTOKEN">
-					<xs:enumeration value="valid"/>
-					<xs:enumeration value="invalid"/>
-					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="valid" />
+					<xs:enumeration value="invalid" />
+					<xs:enumeration value="unknown" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
-		<xs:anyAttribute namespace="##other" processContents="lax"/>
+		<xs:anyAttribute namespace="##other" processContents="lax" />
 	</xs:complexType>
 	<xs:element name="EGVPMessageProps" type="ExportMsgType">
 		<xs:annotation>
@@ -70,7 +70,7 @@
 			<xs:documentation>Statuses of Signatures and Certificates.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="CertCheckTime" type="xs:dateTime"/>
+			<xs:element name="CertCheckTime" type="xs:dateTime" />
 			<xs:element name="SigningTime" type="xs:dateTime" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Signing Time derived from Signature Element (Attachment) Govello meta Data (OSCI Content)</xs:documentation>
@@ -99,13 +99,13 @@
 				</xs:element>
 			</xs:sequence>
 		</xs:sequence>
-		<xs:attribute name="integrity" type="xs:boolean" use="required"/>
+		<xs:attribute name="integrity" type="xs:boolean" use="required" />
 		<xs:attribute name="certValidity" use="required">
 			<xs:simpleType>
 				<xs:restriction base="xs:NMTOKEN">
-					<xs:enumeration value="valid"/>
-					<xs:enumeration value="invalid"/>
-					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="valid" />
+					<xs:enumeration value="invalid" />
+					<xs:enumeration value="unknown" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
@@ -134,9 +134,9 @@
 		<xs:attribute name="status">
 			<xs:simpleType>
 				<xs:restriction base="xs:NMTOKEN">
-					<xs:enumeration value="valid"/>
-					<xs:enumeration value="invalid"/>
-					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="valid" />
+					<xs:enumeration value="invalid" />
+					<xs:enumeration value="unknown" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
@@ -167,8 +167,8 @@
 	</xs:complexType>
 	<xs:complexType name="ExchangeParticipant">
 		<xs:sequence>
-			<xs:element name="EncryptionCertificate" type="EncCertProps"/>
-			<xs:element name="BusinessCard" type="BusinessCardType"/>
+			<xs:element name="EncryptionCertificate" type="EncCertProps" />
+			<xs:element name="BusinessCard" type="BusinessCardType" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="EncCertProps">
@@ -195,25 +195,25 @@
 			<xs:documentation>BusinessCard Attributes</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Address" type="xs:string"/>
-			<xs:element name="Title" type="xs:string" minOccurs="0"/>
-			<xs:element name="Name" type="xs:string"/>
-			<xs:element name="ChristianName" type="xs:string" minOccurs="0"/>
-			<xs:element name="Organization" type="xs:string" minOccurs="0"/>
-			<xs:element name="OrganisationalUnit" type="xs:string"/>
-			<xs:element name="Street" type="xs:string"/>
-			<xs:element name="StreetNumber" type="xs:string"/>
-			<xs:element name="ZipCode" type="xs:string"/>
-			<xs:element name="City" type="xs:string"/>
-			<xs:element name="Country" type="xs:string"/>
-			<xs:element name="FederalState" type="xs:string"/>
-			<xs:element name="Email" type="xs:string" minOccurs="0"/>
-			<xs:element name="CellPhone" type="xs:string" minOccurs="0"/>
-			<xs:element name="Phone" type="xs:string" minOccurs="0"/>
-			<xs:element name="Fax" type="xs:string" minOccurs="0"/>
-			<xs:element name="UserID" type="xs:NMTOKEN"/>
-			<xs:element name="FilterID" type="xs:string"/>
-			<xs:element name="Role" type="xs:string" minOccurs="0"/>
+			<xs:element name="Address" type="xs:string" />
+			<xs:element name="Title" type="xs:string" minOccurs="0" />
+			<xs:element name="Name" type="xs:string" />
+			<xs:element name="ChristianName" type="xs:string" minOccurs="0" />
+			<xs:element name="Organization" type="xs:string" minOccurs="0" />
+			<xs:element name="OrganisationalUnit" type="xs:string" />
+			<xs:element name="Street" type="xs:string" />
+			<xs:element name="StreetNumber" type="xs:string" />
+			<xs:element name="ZipCode" type="xs:string" />
+			<xs:element name="City" type="xs:string" />
+			<xs:element name="Country" type="xs:string" />
+			<xs:element name="FederalState" type="xs:string" />
+			<xs:element name="Email" type="xs:string" minOccurs="0" />
+			<xs:element name="CellPhone" type="xs:string" minOccurs="0" />
+			<xs:element name="Phone" type="xs:string" minOccurs="0" />
+			<xs:element name="Fax" type="xs:string" minOccurs="0" />
+			<xs:element name="UserID" type="xs:NMTOKEN" />
+			<xs:element name="FilterID" type="xs:string" />
+			<xs:element name="Role" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
