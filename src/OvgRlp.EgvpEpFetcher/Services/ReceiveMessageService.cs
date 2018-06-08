@@ -127,7 +127,7 @@ namespace OvgRlp.EgvpEpFetcher.Services
           logEntry.AddSubEntry(ft, LogEventLevel.Warning);
         }
 
-        logEntry.AddSubEntry(String.Format("Temporär zwischengespeicherte Nachrich wieder löschen", zipFullFilename), LogEventLevel.Information);
+        logEntry.AddSubEntry(String.Format("Temporär zwischengespeicherte Nachricht wieder löschen", zipFullFilename), LogEventLevel.Information);
         File.Delete(zipFullFilename);
       }
       catch (Exception ex)
