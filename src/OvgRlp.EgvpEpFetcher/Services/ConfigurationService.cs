@@ -53,10 +53,14 @@ namespace OvgRlp.EgvpEpFetcher.Services
             postboxes.Add(epb);
           }
         }
-        catch (Exception ex)
+        catch (KeyNotFoundException ex)
         {
           //nur in die Console Loggen, ansonsten würden die Logs zu unübersichtlich
           Console.WriteLine(String.Format("### FEHLER ###\nBeim lesen von Postfächern aus der Konfig ({0}):\n{1}", debugKontext, ex.Message));
+        }
+        catch (Exception ex)
+        {
+          throw ex;
         }
       }
 
