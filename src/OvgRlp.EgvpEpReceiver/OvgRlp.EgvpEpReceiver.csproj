@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC5C6A0A-6F51-4AB9-903A-7FE4BE51F9F4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>OvgRlp.EgvpEpReceiver</RootNamespace>
+    <AssemblyName>EgvpEpReceiver</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NDesk.Options, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="OvgRlp.libs.Logging, Version=1.3.0.1802, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OvgRlp_Logging.1.3.0.1802\lib\net45\OvgRlp.libs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.6.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=5.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.MSSqlServer.5.1.0\lib\net452\Serilog.Sinks.MSSqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.2.1.1\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\EgvpEnterpriseSoap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="CLIActions.cs" />
+    <Compile Include="Services\CLIService.cs" />
+    <Compile Include="Services\CommonHelper.cs" />
+    <Compile Include="Services\ConfigurationService.cs" />
+    <Compile Include="Services\ConfigurationServiceBase.cs" />
+    <Compile Include="Services\DatetimeHelper.cs" />
+    <Compile Include="Services\LoggingHelper.cs" />
+    <Compile Include="Services\PostboxServices.cs" />
+    <Compile Include="Services\ProtocolService.cs" />
+    <Compile Include="Services\ReceiveMessageService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\egvp.wsdl" />
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.asynchroniousMessageSentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.asynchroniousMessageSentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.cancelSentMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.cancelSentMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitReceivedMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitReceivedMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitSentMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitSentMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getStateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.receiveMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.receiveMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.registerNotificationCallbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.registerNotificationCallbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.searchReceiverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.searchReceiverResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendSynchroniousMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendSynchroniousMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.verifyMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.verifyMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\EgvpEnterpriseSoap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EgvpEnterpriseSoap\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EgvpEnterpriseSoap\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EgvpEnterpriseSoap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj">
+      <Project>{f091b2ab-6408-48b6-a345-13966a0e1176}</Project>
+      <Name>OvgRlp.EgvpEpReceiver.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

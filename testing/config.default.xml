@@ -1,21 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<egvpepfetcher>
+<?xml version="1.0" encoding="utf-8" ?>
+<egvpepreceiver>
 	<common>
 	</common>
 	<postboxes>
 		<!-- Verfassungsgerichtshof Rheinland-Pfalz -->
 		<postbox Id="safe-sp1-1422886512247-015767265">
 			<export>
-				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\Export</path>
+				<path>C:\dev\repos\EGVP-Enterprise-Receiver\testing\Export</path>
 			</export>
 			<exportEeb>
-				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\Export\EEB</path>
+				<path>C:\dev\repos\EGVP-Enterprise-Receiver\testing\Export\EEB</path>
 			</exportEeb>
 			<archiv>
-				<path>C:\dev\repos\EGVP-Enterprise-Fetcher\testing\export\Archiv\[yyyy]_[MM]</path>
+				<path>C:\dev\repos\EGVP-Enterprise-Receiver\testing\export\Archiv\[yyyy]_[MM]</path>
 			</archiv>
 			
 			
 		</postbox>
 	</postboxes>
-</egvpepfetcher>
+</egvpepreceiver>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F091B2AB-6408-48B6-A345-13966A0E1176}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OvgRlp.EgvpEpReceiver.Infrastructure</RootNamespace>
+    <AssemblyName>OvgRlp.EgvpEpReceiver.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EgvpEnterpriseReceiverModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EgvpEnterpriseReceiverModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EgvpEnterpriseReceiverModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EgvpEnterpriseReceiverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EgvpEnterpriseReceiverModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EgvpEnterpriseReceiverModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EgvpEnterpriseReceiver_Error.cs">
+      <DependentUpon>EgvpEnterpriseReceiverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EGVPMessageProps.cs" />
+    <Compile Include="Models\EGVPMessagePropsType.cs">
+      <DependentUpon>EGVPMessagePropsType.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EgvpPostbox.cs" />
+    <Compile Include="Models\LogMetadata.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EgvpEnterpriseReceiverModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EgvpEnterpriseReceiverModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EgvpEnterpriseReceiverModel.edmx.diagram">
+      <DependentUpon>EgvpEnterpriseReceiverModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\EGVPMessagePropsType.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EgvpEnterpriseReceiverModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EgvpEnterpriseReceiverModel.Context.cs</LastGenOutput>
+      <DependentUpon>EgvpEnterpriseReceiverModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="EgvpEnterpriseReceiverModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EgvpEnterpriseReceiverModel.edmx</DependentUpon>
+      <LastGenOutput>EgvpEnterpriseReceiverModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
