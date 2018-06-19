@@ -41,7 +41,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
     private static void ShowVersionInformation()
     {
-      Console.WriteLine("EgvpEpReceiver Version " + CommonHelper.AssemblyVersion());
+      Console.WriteLine("EgvpEpReceiver Version " + OvgRlp.Core.Common.AssemblyHelper.AssemblyVersion(System.Reflection.Assembly.GetExecutingAssembly()));
     }
 
     //! Übersicht der möglichen Kommandozeilenargumente auf der Konsole ausgeben

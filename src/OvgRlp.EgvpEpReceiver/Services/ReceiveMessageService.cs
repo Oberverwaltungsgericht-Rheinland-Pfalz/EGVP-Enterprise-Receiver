@@ -1,4 +1,5 @@
-﻿using OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap;
+﻿using OvgRlp.Core.Types;
+using OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
 using System;

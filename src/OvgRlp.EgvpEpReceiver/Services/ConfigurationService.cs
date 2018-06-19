@@ -1,3 +1,4 @@
+using OvgRlp.Core.Services;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Xml;
 
 namespace OvgRlp.EgvpEpReceiver.Services
 {
-  public class ConfigurationService : ConfigurationServiceBase
+  public class ConfigurationService : ConfigurationBase
   {
     private const string XPATH_Postboxes = "egvpepreceiver/postboxes";
     private const string TAG_Postbox = "postbox";
