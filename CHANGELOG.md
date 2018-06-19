@@ -1,5 +1,11 @@
 
-<a name="1.1.0.1822"></a>
+<a name="1.3.0.1825"></a>
+
+### 1.3.0.1825 (19.06.2018)
+
+#### &Auml;nderungen
+
+* Umstellung von lokale Serviceklassen auf OvgRlp.Core 
 
 ### 1.1.0.1822 (01.06.2018)
 
