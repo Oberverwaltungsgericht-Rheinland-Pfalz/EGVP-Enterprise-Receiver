@@ -183,21 +183,13 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
-        if (null != EgvpClient)
-        {
-          var requ = new getStateRequest();
-          var resp = new getStateResponse();
-          requ.customOrMessageID = messageID;
-          requ.userID = egvpPostbox.Id;
-          resp = this.EgvpClient.getState(requ);
-          if (resp.returnCode != GetStateReturnCodeType.OK)
-            throw new Exception(resp.returnCode.ToString());
+        var receiveMessageService = new ReceiveMessageService(egvpPostbox);
+        getStateResponse resp = receiveMessageService.GetMessageState(messageID);
 
-          logMetadata.Recipient = resp.receiverID;
-          logMetadata.Sender = resp.senderID;
-          logMetadata.OsciState = resp.state.ToString();
-          logMetadata.OsciDatetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
-        }
+        logMetadata.Recipient = resp.receiverID;
+        logMetadata.Sender = resp.senderID;
+        logMetadata.OsciState = resp.state.ToString();
+        logMetadata.OsciDatetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
       }
       catch (Exception ex)
       {

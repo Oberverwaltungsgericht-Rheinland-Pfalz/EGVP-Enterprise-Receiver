@@ -92,6 +92,18 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
+    public getStateResponse GetMessageState(string messageID)
+    {
+      var requ = new getStateRequest();
+      var resp = new getStateResponse();
+      requ.customOrMessageID = messageID;
+      requ.userID = this.EgvpPostbox.Id;
+      resp = EgvpClient.getState(requ);
+      if (resp.returnCode != GetStateReturnCodeType.OK)
+        throw new Exception(resp.returnCode.ToString());
+      return resp;
+    }
+
     private void ExtractFiles(receiveMessageResponse resp, LogEntry logEntry)
     {
       string zipFullFilename = Path.Combine(Properties.Settings.Default.tempDir, resp.messageID + ".zip");
