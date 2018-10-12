@@ -74,9 +74,12 @@ namespace OvgRlp.EgvpEpReceiver.Services
         using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
         {
           var ze = za.GetEntry("MsgProps.xml");
-          using (var stream = ze.Open())
+          if (null != ze)
           {
-            msgProps = EGVPMessageProps.LoadFromStream(stream);
+            using (var stream = ze.Open())
+            {
+              msgProps = EGVPMessageProps.LoadFromStream(stream);
+            }
           }
         }
       }
