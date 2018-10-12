@@ -9,6 +9,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
   {
     public bool WritingInformationToUser;
     public bool ImportByConfig;
+    public bool ShowMsgState;
     public string MessageId;
     public string UserId;
     private string LogKontext;
@@ -26,7 +27,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       if (WritingInformationToUser)
         return;
 
-      if (!String.IsNullOrEmpty(this.MessageId) || !String.IsNullOrEmpty(this.UserId))
+      if (!String.IsNullOrEmpty(this.MessageId) || !String.IsNullOrEmpty(this.UserId) || this.ShowMsgState)
       {
         string err = "";
         if (String.IsNullOrEmpty(this.MessageId))
@@ -34,7 +35,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         if (String.IsNullOrEmpty(this.UserId))
           err = "UserId fehlt!";
         if (err != "")
-          throw new ArgumentException(err + " MessageId und UserId können nur zusammen angegeben werden!");
+          throw new ArgumentException(err + " MessageId und UserId müssen im Verbund angegeben werden!");
         this.ImportByConfig = false;
       }
     }
@@ -48,11 +49,18 @@ namespace OvgRlp.EgvpEpReceiver.Services
       // Logger initialisieren
       LoggingHelper.InitLogging();
 
-      //ggf. nur eine bstimmte Nachricht einlesen
-      if (!String.IsNullOrEmpty(this.MessageId) || !String.IsNullOrEmpty(this.UserId))
-      { ImportSingleMessage(); }
+      //ggf. nur eine bstimmte Nachricht einlesen oder auch nur den Status anzeigen
+      if (this.ShowMsgState)
+      {
+        ShowMessageState();
+      }
       else
-      { ImportAllUncommitted(); }
+      {
+        if (!String.IsNullOrEmpty(this.MessageId) || !String.IsNullOrEmpty(this.UserId))
+        { ImportSingleMessage(); }
+        else
+        { ImportAllUncommitted(); }
+      }
     }
 
     private void ImportSingleMessage()
@@ -104,6 +112,30 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
       catch (Exception ex)
       { UnexpectedException(ex); }
+    }
+
+    private void ShowMessageState()
+    {
+      try
+      {
+        var configService = ConfigurationService.Load<ConfigurationService>(Properties.Settings.Default.configfile);
+        EgvpPostbox egvpPostBox = configService.GetPostbox(this.UserId);
+        if (null == egvpPostBox)
+          throw new ArgumentException("EGVP-Postbox zu Id " + this.UserId + " konnte nicht in der Konfigurationsdatei ermittelt werden", "UserId");
+
+        var receiveMessageService = new ReceiveMessageService(egvpPostBox);
+        EgvpEnterpriseSoap.getStateResponse resp = receiveMessageService.GetMessageState(this.MessageId);
+
+        Console.WriteLine("Osci-Status: " + resp.state.ToString());
+        Console.WriteLine("Osci-Datum:  " + resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString());
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine("ShowMessageState: Fehler beim Abrufen des Nachrichtenstatus zu Nachricht " + this.MessageId);
+        Console.WriteLine("Fehlerbeschreibung: " + ex.Message);
+        if (null != ex.InnerException)
+          Console.WriteLine("erweiterte Fehlerbeschreibung: " + ex.InnerException.Message);
+      }
     }
 
     private void UnexpectedException(Exception ex)

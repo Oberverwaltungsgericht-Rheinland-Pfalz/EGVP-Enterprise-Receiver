@@ -19,6 +19,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       p.Add("a|autoimport", "AutoImport anhand des configfiles " + Properties.Settings.Default.configfile, v => cliActions.ImportByConfig = true);
       p.Add("u|userid=", "{EGVP-Postbox-Id}, nur in Verbindung mit Angabe der 'msgid'.", v => cliActions.UserId = v);
       p.Add("m|msgid=", "{EGVP-Message-Id}, nur in Verbindung mit Angabe der 'userid'.", v => cliActions.MessageId = v);
+      p.Add("stat|status", "Osci-Status zu einer Nachricht prüfen (nur in Verbindung mit User und Message-Id) ", v => cliActions.ShowMsgState = true);
       p.Add("h|?|help", "Hilfe anzeigen.", v => { if (v != null) cliActions.WritingInformationToUser = true; ShowHelp(p); });
       p.Add("v|version", "Versionsinformationen anzeigen.", v => { if (v != null) cliActions.WritingInformationToUser = true; ShowVersionInformation(); });
 
