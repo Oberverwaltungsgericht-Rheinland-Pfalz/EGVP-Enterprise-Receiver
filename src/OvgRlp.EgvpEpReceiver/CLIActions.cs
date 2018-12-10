@@ -128,6 +128,10 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         Console.WriteLine("Osci-Status: " + resp.state.ToString());
         Console.WriteLine("Osci-Datum:  " + resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString());
+
+        // Auf Eingabe warten - bspw. bei Aufruf aus Dashboard
+        Console.WriteLine("\n\n\nBitte Taste drücken...");
+        Console.ReadKey();
       }
       catch (Exception ex)
       {
