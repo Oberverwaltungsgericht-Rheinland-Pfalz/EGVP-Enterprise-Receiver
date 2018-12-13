@@ -104,6 +104,59 @@ namespace OvgRlp.EgvpEpReceiver.Services
       return resp;
     }
 
+    // nur manuelle Ansteuerung möglich  (vorerst nicht aus der CLI)
+    public static void CommmitAllUncommittedMessages(string PostboxId, bool write = false)
+    {
+      bool readOnly = !write;
+      try
+      {
+        var requ = new getUncommittedMessageIDsRequest();
+        var resp = new getUncommittedMessageIDsResponse();
+
+        if (!readOnly)
+          Console.WriteLine("Nachrichten werden als abgeholt gekennzeichnet:");
+        else
+          Console.WriteLine("Folgende Nachrichten sind als nicht abgeholt gekennzeichnet:");
+
+        requ.userID = PostboxId;
+        resp = EgvpClient.getUncommittedMessageIDs(requ);
+        if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
+          throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", PostboxId, resp.returnCode.ToString()));
+
+        if (null != resp.uncommittedMessages)
+        {
+          foreach (var msg in resp.uncommittedMessages)
+          {
+            Console.WriteLine(msg.messageID + " " + msg.osciDate);
+
+            if (!readOnly)
+            {
+              var RecRequ = new receiveMessageRequest();
+              var RecResp = new receiveMessageResponse();
+              RecRequ.messageID = msg.messageID;
+              RecRequ.userID = PostboxId;
+              RecResp = EgvpClient.receiveMessage(RecRequ);
+
+              var comRequ = new commitReceivedMessageRequest();
+              var comResp = new commitReceivedMessageResponse();
+              comRequ.messageID = msg.messageID;
+              comRequ.userID = PostboxId;
+              comResp = EgvpClient.commitReceivedMessage(comRequ);
+              if (comResp.returnCode != CommitReturnCodeType.OK)
+                Console.WriteLine("Fehler bei commitReceivedMessage: {0}", comResp.returnCode.ToString());
+            }
+          }
+
+          Console.WriteLine("");
+          Console.WriteLine("Insgesamt {0} Nachrichten", resp.uncommittedMessages.Length);
+        }
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine("Unbekannter Fehler: {0}", ex.Message.ToString());
+      }
+    }
+
     private void ExtractFiles(receiveMessageResponse resp, LogEntry logEntry)
     {
       string zipFullFilename = Path.Combine(Properties.Settings.Default.tempDir, resp.messageID + ".zip");
