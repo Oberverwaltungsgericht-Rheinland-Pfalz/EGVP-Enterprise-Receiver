@@ -5,6 +5,7 @@ using OvgRlp.Libs.Logging;
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace OvgRlp.EgvpEpReceiver.Services
 {
@@ -228,8 +229,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
       bool rval = false;
       using (ZipArchive za = new ZipArchive(new MemoryStream(messageZIP)))
       {
-        ZipArchiveEntry ze = za.GetEntry("attachments/xjustiz_nachricht.xml");
-        if (null != ze)
+        var entries = za.Entries.Where(ze => Path.GetExtension(ze.Name) == ".xml" && Path.GetDirectoryName(ze.FullName) == "attachments").ToList();
+        foreach (ZipArchiveEntry ze in entries)
         {
           TextReader tr = new StreamReader(ze.Open());
           if (tr.ReadToEnd().Contains("nachricht.eeb.zuruecklaufend"))
