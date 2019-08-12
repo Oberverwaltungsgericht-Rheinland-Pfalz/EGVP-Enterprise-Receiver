@@ -230,6 +230,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         foreach (string expPath in exportPath)
         {
           fullfilename = Path.Combine(expPath, resp.messageID);
+          CheckAndFixAttachmentNamelength(zipFullFilename, fullfilename, logEntry);
           logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
           ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
         }
@@ -239,6 +240,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
           foreach (string archPath in this.EgvpPostbox.ArchivPath)
           {
             fullfilename = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(archPath, DateTime.Now), resp.messageID);
+            CheckAndFixAttachmentNamelength(zipFullFilename, fullfilename, logEntry);
             logEntry.AddSubEntry(String.Format("Nachricht Archivieren nach {0}", fullfilename), LogEventLevel.Information);
             ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
           }
@@ -257,6 +259,53 @@ namespace OvgRlp.EgvpEpReceiver.Services
         try { File.Delete(zipFullFilename); }
         catch { /*ohne Fehlerbehandlung*/}
         throw ex;
+      }
+    }
+
+    private void CheckAndFixAttachmentNamelength(string zipFullFilename, string targetFolder, LogEntry logEntry)
+    {
+      bool fixNames = false;
+
+      try
+      {
+        using (ZipArchive za = ZipFile.OpenRead(zipFullFilename))
+        {
+          var entries = za.Entries.ToArray();
+          foreach (var entry in entries)
+          {
+            if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
+            {
+              fixNames = true;
+            }
+          }
+        }
+
+        if (fixNames)
+        {
+          using (var za = new ZipArchive(File.Open(zipFullFilename, FileMode.Open, FileAccess.ReadWrite), ZipArchiveMode.Update))
+          {
+            var entries = za.Entries.ToArray();
+            foreach (var entry in entries)
+            {
+              if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
+              {
+                string subdir = Path.GetDirectoryName(entry.FullName);
+                string oldName = entry.Name;
+                string newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
+                logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' ist zu lang, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
+                var newEntry = za.CreateEntry(Path.Combine(subdir, newName));
+                using (var a = entry.Open())
+                using (var b = newEntry.Open())
+                  a.CopyTo(b);
+                entry.Delete();
+              }
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        logEntry.AddSubEntry(String.Format("Fehler bei CheckAndFixAttachmentNamelength: {0}", ex.Message), LogEventLevel.Warning);
       }
     }
 
