@@ -22,13 +22,17 @@ namespace OvgRlp.EgvpEpReceiver
       // * ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200493560970-000063718", true);   // vgko
       // * ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200493914899-000063722", true);   // vgnw
       // * ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200493687543-000063720", true);   // vgmz
-      //ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200494005637-000063724", true);   // vgtr
+      // ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200494005637-000063724", true);   // vgtr
       //ReceiveMessageService.CommmitAllUncommittedMessages("govello-1200494948121-000063739", true);   // FG
-
-#if DEBUG
       Console.WriteLine("\n\n\nBitte Taste drücken...");
       Console.ReadKey();
-#endif
+    }
+
+    private static void ReceiveMessagesWithoutCommit()
+    {
+      //ReceiveMessageService.ReceiveMessagesWithoutCommit("govello-1200494005637-000063724", @"\\OVGVG\labor\Infrastruktur\ERV\VGTR\import\temp", true);   // vgtr
+      Console.WriteLine("\n\n\nBitte Taste drücken...");
+      Console.ReadKey();
     }
   }
 }

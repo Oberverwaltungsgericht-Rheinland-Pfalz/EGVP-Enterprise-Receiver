@@ -161,6 +161,58 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
+    // nur manuelle Ansteuerung möglich  (vorerst nicht aus der CLI)
+    public static void ReceiveMessagesWithoutCommit(string PostboxId, string exportPath, bool write = false)
+    {
+      bool readOnly = !write;
+
+      try
+      {
+        var requ = new getUncommittedMessageIDsRequest();
+        var resp = new getUncommittedMessageIDsResponse();
+
+        Console.WriteLine("Folgende Nachrichten werden gespeichert:");
+
+        requ.userID = PostboxId;
+        resp = EgvpClient.getUncommittedMessageIDs(requ);
+        if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
+          throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", PostboxId, resp.returnCode.ToString()));
+
+        if (null != resp.uncommittedMessages)
+        {
+          foreach (var msg in resp.uncommittedMessages)
+          {
+            Console.WriteLine(msg.messageID + " " + msg.osciDate);
+
+            if (!readOnly)
+            {
+              var RecRequ = new receiveMessageRequest();
+              var RecResp = new receiveMessageResponse();
+              RecRequ.messageID = msg.messageID;
+              RecRequ.userID = PostboxId;
+              RecResp = EgvpClient.receiveMessage(RecRequ);
+
+              string zipTempFilename = Path.Combine(Properties.Settings.Default.tempDir, msg.messageID + ".zip");
+              string fullfilename = Path.Combine(exportPath, RecResp.messageID);
+              if (!Directory.Exists(fullfilename))
+              {
+                File.WriteAllBytes(zipTempFilename, RecResp.messageZIP);
+                ZipFile.ExtractToDirectory(zipTempFilename, fullfilename);
+                File.Delete(zipTempFilename);
+              }
+            }
+          }
+
+          Console.WriteLine("");
+          Console.WriteLine("Insgesamt {0} Nachrichten", resp.uncommittedMessages.Length);
+        }
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine("Unbekannter Fehler: {0}", ex.Message.ToString());
+      }
+    }
+
     private void ExtractFiles(receiveMessageResponse resp, LogEntry logEntry)
     {
       string zipFullFilename = Path.Combine(Properties.Settings.Default.tempDir, resp.messageID + ".zip");
