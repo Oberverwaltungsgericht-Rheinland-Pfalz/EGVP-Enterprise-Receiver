@@ -62,6 +62,9 @@ namespace OvgRlp.EgvpEpReceiver.Services
         if (resp.returnCode != ReceiveReturnCodeType.OK)
           throw new Exception(string.Format("Fehler bei receiveMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
 
+        if (null == resp || null == resp.messageZIP)
+          throw new Exception("Fehler bei receiveMessage - resp.messageZIP ist null");
+
         logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
         protService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
 
