@@ -19,7 +19,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     }
 
     // Logging Metadaten aufbereiten
-    public void CreateLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null, string messageSizeKB = null)
+    public void CreateLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null, string messageSizeKB = null, string messageSizeAttachmentsKB = null)
     {
       if (null == logMetadata)
         logMetadata = new LogMetadata();
@@ -29,6 +29,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
         logMetadata.MessageId = messageID;
       if (null != messageSizeKB)
         logMetadata.MessageSizeKB = messageSizeKB;
+      if (null != messageSizeAttachmentsKB)
+        logMetadata.MessageSizeAttachmentsKB = messageSizeAttachmentsKB;
       if (null != egvpPostbox)
       {
         logMetadata.Recipient = egvpPostbox.Id;
@@ -65,11 +67,14 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       EGVPMessageProps msgProps = null;
       string messageSizeKB = "";
+      string messageSizeAttachmentsKB = "";
 
       if (null != resp)
       {
         try { messageSizeKB = Convert.ToString((Convert.ToInt32(resp.messageZIP.Length) / 1024)); }
         catch { messageSizeKB = ""; }
+        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(resp.messageZIP) / 1024)); }
+        catch { messageSizeAttachmentsKB = ""; }
 
         using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
         {
@@ -84,7 +89,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         }
       }
 
-      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB);
+      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
     }
 
     // Logging Metadaten aufbereiten
@@ -92,11 +97,14 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       EGVPMessageProps msgProps = null;
       string messageSizeKB = "";
+      string messageSizeAttachmentsKB = "";
 
       if (!string.IsNullOrEmpty(zipFullFilename))
       {
         try { messageSizeKB = Convert.ToString((Convert.ToInt32(new FileInfo(zipFullFilename).Length) / 1024)); }
         catch { messageSizeKB = ""; }
+        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(File.ReadAllBytes(zipFullFilename)) / 1024)); }
+        catch { messageSizeAttachmentsKB = ""; }
 
         using (ZipArchive za = ZipFile.OpenRead(zipFullFilename))
         {
@@ -108,7 +116,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         }
       }
 
-      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB);
+      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
     }
 
     // Hinweis auf einen Fehlerhaften Nachrichtenabruf in die Datenbank aufnehmen
@@ -176,6 +184,21 @@ namespace OvgRlp.EgvpEpReceiver.Services
         Logger.Log(ex.Message, "CheckDBMessageErrorFlag: Fehler beim Prüfen eines Fehlerhinweises zu Nachricht " + messageID, LogEventLevel.Warning);
       }
       return rval;
+    }
+
+    // MessageSizeAttachments ermitteln
+    private int GetAttachmentsSize(byte[] messageZIP)
+    {
+      int size = 0;
+      using (ZipArchive za = new ZipArchive(new MemoryStream(messageZIP), ZipArchiveMode.Read))
+      {
+        foreach (ZipArchiveEntry ze in za.Entries)
+        {
+          if (ze.FullName.StartsWith("attachments/"))
+            size += Convert.ToInt32(ze.Length);
+        }
+      }
+      return size;
     }
 
     // weitere Metadaten per Soap abrufen

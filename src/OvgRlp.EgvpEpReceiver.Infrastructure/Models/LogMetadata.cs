@@ -10,6 +10,7 @@
     public string Subject;
     public string MessageType;
     public string MessageSizeKB;
+    public string MessageSizeAttachmentsKB;
     public string AppVersion;
     public string OsciState;
     public string OsciDatetime;
