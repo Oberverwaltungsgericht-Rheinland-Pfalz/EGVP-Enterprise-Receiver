@@ -80,7 +80,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         this.LogKontext = string.Format("MessageId {0} für {1}", this.MessageId, egvpPostBox.Name);
         Console.WriteLine(string.Format("*** MessageId {0} für {1} verarbeiten ***", this.MessageId, egvpPostBox.Name));
         var receiveMessageService = new ReceiveMessageService(egvpPostBox);
-        receiveMessageService.ReceiveMessage(this.MessageId);
+        receiveMessageService.ReceiveMessage(this.MessageId, true);
       }
       catch (Exception ex)
       { UnexpectedException(ex); }

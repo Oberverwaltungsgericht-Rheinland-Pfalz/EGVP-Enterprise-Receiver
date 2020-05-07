@@ -34,16 +34,26 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
       if (null != resp.uncommittedMessages)
       {
-        foreach (var msg in resp.uncommittedMessages)
+        try
         {
-          if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID))
-            continue;
-          ReceiveMessage(msg.messageID);
+          CreateLockFile();
+          foreach (var msg in resp.uncommittedMessages)
+          {
+            if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID))
+              continue;
+            ReceiveMessage(msg.messageID);
+          }
+          DeleteLockFile();
+        }
+        catch (Exception ex)
+        {
+          DeleteLockFile();
+          throw ex;
         }
       }
     }
 
-    public void ReceiveMessage(string messageId)
+    public void ReceiveMessage(string messageId, bool createLockFile = false)
     {
       string logKontext = messageId;
       LogEntry logEntry = new LogEntry(String.Format("MessageId: {0}", messageId), LogEventLevel.Information);
@@ -58,6 +68,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
       try
       {
+        if (createLockFile)
+          CreateLockFile();
         resp = EgvpClient.receiveMessage(requ);
         if (resp.returnCode != ReceiveReturnCodeType.OK)
           throw new Exception(string.Format("Fehler bei receiveMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
@@ -86,9 +98,14 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         logEntry.AddSubEntry("Nachricht wurde erfolgreich verarbeitet!", LogEventLevel.Information);
         Logger.Log(logEntry, logKontext, logMetadata);
+
+        if (createLockFile)
+          DeleteLockFile();
       }
       catch (Exception ex)
       {
+        if (createLockFile)
+          DeleteLockFile();
         logEntry.AddSubEntry(String.Format("Abbruch bei Verarbeitung der Nachricht ({0})", ex.Message), LogEventLevel.Error);
         LoggingHelper.AddInnerExceptionToLogEntry(logEntry, ex);
         Logger.Log(logEntry, logKontext, logMetadata);
@@ -342,6 +359,32 @@ namespace OvgRlp.EgvpEpReceiver.Services
         }
       }
       return rval;
+    }
+
+    private void CreateLockFile()
+    {
+      foreach (string exportPath in this.EgvpPostbox.ExportPath)
+      {
+        if (!string.IsNullOrEmpty(Properties.Settings.Default.LockFile))
+        {
+          string lockfile = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(exportPath, DateTime.Now), Properties.Settings.Default.LockFile);
+          if (!File.Exists(lockfile))
+            File.Create(lockfile).Dispose();
+        }
+      }
+    }
+
+    private void DeleteLockFile()
+    {
+      foreach (string exportPath in this.EgvpPostbox.ExportPath)
+      {
+        if (!string.IsNullOrEmpty(Properties.Settings.Default.LockFile))
+        {
+          string lockfile = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(exportPath, DateTime.Now), Properties.Settings.Default.LockFile);
+          if (File.Exists(lockfile))
+            File.Delete(lockfile);
+        }
+      }
     }
   }
 }
