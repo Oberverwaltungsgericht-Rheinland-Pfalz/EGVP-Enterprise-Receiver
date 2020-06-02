@@ -77,8 +77,16 @@ namespace OvgRlp.EgvpEpReceiver.Services
         if (null == resp || null == resp.messageZIP)
           throw new Exception("Fehler bei receiveMessage - resp.messageZIP ist null");
 
-        logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
-        protService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
+        try
+        {
+          logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
+          protService.CreateLogMetadata(resp, ref logMetadata, messageId, this.EgvpPostbox);
+        }
+        catch (Exception ex)
+        {
+          logEntry.AddSubEntry(String.Format("Fehler bei 'Aufbau Metadaten für das Logging' aufgetreten ({0})", ex.Message), LogEventLevel.Warning);
+          LoggingHelper.AddInnerExceptionToLogEntry(logEntry, ex, LogEventLevel.Warning);
+        }
 
         try
         {
