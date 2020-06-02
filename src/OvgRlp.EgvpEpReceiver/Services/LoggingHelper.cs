@@ -7,14 +7,14 @@ namespace OvgRlp.EgvpEpReceiver.Services
 {
   internal class LoggingHelper
   {
-    public static void AddInnerExceptionToLogEntry(LogEntry le, Exception ex)
+    public static void AddInnerExceptionToLogEntry(LogEntry le, Exception ex, LogEventLevel loglevel = LogEventLevel.Error)
     {
       if (null != ex.InnerException)
       {
         Exception exx = ex.InnerException;
         do
         {
-          le.AddSubEntry(String.Format("erweiterte Fehlerbeschreibung: {0}", exx.Message), LogEventLevel.Error);
+          le.AddSubEntry(String.Format("erweiterte Fehlerbeschreibung: {0}", exx.Message), loglevel);
           exx = exx.InnerException;
         } while (null != exx);
       }
