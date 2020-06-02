@@ -76,16 +76,24 @@ namespace OvgRlp.EgvpEpReceiver.Services
         try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(resp.messageZIP) / 1024)); }
         catch { messageSizeAttachmentsKB = ""; }
 
-        using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
+        try
         {
-          var ze = za.GetEntry("MsgProps.xml");
-          if (null != ze)
+          using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
           {
-            using (var stream = ze.Open())
+            var ze = za.GetEntry("MsgProps.xml");
+            if (null != ze)
             {
-              msgProps = EGVPMessageProps.LoadFromStream(stream);
+              using (var stream = ze.Open())
+              {
+                msgProps = EGVPMessageProps.LoadFromStream(stream);
+              }
             }
           }
+        }
+        catch (Exception ex)
+        {
+          CreateLogMetadata(null, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
+          throw ex;
         }
       }
 
