@@ -3,6 +3,7 @@ using OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -255,7 +256,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         foreach (string expPath in exportPath)
         {
           fullfilename = Path.Combine(expPath, resp.messageID);
-          CheckAndFixAttachmentNamelength(zipFullFilename, fullfilename, logEntry);
+          CheckAndFixAttachmentFails(zipFullFilename, fullfilename, logEntry);
           logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
           ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
         }
@@ -265,7 +266,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
           foreach (string archPath in this.EgvpPostbox.ArchivPath)
           {
             fullfilename = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(archPath, DateTime.Now), resp.messageID);
-            CheckAndFixAttachmentNamelength(zipFullFilename, fullfilename, logEntry);
+            CheckAndFixAttachmentFails(zipFullFilename, fullfilename, logEntry);
             logEntry.AddSubEntry(String.Format("Nachricht Archivieren nach {0}", fullfilename), LogEventLevel.Information);
             ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
           }
@@ -287,7 +288,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
-    private void CheckAndFixAttachmentNamelength(string zipFullFilename, string targetFolder, LogEntry logEntry)
+    private void CheckAndFixAttachmentFails(string zipFullFilename, string targetFolder, LogEntry logEntry)
     {
       bool fixNames = false;
 
@@ -297,11 +298,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
         {
           var entries = za.Entries.ToArray();
           foreach (var entry in entries)
-          {
-            if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
             {
-              fixNames = true;
-            }
+              if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
+              {
+                fixNames = true;
+              }
           }
         }
 
@@ -312,18 +313,24 @@ namespace OvgRlp.EgvpEpReceiver.Services
             var entries = za.Entries.ToArray();
             foreach (var entry in entries)
             {
-              if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
-              {
-                string subdir = Path.GetDirectoryName(entry.FullName);
-                string oldName = entry.Name;
-                string newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
-                logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' ist zu lang, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
-                var newEntry = za.CreateEntry(Path.Combine(subdir, newName));
-                using (var a = entry.Open())
-                using (var b = newEntry.Open())
-                  a.CopyTo(b);
-                entry.Delete();
-              }
+              string newName = string.Empty;
+              string subdir = Path.GetDirectoryName(entry.FullName);
+              string oldName = entry.Name;
+
+                if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
+                {
+                  newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
+                  logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' ist zu lang, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
+                }
+
+                if (!string.IsNullOrEmpty(newName))
+                {
+                  var newEntry = za.CreateEntry(Path.Combine(subdir, newName));
+                  using (var a = entry.Open())
+                  using (var b = newEntry.Open())
+                    a.CopyTo(b);
+                  entry.Delete();
+                }
             }
           }
         }
