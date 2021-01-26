@@ -330,7 +330,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
                 if (nameList.Exists(n => n.Trim().ToLower() == entry.FullName.Trim().ToLower()))
                 {
                   var rand = new Random();
-                  newName = oldName + "_" + rand.Next(10, 99).ToString();
+                  newName = Path.GetFileNameWithoutExtension(oldName) + "_" + rand.Next(10, 99).ToString() + Path.GetExtension(oldName);
                   logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' existiert wurde vom Absender doppelt vergeben, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
                 }
                 if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
