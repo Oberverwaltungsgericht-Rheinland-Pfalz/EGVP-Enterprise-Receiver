@@ -298,11 +298,18 @@ namespace OvgRlp.EgvpEpReceiver.Services
         {
           var entries = za.Entries.ToArray();
           foreach (var entry in entries)
+          {
+            if (entry.Name != string.Empty)
             {
               if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
               {
                 fixNames = true;
               }
+              if (entries.Where(e => e.FullName.Trim().ToLower() == entry.FullName.Trim().ToLower()).ToArray().Length > 1)
+              {
+                fixNames = true;
+              }
+            }
           }
         }
 
@@ -311,12 +318,21 @@ namespace OvgRlp.EgvpEpReceiver.Services
           using (var za = new ZipArchive(File.Open(zipFullFilename, FileMode.Open, FileAccess.ReadWrite), ZipArchiveMode.Update))
           {
             var entries = za.Entries.ToArray();
+            var nameList = new List<string>();
             foreach (var entry in entries)
             {
               string newName = string.Empty;
               string subdir = Path.GetDirectoryName(entry.FullName);
               string oldName = entry.Name;
 
+              if (oldName != string.Empty)
+              {
+                if (nameList.Exists(n => n.Trim().ToLower() == entry.FullName.Trim().ToLower()))
+                {
+                  var rand = new Random();
+                  newName = oldName + "_" + rand.Next(10, 99).ToString();
+                  logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' existiert wurde vom Absender doppelt vergeben, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
+                }
                 if (Path.Combine(targetFolder, entry.FullName).Length >= 256)
                 {
                   newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
@@ -331,6 +347,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
                     a.CopyTo(b);
                   entry.Delete();
                 }
+                else
+                {
+                  nameList.Add(entry.FullName);
+                }
+              }
             }
           }
         }
