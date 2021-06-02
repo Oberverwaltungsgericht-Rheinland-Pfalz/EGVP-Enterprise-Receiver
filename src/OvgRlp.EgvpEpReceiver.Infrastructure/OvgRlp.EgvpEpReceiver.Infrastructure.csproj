@@ -82,9 +82,10 @@
     <Compile Include="Models\EGVPMessagePropsType.cs">
       <DependentUpon>EGVPMessagePropsType.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Models\EgvpPostbox.cs" />
+    <Compile Include="Models\PostboxSettings\EgvpPostbox.cs" />
     <Compile Include="Models\LogMetadata.cs" />
-    <Compile Include="Models\ReceiveDepartment.cs" />
+    <Compile Include="Models\PostboxSettings\ReceiveDepartments.cs" />
+    <Compile Include="Models\PostboxSettings\Department.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

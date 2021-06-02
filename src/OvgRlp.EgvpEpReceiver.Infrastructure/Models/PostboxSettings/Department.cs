@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace OvgRlp.EgvpEpReceiver.Infrastructure.Models
 {
-  public class ReceiveDepartment
+  public class Department
   {
-    public String Id;
+    public String Id { get; set; }
 
-    public String Name;
+    public String Name { get; set; }
 
-    public List<String> ExportPath;
+    public List<String> ExportPath { get; set; }
 
-    public List<String> ExportPath_EEB;
+    public List<String> ExportPath_EEB { get; set; }
 
-    public List<String> ArchivPath;
+    public List<String> ArchivPath { get; set; }
 
-    public ReceiveDepartment()
+    public Department()
     {
       //Defaults
       this.ExportPath = new List<string>();

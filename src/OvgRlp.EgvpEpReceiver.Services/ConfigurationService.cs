@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using OvgRlp.Core.Services;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using System;
@@ -7,62 +8,34 @@ using System.Xml;
 
 namespace OvgRlp.EgvpEpReceiver.Services
 {
-  public class ConfigurationService : ConfigurationBase
+  public class ConfigurationService
   {
-    private const string XPATH_Postboxes = "egvpepreceiver/postboxes";
-    private const string TAG_Postbox = "postbox";
+    public static IConfiguration Configuration { get; set; }
 
-    protected override string XPATH_Common
+    public ConfigurationService(string configFilename)
     {
-      get { return "egvpepreceiver/common"; }
-    }
+      if (string.IsNullOrEmpty(configFilename))
+        throw new ArgumentException(this.GetType().Name + " - Pfad zur Json-Config-Datei muss im Konstruktor übergeben werden", nameof(configFilename));
 
-    public ConfigurationService(XmlDocument xmlDocument) : base(xmlDocument)
-    {
+      if (!configFilename.Contains(".json"))
+        throw new ArgumentException(this.GetType().Name + " - es werden nur noch json Konfigdateien unterstützt", nameof(configFilename));
+
+      ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+      configurationBuilder.AddJsonFile(configFilename, false, true);
+      Configuration = configurationBuilder.Build();
     }
 
     public List<EgvpPostbox> GetAllPostboxes()
     {
       List<EgvpPostbox> postboxes = null;
-      string debugKontext = "";
 
-      XmlNodeList PostboxIDs = xmlDocument.SelectNodes(XPATH_Postboxes + "/" + TAG_Postbox);
-      foreach (XmlNode pb in PostboxIDs)
+      try
       {
-        try
-        {
-          if (null != pb.Attributes["Id"])
-          {
-            var id = pb.Attributes["Id"].Value;
-            debugKontext = id;
-            EgvpPostbox epb = PostboxServices.GetPostboxParamsFromId(id);
-
-            XmlNodeList exports = pb.SelectNodes("export/path");
-            foreach (XmlNode exp in exports)
-              epb.ExportPath.Add(exp.InnerText);
-
-            XmlNodeList exportsEeb = pb.SelectNodes("exportEeb/path");
-            foreach (XmlNode exp in exportsEeb)
-              epb.ExportPath_EEB.Add(exp.InnerText);
-
-            XmlNodeList archiv = pb.SelectNodes("archiv/path");
-            foreach (XmlNode arch in archiv)
-              epb.ArchivPath.Add(arch.InnerText);
-
-            if (null == postboxes)
-              postboxes = new List<EgvpPostbox>();
-            postboxes.Add(epb);
-          }
-        }
-        catch (KeyNotFoundException ex)
-        {
-          //nur in die Console Loggen, ansonsten würden die Logs zu unübersichtlich
-          Console.WriteLine(String.Format("### FEHLER ###\nBeim lesen von Postfächern aus der Konfig ({0}):\n{1}", debugKontext, ex.Message));
-        }
-        catch (Exception ex)
-        {
-          throw ex;
-        }
+        postboxes = Configuration.GetSection("postboxes").Get<List<EgvpPostbox>>();
+      }
+      catch (Exception ex)
+      {
+        throw ex;
       }
 
       return postboxes;

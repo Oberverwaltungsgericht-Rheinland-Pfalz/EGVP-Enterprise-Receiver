@@ -73,7 +73,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         this.LogKontext = string.Format("Postfach {0} aus Konfig lesen", this.UserId);
         Console.WriteLine(string.Format("Postfach {0} aus Konfig lesen", this.UserId));
-        var configService = ConfigurationService.Load<ConfigurationService>(Properties.Settings.Default.configfile);
+        var configService = new ConfigurationService(Properties.Settings.Default.configfile);
         EgvpPostbox egvpPostBox = configService.GetPostbox(this.UserId);
         if (null == egvpPostBox)
           throw new ArgumentException("EGVP-Postbox zu Id " + this.UserId + " konnte nicht in der Konfigurationsdatei ermittelt werden", "UserId");
@@ -93,7 +93,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       {
         this.LogKontext = "ConfigurationService initialisieren";
         Console.WriteLine("ConfigurationService wird initialisiert");
-        var configService = ConfigurationService.Load<ConfigurationService>(Properties.Settings.Default.configfile);
+        var configService = new ConfigurationService(Properties.Settings.Default.configfile);
         this.LogKontext = "Postfächer aus Konfig lesen";
         Console.WriteLine("Postfächer werden aus der Konfig gelesen");
         List<EgvpPostbox> egvpPostBoxes = configService.GetAllPostboxes();
@@ -119,7 +119,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
-        var configService = ConfigurationService.Load<ConfigurationService>(Properties.Settings.Default.configfile);
+        var configService = new ConfigurationService(Properties.Settings.Default.configfile);
         EgvpPostbox egvpPostBox = configService.GetPostbox(this.UserId);
         if (null == egvpPostBox)
           throw new ArgumentException("EGVP-Postbox zu Id " + this.UserId + " konnte nicht in der Konfigurationsdatei ermittelt werden", "UserId");
