@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Models\EgvpPostbox.cs" />
     <Compile Include="Models\LogMetadata.cs" />
+    <Compile Include="Models\ReceiveDepartment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

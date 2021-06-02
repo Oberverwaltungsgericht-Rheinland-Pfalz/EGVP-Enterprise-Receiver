@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OvgRlp.EgvpEpReceiver.Infrastructure.Models
 {
-  public class EgvpPostbox
+  public class ReceiveDepartment
   {
     public String Id;
 
@@ -15,15 +18,12 @@ namespace OvgRlp.EgvpEpReceiver.Infrastructure.Models
 
     public List<String> ArchivPath;
 
-    public List<ReceiveDepartment> ReceiveDepartments;
-
-    public EgvpPostbox()
+    public ReceiveDepartment()
     {
       //Defaults
       this.ExportPath = new List<string>();
       this.ArchivPath = new List<string>();
       this.ExportPath_EEB = new List<string>();
-      this.ReceiveDepartments = new List<ReceiveDepartment>();
     }
   }
 }
