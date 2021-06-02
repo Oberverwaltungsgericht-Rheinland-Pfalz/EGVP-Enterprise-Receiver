@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver", "OvgRlp.EgvpEpReceiver\OvgRlp.EgvpEpReceiver.csproj", "{CC5C6A0A-6F51-4AB9-903A-7FE4BE51F9F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.Infrastructure", "OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj", "{F091B2AB-6408-48B6-A345-13966A0E1176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.Services", "OvgRlp.EgvpEpReceiver.Services\OvgRlp.EgvpEpReceiver.Services.csproj", "{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F091B2AB-6408-48B6-A345-13966A0E1176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F091B2AB-6408-48B6-A345-13966A0E1176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F091B2AB-6408-48B6-A345-13966A0E1176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
