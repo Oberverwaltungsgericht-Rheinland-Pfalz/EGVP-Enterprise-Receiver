@@ -78,11 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\EgvpEnterpriseSoap\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="CLIService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -91,119 +87,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="CLIActions.cs" />
-    <Compile Include="Services\CLIService.cs" />
-    <Compile Include="Services\ConfigurationService.cs" />
-    <Compile Include="Services\LoggingHelper.cs" />
-    <Compile Include="Services\PostboxServices.cs" />
-    <Compile Include="Services\ProtocolService.cs" />
-    <Compile Include="Services\ReceiveMessageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\EGVP-WebService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\egvp.wsdl" />
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.asynchroniousMessageSentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.asynchroniousMessageSentResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.cancelSentMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.cancelSentMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitReceivedMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitReceivedMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitSentMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.commitSentMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getStateResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getStateResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.receiveMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.receiveMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.registerNotificationCallbackResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.registerNotificationCallbackResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.searchReceiverResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.searchReceiverResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendSynchroniousMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.sendSynchroniousMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.verifyMessageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.EgvpEnterpriseSoap.verifyMessageResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -215,24 +102,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\EgvpEnterpriseSoap\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\EgvpEnterpriseSoap\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\EgvpEnterpriseSoap\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\EgvpEnterpriseSoap\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj">
       <Project>{f091b2ab-6408-48b6-a345-13966a0e1176}</Project>
       <Name>OvgRlp.EgvpEpReceiver.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Services\OvgRlp.EgvpEpReceiver.Services.csproj">
+      <Project>{0de5f6a7-60a9-4ea0-a40e-4421ae46193a}</Project>
+      <Name>OvgRlp.EgvpEpReceiver.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

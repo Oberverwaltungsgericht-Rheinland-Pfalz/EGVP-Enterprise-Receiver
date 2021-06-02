@@ -30,7 +30,7 @@ namespace OvgRlp.EgvpEpReceiver
 
     private static void ReceiveMessagesWithoutCommit()
     {
-      //ReceiveMessageService.ReceiveMessagesWithoutCommit("govello-1200494005637-000063724", @"\\OVGVG\labor\Infrastruktur\ERV\VGTR\import\temp", true);   // vgtr
+      //ReceiveMessageService.ReceiveMessagesWithoutCommit("govello-1200494005637-000063724", @"\\OVGVG\labor\Infrastruktur\ERV\VGTR\import\temp",Properties.Settings.Default.tempDir, true);   // vgtr
       Console.WriteLine("\n\n\nBitte Taste drücken...");
       Console.ReadKey();
     }

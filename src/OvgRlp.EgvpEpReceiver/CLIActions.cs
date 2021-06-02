@@ -1,4 +1,5 @@
-﻿using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
+﻿using OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap;
+using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       ValidateActions();
 
       // Logger initialisieren
-      LoggingHelper.InitLogging();
+      LoggingHelper.InitLogging(Properties.Settings.Default.LogFile, Properties.Settings.Default.LogDbConnectionString, Properties.Settings.Default.LogDbDatatable);
 
       //ggf. nur eine bstimmte Nachricht einlesen oder auch nur den Status anzeigen
       if (this.ShowMsgState)
@@ -79,7 +80,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         this.LogKontext = string.Format("MessageId {0} für {1}", this.MessageId, egvpPostBox.Name);
         Console.WriteLine(string.Format("*** MessageId {0} für {1} verarbeiten ***", this.MessageId, egvpPostBox.Name));
-        var receiveMessageService = new ReceiveMessageService(egvpPostBox);
+        var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
         receiveMessageService.ReceiveMessage(this.MessageId, true);
       }
       catch (Exception ex)
@@ -103,7 +104,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
           {
             this.LogKontext = "Eingangsverarbeitung für " + egvpPostBox.Name;
             Console.WriteLine("*** Eingänge für " + egvpPostBox.Name + " verarbeiten ***");
-            var receiveMessageService = new ReceiveMessageService(egvpPostBox);
+            var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
             receiveMessageService.ReceiveMessages();
           }
           catch (Exception ex)
@@ -123,8 +124,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
         if (null == egvpPostBox)
           throw new ArgumentException("EGVP-Postbox zu Id " + this.UserId + " konnte nicht in der Konfigurationsdatei ermittelt werden", "UserId");
 
-        var receiveMessageService = new ReceiveMessageService(egvpPostBox);
-        EgvpEnterpriseSoap.getStateResponse resp = receiveMessageService.GetMessageState(this.MessageId);
+        var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
+        getStateResponse resp = receiveMessageService.GetMessageState(this.MessageId);
 
         Console.WriteLine("Osci-Status: " + resp.state.ToString());
         Console.WriteLine("Osci-Datum:  " + resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString());
