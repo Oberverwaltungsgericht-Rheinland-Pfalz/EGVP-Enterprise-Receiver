@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\EgvpEnterpriseSoap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="EgvpEnterpriseReceiverModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +92,163 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EgvpEnterpriseReceiverModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Connected Services\EgvpEnterpriseSoap\EgvpService.wsdl" />
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.asynchroniousMessageSentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.asynchroniousMessageSentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.cancelSentMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.cancelSentMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.commitReceivedMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.commitReceivedMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.commitSentMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.commitSentMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.createAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.createAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deleteAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deleteAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deleteQuarantineMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deleteQuarantineMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.deregisterNotificationCallbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.editAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.editAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getAllAccountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getAllAccountsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getAllStatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getAllStatesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineCountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineCountsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineOverviewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getQuarantineOverviewResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getStateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getUncommittedMessageIDsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.getVersionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.loadMessageReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.loadMessageReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.markAsFetchQuarantineMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.markAsFetchQuarantineMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.receiveMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.receiveMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.registerNotificationCallbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.registerNotificationCallbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.retryQuarantineMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.retryQuarantineMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.searchReceiverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.searchReceiverResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.sendAsynchroniousMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.sendSynchroniousMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.sendSynchroniousMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.verifyMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EgvpEnterpriseSoap\OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap.verifyMessageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="EgvpEnterpriseReceiverModel.edmx.diagram">
       <DependentUpon>EgvpEnterpriseReceiverModel.edmx</DependentUpon>
     </None>
@@ -95,6 +258,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\EgvpEnterpriseSoap\configuration91.svcinfo" />
+    <None Include="Connected Services\EgvpEnterpriseSoap\configuration.svcinfo" />
+    <None Include="Connected Services\EgvpEnterpriseSoap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="EgvpEnterpriseReceiverModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EgvpEnterpriseReceiverModel.Context.cs</LastGenOutput>
@@ -108,6 +277,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\EgvpEnterpriseSoap\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
