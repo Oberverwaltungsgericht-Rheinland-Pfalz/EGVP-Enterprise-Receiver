@@ -26,9 +26,9 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
       // Auswerten ob ein eindeutiges Postfach gefunden werden konnte
       if (resp.count == 0)
-        throw new KeyNotFoundException("Es konnte kein Postfach zu '" + Id + "' ermittelt werden!");
+        throw new KeyNotFoundException("In Egvp-Enterprise konnte kein Postfach zu '" + Id + "' ermittelt werden!");
       if (resp.count > 1)
-        throw new KeyNotFoundException("Es konnte kein eindeutiges Postfach zu '" + Id + "' ermittelt werden! (Anzahl:" + resp.count.ToString() + ")");
+        throw new KeyNotFoundException("In Egvp-Enterprise konnte kein eindeutiges Postfach zu '" + Id + "' ermittelt werden! (Anzahl:" + resp.count.ToString() + ")");
 
       // Model mit Postfachdaten füllen
       postbox.Id = Id;
