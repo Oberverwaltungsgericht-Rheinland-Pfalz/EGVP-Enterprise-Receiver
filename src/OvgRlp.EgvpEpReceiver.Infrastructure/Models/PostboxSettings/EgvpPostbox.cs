@@ -9,6 +9,8 @@ namespace OvgRlp.EgvpEpReceiver.Infrastructure.Models
 
     public String Name { get; set; }
 
+    public bool IsDisabled { get; set; }
+
     public List<String> ExportPath { get; set; }
 
     public List<String> ExportPath_EEB { get; set; }

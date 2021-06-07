@@ -102,6 +102,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
         {
           try
           {
+            if (egvpPostBox.IsDisabled)
+              continue;
             this.LogKontext = "Eingangsverarbeitung für " + egvpPostBox.Name;
             Console.WriteLine("*** Eingänge für " + egvpPostBox.Name + " verarbeiten ***");
             var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
