@@ -387,22 +387,6 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
-    private bool IsEeb(byte[] messageZIP)
-    {
-      bool rval = false;
-      using (ZipArchive za = new ZipArchive(new MemoryStream(messageZIP)))
-      {
-        var entries = za.Entries.Where(ze => Path.GetExtension(ze.Name) == ".xml" && Path.GetDirectoryName(ze.FullName) == "attachments").ToList();
-        foreach (ZipArchiveEntry ze in entries)
-        {
-          TextReader tr = new StreamReader(ze.Open());
-          if (tr.ReadToEnd().Contains("nachricht.eeb.zuruecklaufend"))
-            rval = true;
-        }
-      }
-      return rval;
-    }
-
     private void CreateLockFile()
     {
       foreach (string exportPath in this._egvpPostbox.ExportPath)

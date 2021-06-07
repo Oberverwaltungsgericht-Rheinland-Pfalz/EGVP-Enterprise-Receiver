@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolService.cs" />
     <Compile Include="ReceiveMessageService.cs" />
+    <Compile Include="XJustizService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj">
