@@ -255,13 +255,20 @@ namespace OvgRlp.EgvpEpReceiver.Services
         logEntry.AddSubEntry(String.Format("Nachricht temporär zwischenspeichern nach {0}", zipFullFilename), LogEventLevel.Information);
         File.WriteAllBytes(zipFullFilename, resp.messageZIP);
 
-        logEntry.AddSubEntry("Prüfung Empfängergerichte in xjustiz.xml", LogEventLevel.Information);
-        var depService = new DepartmentsService(this._egvpPostbox, resp.messageZIP);
-        depService.ValidateDepartmentSettings(logEntry);
-
         List<string> exportPaths;
         List<string> archivPaths;
-        depService.DetermineDestinations(out exportPaths, out archivPaths);
+        if (DepartmentsService.DepartmentsModeActive(this._egvpPostbox))
+        {
+          logEntry.AddSubEntry("Prüfung Empfängergerichte in xjustiz.xml", LogEventLevel.Information);
+          var depService = new DepartmentsService(this._egvpPostbox, resp.messageZIP);
+          depService.ValidateDepartmentSettings(logEntry);
+          depService.DetermineDestinations(out exportPaths, out archivPaths);
+        }
+        else
+        {
+          exportPaths = XJustizService.IsEeb(resp.messageZIP) ? this._egvpPostbox.ExportPath_EEB : this._egvpPostbox.ExportPath;
+          archivPaths = this._egvpPostbox.ArchivPath;
+        }
 
         foreach (string expPath in exportPaths)
         {
