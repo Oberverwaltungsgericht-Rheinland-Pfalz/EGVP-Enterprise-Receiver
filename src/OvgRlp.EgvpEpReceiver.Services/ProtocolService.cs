@@ -19,7 +19,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     }
 
     // Logging Metadaten aufbereiten
-    public void CreateLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null, string messageSizeKB = null, string messageSizeAttachmentsKB = null)
+    private void ExtendedLogMetadata(EGVPMessageProps msgProps, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null, string messageSizeKB = null, string messageSizeAttachmentsKB = null, string departmentCode = null)
     {
       if (null == logMetadata)
         logMetadata = new LogMetadata();
@@ -31,6 +31,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
         logMetadata.MessageSizeKB = messageSizeKB;
       if (null != messageSizeAttachmentsKB)
         logMetadata.MessageSizeAttachmentsKB = messageSizeAttachmentsKB;
+      if (null != departmentCode)
+        logMetadata.DepartmentCode = departmentCode;
       if (null != egvpPostbox)
       {
         logMetadata.Recipient = egvpPostbox.Id;
@@ -68,6 +70,10 @@ namespace OvgRlp.EgvpEpReceiver.Services
       EGVPMessageProps msgProps = null;
       string messageSizeKB = "";
       string messageSizeAttachmentsKB = "";
+      string departmentCode = "";
+
+      if (null == logMetadata)
+        logMetadata = new LogMetadata();
 
       if (null != resp)
       {
@@ -78,6 +84,12 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         try
         {
+          if (null != egvpPostbox && DepartmentsService.DepartmentsModeActive(egvpPostbox))
+          {
+            var depService = new DepartmentsService(egvpPostbox, resp.messageZIP);
+            departmentCode = depService.GetDepartmentId();
+          }
+
           using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
           {
             var ze = za.GetEntry("MsgProps.xml");
@@ -92,12 +104,12 @@ namespace OvgRlp.EgvpEpReceiver.Services
         }
         catch (Exception ex)
         {
-          CreateLogMetadata(null, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
+          ExtendedLogMetadata(null, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB, departmentCode);
           throw ex;
         }
       }
 
-      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
+      ExtendedLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB, departmentCode);
     }
 
     // Logging Metadaten aufbereiten
@@ -124,7 +136,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         }
       }
 
-      CreateLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
+      ExtendedLogMetadata(msgProps, ref logMetadata, messageID, egvpPostbox, messageSizeKB, messageSizeAttachmentsKB);
     }
 
     // Hinweis auf einen Fehlerhaften Nachrichtenabruf in die Datenbank aufnehmen

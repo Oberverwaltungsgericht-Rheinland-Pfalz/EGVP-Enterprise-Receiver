@@ -41,7 +41,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
-    private Department GetDepartment()
+    public Department GetDepartment()
     {
       Department dep = null;
       if (DepartmentsModeActive(_egvpPostbox))
@@ -52,7 +52,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       return dep;
     }
 
-    private string GetDepartmentId()
+    public string GetDepartmentId()
     {
       return GetDepartmentValueByXjustizXmlText(_egvpPostbox.ReceiveDepartments.XPathDepartmentId);
     }

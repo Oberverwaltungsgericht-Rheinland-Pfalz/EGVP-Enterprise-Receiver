@@ -14,5 +14,6 @@
     public string AppVersion;
     public string OsciState;
     public string OsciDatetime;
+    public string DepartmentCode;
   }
 }
