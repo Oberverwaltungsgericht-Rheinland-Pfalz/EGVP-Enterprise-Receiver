@@ -11,6 +11,7 @@ namespace OvgRlp.EgvpEpReceiver
       CLIActions cliActions = cliService.ParseCommandLineArguments(args);
       if (null != cliActions)
         cliActions.ExecuteActions();
+
 #if DEBUG
       Console.WriteLine("\n\n\nBitte Taste drücken...");
       Console.ReadKey();
