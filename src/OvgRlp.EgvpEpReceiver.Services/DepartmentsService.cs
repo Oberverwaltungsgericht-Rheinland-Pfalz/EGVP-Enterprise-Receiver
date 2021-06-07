@@ -85,6 +85,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
         {
           string depId = GetDepartmentId();
           string info = string.Format("Gerichtsempfänger '{0}' konnte nicht in der xjustiz unter '{1}' gefunden werden!", depId, _egvpPostbox.ReceiveDepartments.XPathDepartmentId);
+          if (_egvpPostbox.ReceiveDepartments.LogLevelDepartmentNotFound.ToLower() == "info")
+            logEntry.AddSubEntry(info, LogEventLevel.Information);
           if (_egvpPostbox.ReceiveDepartments.LogLevelDepartmentNotFound.ToLower() == "warning")
             logEntry.AddSubEntry(info, LogEventLevel.Warning);
           if (_egvpPostbox.ReceiveDepartments.LogLevelDepartmentNotFound.ToLower() == "error")
