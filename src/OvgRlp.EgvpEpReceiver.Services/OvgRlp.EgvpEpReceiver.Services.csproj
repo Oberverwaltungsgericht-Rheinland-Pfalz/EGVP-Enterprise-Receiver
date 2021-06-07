@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationService.cs" />
+    <Compile Include="DepartmentsService.cs" />
     <Compile Include="LoggingHelper.cs" />
     <Compile Include="PostboxServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
