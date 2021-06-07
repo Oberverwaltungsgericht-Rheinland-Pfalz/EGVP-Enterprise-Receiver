@@ -20,6 +20,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
     public DepartmentsService(EgvpPostbox egvpPostbox, byte[] messageZIP)
     {
+      _egvpPostbox = egvpPostbox;
       _messageZIP = messageZIP;
       XjustizXmlText = new Lazy<string>(() => XJustizService.GetXjustizXmlTextFromZipArchive(_messageZIP));
       IsEeb = new Lazy<bool>(() => XJustizService.IsEeb(XjustizXmlText.Value));

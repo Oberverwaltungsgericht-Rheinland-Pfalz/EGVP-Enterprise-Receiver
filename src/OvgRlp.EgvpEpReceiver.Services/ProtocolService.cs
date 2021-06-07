@@ -23,7 +23,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       if (null == logMetadata)
         logMetadata = new LogMetadata();
-      logMetadata.AppVersion = OvgRlp.Core.Common.AssemblyHelper.AssemblyVersion(System.Reflection.Assembly.GetExecutingAssembly());
+      logMetadata.AppVersion = OvgRlp.Core.Common.AssemblyHelper.AssemblyVersion(System.Reflection.Assembly.GetEntryAssembly());
 
       if (null != messageID)
         logMetadata.MessageId = messageID;
