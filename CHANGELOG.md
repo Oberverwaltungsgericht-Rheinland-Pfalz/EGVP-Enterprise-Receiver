@@ -1,5 +1,37 @@
 
-<a name="1.3.0.1825"></a>
+<a name="2.0.0.2123"></a>
+
+### 2.0.0.2123 (07.06.2021)
+
+#### &Auml;nderungen
+
+* Neue Möglichkeit Empfängergerichte aus xjustiz.xml zu ermitteln und deren Ablage-Pfade aus der Konfigurationsdatei zu lesen (#10)
+* Refaktorisierung der kompletten Postbox-Konfigurationslogik
+* Anpassungen auf Egvp-Enterprise 4.0 Webservice (#9)
+* Refaktorisierung der Dateistruktur und damit einhergehend bessere Stabilität
+
+#### BREAKING CHANGES
+
+* die Konfigurationsdatei (Setting "configfile") ist nun im json-Format anzugeben - siehe Projektbeschreibung
+
+### 1.5.5.2104 (26.01.2021)
+
+#### &Auml;nderungen
+
+* fix für doppelte Dateinamen
+* Logging generell verbessert
+* Neues Setting "LockFile". Hiermit ist es möglich während dem Schreibvorgang eine weitere Datei anzulegen (bspw. als Info für ein Fachsystem)
+* Logging: Neues Log-Attribut MessageSizeAttachmentsKB in den Metadaten
+* fix für Dateinamen mit Überlänge
+* Stabilität verbessert
+
+### 1.4.2.1903 (17.01.2019)
+
+#### &Auml;nderungen
+
+* xjustiz.xml-Ermittlung verbessert
+* Konsolenanwendung um '-stat' erweitert um den Nachrichten- bzw. Abholstatus zu einer Message zu prüfen
+* Stabilität verbessert
 
 ### 1.3.0.1825 (19.06.2018)
 
