@@ -205,3 +205,5 @@ FakesAssemblies/
 
 # individual release/runtime specifications
 src/OvgRlp.EgvpEpReceiver/Configuration/PostboxSettings.json
+src/OvgRlp.EgvpEpReceiver/App.Debug.config
+src/OvgRlp.EgvpEpReceiver/App.Release.config
