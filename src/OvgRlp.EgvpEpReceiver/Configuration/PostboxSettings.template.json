@@ -1,0 +1,36 @@
+{
+  "postboxes": [
+    {
+      "Name": "OVG RLP Testpostfach",
+      "Id": "DE.Justiz.231654-acdf-1324-1234-12341234.4444",
+      "ExportPath": [
+        "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Import"
+      ],
+      "ExportPath_EEB": [
+        "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Import_eEB"
+      ],
+      "ArchivPath": [
+        "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Archiv\\[yyyy]_[MM]"
+      ],
+      "ReceiveDepartments": {
+        "LogLevelDepartmentNotFound": "",
+        "XPathDepartmentId": "//xjustiz:nachrichtenkopf/xjustiz:auswahl_empfaenger/xjustiz:empfaenger.gericht/code",
+        "Departments": [
+          {
+            "Name": "Department 1",
+            "Id": "DepID1",
+            "ExportPath": [
+              "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Import"
+            ],
+            "ExportPath_EEB": [
+              "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Import_eEB"
+            ],
+            "ArchivPath": [
+              "\\\\dfsshare\\Verzeichnis\\Gericht1\\ERV\\Archiv\\[yyyy]_[MM]"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

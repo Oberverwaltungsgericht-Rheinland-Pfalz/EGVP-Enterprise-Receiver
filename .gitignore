@@ -193,12 +193,19 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
-#OVGRLP specifications
+# OVGRLP specifications
 [Tt]est*/[Tt]emp/
 [Tt]est*/[Tt]mp/
 [Tt]est*/[Ee]xport/
 ![Rr]elease/**/bin/
 ![Rr]elease/
 
-Visual Studio Codemap usw.
+# Visual Studio Codemap usw.
 .vs/
+
+# individual release/runtime specifications
+src/OvgRlp.EgvpEpReceiver/Configuration/PostboxSettings.json
+src/OvgRlp.EgvpEpReceiver/App.Debug.config
+src/OvgRlp.EgvpEpReceiver/App.Release.config
+!src/packages/OvgRlp*
+!src/packages/OvgRlp*/*.nupkg
