@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OvgRlp.EgvpEpReceiver.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="configfile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.\Configuration\PostboxSettings.json</Value>
+    </Setting>
+    <Setting Name="tempDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\dev\repos\EGVP-Enterprise-Receiver\testing\temp</Value>
+    </Setting>
+    <Setting Name="LogFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\dev\repos\EGVP-Enterprise-Receiver\testing\temp\logging</Value>
+    </Setting>
+    <Setting Name="LogDbConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=localhost\DEV;Initial Catalog=APPDATADEV;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="LogDbDatatable" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EgvpEnterpriseReceiverLog</Value>
+    </Setting>
+    <Setting Name="WaitingHoursAfterError" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="LockFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">export.log</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

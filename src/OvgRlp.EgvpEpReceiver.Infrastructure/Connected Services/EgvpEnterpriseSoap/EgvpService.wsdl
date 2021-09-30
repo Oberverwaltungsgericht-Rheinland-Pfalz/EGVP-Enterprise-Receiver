@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:de:bos-bremen:egvp:ws" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EgvpService" targetNamespace="urn:de:bos-bremen:egvp:ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" targetNamespace="urn:de:bos-bremen:egvp:ws" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xs:element name="asynchroniousMessageSentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="customID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="asynchroniousMessageSentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="messageZIP" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="xs:string" />
+            <xs:element minOccurs="0" name="pendingCause" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelSentMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="customID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelSentMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:CommitReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="commitReceivedMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="commitReceivedMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element name="returnCode" type="tns:CommitReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="commitSentMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="commitSentMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:CommitReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createAccountRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Address" type="xs:string" />
+            <xs:element name="ChristianName" type="xs:string" />
+            <xs:element name="Organisation" type="xs:string" />
+            <xs:element name="OrganisationalUnit" type="xs:string" />
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="Street" type="xs:string" />
+            <xs:element name="Number" type="xs:string" />
+            <xs:element name="ZipCode" type="xs:string" />
+            <xs:element name="City" type="xs:string" />
+            <xs:element name="FederalState" type="xs:string" />
+            <xs:element name="Country" type="xs:string" />
+            <xs:element name="Email" type="xs:string" />
+            <xs:element name="Phone" type="xs:string" />
+            <xs:element name="Cellphone" type="xs:string" />
+            <xs:element name="Fax" type="xs:string" />
+            <xs:element name="ExternalId" type="xs:string" />
+            <xs:element name="Title" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="SignKey" type="xs:base64Binary" />
+            <xs:element name="Password" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createAccountResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:CreateReturnCodeType" />
+            <xs:element name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteAccountRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" type="xs:string" />
+            <xs:element minOccurs="0" name="doDeleteFromQuarantine" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteAccountResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:DeleteReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteQuarantineMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="messageID" type="xs:string" />
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="reason" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteQuarantineMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:DeleteQuarantineMessageReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deregisterNotificationCallbackRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deregisterNotificationCallbackResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:NotificationCallbackReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="editAccountRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" type="xs:string" />
+            <xs:element minOccurs="0" name="Address" type="xs:string" />
+            <xs:element minOccurs="0" name="Title" type="xs:string" />
+            <xs:element minOccurs="0" name="Name" type="xs:string" />
+            <xs:element minOccurs="0" name="ChristianName" type="xs:string" />
+            <xs:element minOccurs="0" name="Organisation" type="xs:string" />
+            <xs:element minOccurs="0" name="OrganisationalUnit" type="xs:string" />
+            <xs:element minOccurs="0" name="Street" type="xs:string" />
+            <xs:element minOccurs="0" name="StreetNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="ZipCode" type="xs:string" />
+            <xs:element minOccurs="0" name="City" type="xs:string" />
+            <xs:element minOccurs="0" name="FederalState" type="xs:string" />
+            <xs:element minOccurs="0" name="Country" type="xs:string" />
+            <xs:element minOccurs="0" name="Email" type="xs:string" />
+            <xs:element minOccurs="0" name="Cellphone" type="xs:string" />
+            <xs:element minOccurs="0" name="Phone" type="xs:string" />
+            <xs:element minOccurs="0" name="Fax" type="xs:string" />
+            <xs:element minOccurs="0" name="ExternalId" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="signature" type="xs:base64Binary" />
+            <xs:element minOccurs="0" name="signaturePin" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="editAccountResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:EditReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+            <xs:element name="changedBusinessCard" type="tns:AccountBusinessCard" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllAccountsRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllAccountsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:GetAllAccountsReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="accountInfos" nillable="true" type="tns:AccountInfoItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllStatesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" type="xs:string" />
+            <xs:element name="customOrMessageId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllStatesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="xs:string" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+            <xs:element maxOccurs="unbounded" name="states" type="tns:StateItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineCountsRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineCountsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:GetQuarantineCountsReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="quarantineCounts" nillable="true" type="tns:QuarantineCountsItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmime:expectedContentTypes="application/octet-stream" name="messageZIP" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="tns:GetQuarantineMessageReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineOverviewRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="period">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="start" type="xs:date" />
+                  <xs:element name="end" type="xs:date" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="userId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuarantineOverviewResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:GetQuarantineOverviewReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="quarantines" nillable="true" type="tns:QuarantineItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStateRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="customOrMessageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="customID" type="xs:string" />
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element minOccurs="0" name="senderID" type="xs:string" />
+            <xs:element minOccurs="0" name="receiverID" type="xs:string" />
+            <xs:element minOccurs="0" name="state" type="tns:JEntryTypeType" />
+            <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+            <xs:element name="returnCode" type="tns:GetStateReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUncommittedMessageIDsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUncommittedMessageIDsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="count" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="uncommittedMessages" nillable="true" type="tns:UncommittedMessageType" />
+            <xs:element name="returnCode" type="tns:GetUncommittedMessageIDsReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersionRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="version" type="xs:string" />
+            <xs:element name="returnCode" type="tns:GetVersionReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loadMessageReportRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="period">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="start" type="xs:date" />
+                  <xs:element name="end" type="xs:date" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" default="false" name="onlyDelta" type="xs:boolean" />
+            <xs:element minOccurs="0" name="userId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loadMessageReportResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="messageReportXml" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="tns:LoadReportReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="markAsFetchQuarantineMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="markAsFetchQuarantineMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:MarkAsFetchQuarantineMessageReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="messageZIP" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="tns:ReceiveReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registerNotificationCallbackRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="endpointAddress" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registerNotificationCallbackResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:NotificationCallbackReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retryQuarantineMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="messageID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retryQuarantineMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="returnCode" type="tns:RetryQuarantineMessageReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchReceiverRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="searchCriteria" type="tns:BusinessCardType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchReceiverResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="count" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="receiverResults" nillable="true" type="tns:BusinessCardType" />
+            <xs:element name="returnCode" type="tns:SearchReturnCodeType" />
+            <xs:element minOccurs="0" name="returnCodeDetails" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendAsynchroniousMessageRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:SendMessageRequestType">
+              <xs:sequence />
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendAsynchroniousMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="customID" type="xs:string" />
+            <xs:element name="returnCode" type="tns:SendReturnCodeType" />
+            <xs:element minOccurs="0" name="errorDetails" type="tns:SendErrorCodeType" />
+            <xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendSynchroniousMessageRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:SendMessageRequestType">
+              <xs:sequence />
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendSynchroniousMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="messageZIP" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="tns:SendReturnCodeType" />
+            <xs:element minOccurs="0" name="errorDetails" type="tns:SendErrorCodeType" />
+            <xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="verifyMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userID" type="xs:string" />
+            <xs:element name="osci" type="tns:OSCIContainerType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="verifyMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="messageID" type="xs:string" />
+            <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="messageZIP" type="xs:base64Binary" />
+            <xs:element name="returnCode" type="tns:VerifyReturnCodeType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="OSCIContainerType">
+        <xs:sequence>
+          <xs:element xmime:expectedContentTypes="application/octet-stream" name="data" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QuarantineCountsItem">
+        <xs:sequence>
+          <xs:element name="accountId" type="xs:string" />
+          <xs:element name="countSent" type="xs:int" />
+          <xs:element name="countReceived" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StateItem">
+        <xs:sequence>
+          <xs:element name="state" type="tns:MessageStateType" />
+          <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customId" type="xs:string" />
+          <xs:element minOccurs="0" name="messageId" type="xs:string" />
+          <xs:element minOccurs="0" name="senderId" type="xs:string" />
+          <xs:element minOccurs="0" name="receiverId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BCItem">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="searchMode" type="tns:SearchModeType" use="required" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:complexType name="BusinessCardType">
+        <xs:sequence>
+          <xs:element name="organization" type="tns:BCItem" />
+          <xs:element name="organizationalUnit" type="tns:BCItem" />
+          <xs:element name="address" type="tns:BCItem" />
+          <xs:element name="title" type="tns:BCItem" />
+          <xs:element name="christianName" type="tns:BCItem" />
+          <xs:element name="name" type="tns:BCItem" />
+          <xs:element name="street" type="tns:BCItem" />
+          <xs:element name="streetNumber" type="tns:BCItem" />
+          <xs:element name="zipCode" type="tns:BCItem" />
+          <xs:element name="city" type="tns:BCItem" />
+          <xs:element name="federalState" type="tns:BCItem" />
+          <xs:element name="country" type="tns:BCItem" />
+          <xs:element name="email" type="tns:BCItem" />
+          <xs:element name="cellPhone" type="tns:BCItem" />
+          <xs:element name="phone" type="tns:BCItem" />
+          <xs:element name="fax" type="tns:BCItem" />
+          <xs:element name="userID" type="tns:BCItem" />
+          <xs:element name="filterID" type="tns:BCItem" />
+          <xs:element name="role" type="tns:BCItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QuarantineItem">
+        <xs:sequence>
+          <xs:element name="quarantineDate" type="xs:date" />
+          <xs:element name="messageId" type="xs:string" />
+          <xs:element name="poBox" type="xs:string" />
+          <xs:element name="senderId" type="xs:string" />
+          <xs:element name="receiverId" type="xs:string" />
+          <xs:element name="senderName" type="xs:string" />
+          <xs:element name="receiverName" type="xs:string" />
+          <xs:element name="entranceDate" type="xs:date" />
+          <xs:element name="retryCount" type="xs:int" />
+          <xs:element name="retryPossible" type="xs:int" />
+          <xs:element name="exceptionCode" type="xs:string" />
+          <xs:element name="contentData" type="xs:boolean" />
+          <xs:element name="contentType" type="xs:string" />
+          <xs:element minOccurs="0" name="stackTrace" type="xs:string" />
+          <xs:element name="services" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountInfoItem">
+        <xs:sequence>
+          <xs:element name="accountId" type="xs:string" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+          <xs:element minOccurs="0" name="expireDays" type="xs:string" />
+          <xs:element minOccurs="0" name="organisation" type="xs:string" />
+          <xs:element minOccurs="0" name="organisationalUnit" type="xs:string" />
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="christianName" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="street" type="xs:string" />
+          <xs:element minOccurs="0" name="streetNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="zipCode" type="xs:string" />
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="federalState" type="xs:string" />
+          <xs:element minOccurs="0" name="country" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="cellPhone" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" name="fax" type="xs:string" />
+          <xs:element minOccurs="0" name="externalId" type="xs:string" />
+          <xs:element minOccurs="0" name="role" type="xs:string" />
+          <xs:element minOccurs="0" name="fetchServiceDisabled" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SendMessageRequestType">
+        <xs:sequence>
+          <xs:element name="userID" type="xs:string" />
+          <xs:element name="messageType" type="tns:MessageTypeType" />
+          <xs:element name="receiverID" type="xs:string" />
+          <xs:element name="receiverKey" type="tns:ReceiverKeyType" />
+          <xs:element name="subject" type="xs:string" />
+          <xs:element name="signMessage" type="xs:boolean" />
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="visualXML" type="xs:base64Binary" />
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="visualXSL" type="xs:base64Binary" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attachments" nillable="true" type="tns:AttachmentType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AttachmentType">
+        <xs:sequence>
+          <xs:element xmime:expectedContentTypes="application/octet-stream" name="data" type="xs:base64Binary" />
+          <xs:element name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountBusinessCard">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" />
+          <xs:element minOccurs="0" name="Address" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" name="ChristianName" type="xs:string" />
+          <xs:element minOccurs="0" name="Organisation" type="xs:string" />
+          <xs:element minOccurs="0" name="OrganisationalUnit" type="xs:string" />
+          <xs:element minOccurs="0" name="Street" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="ZipCode" type="xs:string" />
+          <xs:element minOccurs="0" name="City" type="xs:string" />
+          <xs:element minOccurs="0" name="FederalState" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" type="xs:string" />
+          <xs:element minOccurs="0" name="Cellphone" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UncommittedMessageType">
+        <xs:sequence>
+          <xs:element name="messageID" type="xs:string" />
+          <xs:element name="osciDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="SendReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="PENDING" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="RECEIVER_REQUIRED" />
+          <xs:enumeration value="CUSTOMID_REQUIRED" />
+          <xs:enumeration value="RECEIVER_NOT_FOUND" />
+          <xs:enumeration value="UNSUPPORTED_RECEIVER_TYPE" />
+          <xs:enumeration value="MESSAGE_TYPE_REQUIRED" />
+          <xs:enumeration value="UNSUPPORTED_MESSAGE_TYPE" />
+          <xs:enumeration value="SUBJECT_REQUIRED" />
+          <xs:enumeration value="ATTACHMENT_NAME_NOT_FOUND" />
+          <xs:enumeration value="TOO_MANY_ATTACHMENTS" />
+          <xs:enumeration value="ATTACHMENTS_TOO_LARGE" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="PendingCauseCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CAUSE_UNKNOWN" />
+          <xs:enumeration value="WS_UNSENDABLE" />
+          <xs:enumeration value="WS_CANCELLED" />
+          <xs:enumeration value="WS_UNPROCESSABLE" />
+          <xs:enumeration value="QU_DELETED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="RetryQuarantineMessageReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="MESSAGEID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="VerifyReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="OSCIDATA_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="INVALID_MESSAGE" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetQuarantineCountsReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetQuarantineMessageReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="MESSAGEID_REQUIRED" />
+          <xs:enumeration value="NO_CONTENT_DATA" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DeleteReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="DIRECTORY_NOT_AVAILABLE" />
+          <xs:enumeration value="USER_NOT_FOUND_IN_DIRECTORY" />
+          <xs:enumeration value="DIRECTORY_ERROR" />
+          <xs:enumeration value="CRYPT_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="MessageStateType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="QU_RETRIED" />
+          <xs:enumeration value="QU_DELETED" />
+          <xs:enumeration value="WS_ASEND" />
+          <xs:enumeration value="WS_UNSENDABLE" />
+          <xs:enumeration value="WS_CANCELLED" />
+          <xs:enumeration value="AU_RETRY" />
+          <xs:enumeration value="OSCI_PARTIAL" />
+          <xs:enumeration value="OSCI_SENT" />
+          <xs:enumeration value="WS_ASENT" />
+          <xs:enumeration value="RECEIVE_IN_PROGRESS" />
+          <xs:enumeration value="OSCI_RECEIVED" />
+          <xs:enumeration value="OSCI_DELIVERED" />
+          <xs:enumeration value="WS_RECEIVED" />
+          <xs:enumeration value="OSCI_AV_IN_PROGRESS" />
+          <xs:enumeration value="OSCI_AV_OK" />
+          <xs:enumeration value="OSCI_AV_INFECTED" />
+          <xs:enumeration value="OSCI_AV_INDETERMINATE" />
+          <xs:enumeration value="OSCI_AV_NO_RETRIAL" />
+          <xs:enumeration value="WS_UNPROCESSABLE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SearchModeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CONTAINS" />
+          <xs:enumeration value="EXACT" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetAllStatesReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="MESSAGE_OR_CUSTOM_ID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="NO_STATES_FOR_MESSAGE_OR_CUSTOM_ID" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="JEntryTypeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AU_RETRY" />
+          <xs:enumeration value="WS_ASEND" />
+          <xs:enumeration value="OSCI_SENT" />
+          <xs:enumeration value="WS_ASENT" />
+          <xs:enumeration value="WS_UNSENDABLE" />
+          <xs:enumeration value="WS_CANCELLED" />
+          <xs:enumeration value="OSCI_RECEIVED" />
+          <xs:enumeration value="OSCI_DELIVERED" />
+          <xs:enumeration value="WS_RECEIVED" />
+          <xs:enumeration value="WS_UNPROCESSABLE" />
+          <xs:enumeration value="OSCI_AV_IN_PROGRESS" />
+          <xs:enumeration value="OSCI_AV_OK" />
+          <xs:enumeration value="OSCI_AV_INFECTED" />
+          <xs:enumeration value="OSCI_AV_INDETERMINATE" />
+          <xs:enumeration value="OSCI_AV_NO_RETRIAL" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetStateReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="USERID_INVALID" />
+          <xs:enumeration value="NO_SUCH_MESSAGE_OR_CUSTOM_ID" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="MESSAGE_OR_CUSTOM_ID_REQUIRED" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SendErrorCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SEND_FAILED" />
+          <xs:enumeration value="REGISTER_GENERAL_ERROR" />
+          <xs:enumeration value="INTERNET_CONNECT" />
+          <xs:enumeration value="HTTP_ERROR" />
+          <xs:enumeration value="MESSAGE_TYPE_UNSUPPORTED" />
+          <xs:enumeration value="ATTACHMENT_ERROR" />
+          <xs:enumeration value="MESSAGE_SIGN_FAILED" />
+          <xs:enumeration value="FILE_NOT_FOUND" />
+          <xs:enumeration value="OSCI_MANAGER_WRONG_CERTIFICATE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SearchReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="NO_SEARCH_CRITERIA" />
+          <xs:enumeration value="MIXED_SEARCH_CRITERIA" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="TOO_MANY_RESULTS" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="NotificationCallbackReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="ENDPOINT_ADDRESS_REQUIRED" />
+          <xs:enumeration value="ENDPOINT_ADDRESS_UNREACHABLE" />
+          <xs:enumeration value="ENDPOINT_ADDRESS_INVALID" />
+          <xs:enumeration value="NO_NOTIFICATION_REGISTERED" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetQuarantineOverviewReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="ILLEGAL_TIMESPAN" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetAllAccountsReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="AccountStateType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="VALID" />
+          <xs:enumeration value="BLOCKED" />
+          <xs:enumeration value="ROLE_UNCONFIRMED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="MessageTypeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Allgemeine Nachricht" />
+          <xs:enumeration value="HR-Beteiligter" />
+          <xs:enumeration value="HR-Gericht" />
+          <xs:enumeration value="Mahn-Antrag" />
+          <xs:enumeration value="Mahn-Nachricht" />
+          <xs:enumeration value="Mahn-Abgabe" />
+          <xs:enumeration value="Testnachricht" />
+          <xs:enumeration value="Ubest-Mahn" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ReceiverKeyType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="USER_ID" />
+          <xs:enumeration value="ROLE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="LoadReportReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="ILLEGAL_TIMESPAN" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="JOB_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CommitReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="MESSAGEID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="MESSAGE_NOT_PROCESSED" />
+          <xs:enumeration value="MESSAGE_ALREADY_COMMITTED" />
+          <xs:enumeration value="MESSAGE_ALREADY_SENT" />
+          <xs:enumeration value="MESSAGE_IS_SENDING" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetVersionReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ReceiveReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="NO_MESSAGES_TO_RECEIVE" />
+          <xs:enumeration value="RECEIVE_IN_PROGRESS" />
+          <xs:enumeration value="MESSAGE_IN_QUARANTINE" />
+          <xs:enumeration value="MESSAGE_WILL_BE_RECEIVED" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CreateReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="INVALID_CERTIFICATE" />
+          <xs:enumeration value="FIELD_REQUIRED" />
+          <xs:enumeration value="FIELD_NAME_INVALID" />
+          <xs:enumeration value="DIRECTORY_ERROR" />
+          <xs:enumeration value="DIRECTORY_CONNECT_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="CRYPT_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="MarkAsFetchQuarantineMessageReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="MESSAGEID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DeleteQuarantineMessageReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="MESSAGEID_REQUIRED" />
+          <xs:enumeration value="REASON_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_MESSAGE" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="EditReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="WEBSERVICE_DISABLED" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="ENCRYPT_CERTIFICATE_INVALID" />
+          <xs:enumeration value="FIELD_NOT_DELETEABLE" />
+          <xs:enumeration value="FIELD_VALUE_INVALID" />
+          <xs:enumeration value="DIRECTORY_NOT_AVAILABLE" />
+          <xs:enumeration value="USER_NOT_FOUND_IN_DIRECTORY" />
+          <xs:enumeration value="DIRECTORY_ERROR" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+          <xs:enumeration value="CRYPT_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GetUncommittedMessageIDsReturnCodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="NO_SUCH_ACCOUNT" />
+          <xs:enumeration value="USERID_REQUIRED" />
+          <xs:enumeration value="GENERAL_SQL_ERROR" />
+          <xs:enumeration value="GENERAL_ERROR" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sendSynchroniousMessageResponse">
+    <wsdl:part name="sendSynchroniousMessageResponse" element="tns:sendSynchroniousMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchReceiverResponse">
+    <wsdl:part name="searchReceiverResponse" element="tns:searchReceiverResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllStatesResponse">
+    <wsdl:part name="getAllStatesResponse" element="tns:getAllStatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteAccountResponse">
+    <wsdl:part name="deleteAccountResponse" element="tns:deleteAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifyMessage">
+    <wsdl:part name="verifyMessageRequest" element="tns:verifyMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="getStateResponse">
+    <wsdl:part name="getStateResponse" element="tns:getStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineCounts">
+    <wsdl:part name="getQuarantineCountsRequest" element="tns:getQuarantineCountsRequest" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineMessage">
+    <wsdl:part name="getQuarantineMessageRequest" element="tns:getQuarantineMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteAccount">
+    <wsdl:part name="deleteAccountRequest" element="tns:deleteAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="registerNotificationCallbackResponse">
+    <wsdl:part name="registerNotificationCallbackResponse" element="tns:registerNotificationCallbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="deregisterNotificationCallbackResponse">
+    <wsdl:part name="deregisterNotificationCallbackResponse" element="tns:deregisterNotificationCallbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="createAccount">
+    <wsdl:part name="createAccountRequest" element="tns:createAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAllAccountsResponse">
+    <wsdl:part name="getAllAccountsResponse" element="tns:getAllAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineOverviewResponse">
+    <wsdl:part name="getQuarantineOverviewResponse" element="tns:getQuarantineOverviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="markAsFetchQuarantineMessage">
+    <wsdl:part name="markAsFetchQuarantineMessageRequest" element="tns:markAsFetchQuarantineMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="cancelSentMessage">
+    <wsdl:part name="cancelSentMessageRequest" element="tns:cancelSentMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="receiveMessage">
+    <wsdl:part name="receiveMessageRequest" element="tns:receiveMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="commitSentMessage">
+    <wsdl:part name="commitSentMessageRequest" element="tns:commitSentMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAllAccounts">
+    <wsdl:part name="getAllAccountsRequest" element="tns:getAllAccountsRequest" />
+  </wsdl:message>
+  <wsdl:message name="sendSynchroniousMessage">
+    <wsdl:part name="sendSynchroniousMessageRequest" element="tns:sendSynchroniousMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="loadMessageReport">
+    <wsdl:part name="loadMessageReportRequest" element="tns:loadMessageReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="commitReceivedMessage">
+    <wsdl:part name="commitReceivedMessageRequest" element="tns:commitReceivedMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="asynchroniousMessageSentResponse">
+    <wsdl:part name="asynchroniousMessageSentResponse" element="tns:asynchroniousMessageSentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineOverview">
+    <wsdl:part name="getQuarantineOverviewRequest" element="tns:getQuarantineOverviewRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteQuarantineMessage">
+    <wsdl:part name="deleteQuarantineMessageRequest" element="tns:deleteQuarantineMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="commitSentMessageResponse">
+    <wsdl:part name="commitSentMessageResponse" element="tns:commitSentMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifyMessageResponse">
+    <wsdl:part name="verifyMessageResponse" element="tns:verifyMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="loadMessageReportResponse">
+    <wsdl:part name="loadMessageReportResponse" element="tns:loadMessageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="asynchroniousMessageSent">
+    <wsdl:part name="asynchroniousMessageSentRequest" element="tns:asynchroniousMessageSentRequest" />
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part name="getVersionResponse" element="tns:getVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="retryQuarantineMessage">
+    <wsdl:part name="retryQuarantineMessageRequest" element="tns:retryQuarantineMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineCountsResponse">
+    <wsdl:part name="getQuarantineCountsResponse" element="tns:getQuarantineCountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getQuarantineMessageResponse">
+    <wsdl:part name="getQuarantineMessageResponse" element="tns:getQuarantineMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="retryQuarantineMessageResponse">
+    <wsdl:part name="retryQuarantineMessageResponse" element="tns:retryQuarantineMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="commitReceivedMessageResponse">
+    <wsdl:part name="commitReceivedMessageResponse" element="tns:commitReceivedMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="editAccount">
+    <wsdl:part name="editAccountRequest" element="tns:editAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="receiveMessageResponse">
+    <wsdl:part name="receiveMessageResponse" element="tns:receiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="editAccountResponse">
+    <wsdl:part name="editAccountResponse" element="tns:editAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="registerNotificationCallback">
+    <wsdl:part name="registerNotificationCallbackRequest" element="tns:registerNotificationCallbackRequest" />
+  </wsdl:message>
+  <wsdl:message name="cancelSentMessageResponse">
+    <wsdl:part name="cancelSentMessageResponse" element="tns:cancelSentMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllStates">
+    <wsdl:part name="getAllStatesRequest" element="tns:getAllStatesRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchReceiver">
+    <wsdl:part name="searchReceiverRequest" element="tns:searchReceiverRequest" />
+  </wsdl:message>
+  <wsdl:message name="markAsFetchQuarantineMessageResponse">
+    <wsdl:part name="markAsFetchQuarantineMessageResponse" element="tns:markAsFetchQuarantineMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="deregisterNotificationCallback">
+    <wsdl:part name="deregisterNotificationCallbackRequest" element="tns:deregisterNotificationCallbackRequest" />
+  </wsdl:message>
+  <wsdl:message name="sendAsynchroniousMessageResponse">
+    <wsdl:part name="sendAsynchroniousMessageResponse" element="tns:sendAsynchroniousMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="createAccountResponse">
+    <wsdl:part name="createAccountResponse" element="tns:createAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVersion">
+    <wsdl:part name="getVersionRequest" element="tns:getVersionRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteQuarantineMessageResponse">
+    <wsdl:part name="deleteQuarantineMessageResponse" element="tns:deleteQuarantineMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUncommittedMessageIDs">
+    <wsdl:part name="getUncommittedMessageIDsRequest" element="tns:getUncommittedMessageIDsRequest" />
+  </wsdl:message>
+  <wsdl:message name="sendAsynchroniousMessage">
+    <wsdl:part name="sendAsynchroniousMessageRequest" element="tns:sendAsynchroniousMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="getState">
+    <wsdl:part name="getStateRequest" element="tns:getStateRequest" />
+  </wsdl:message>
+  <wsdl:message name="getUncommittedMessageIDsResponse">
+    <wsdl:part name="getUncommittedMessageIDsResponse" element="tns:getUncommittedMessageIDsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EgvpPortType">
+    <wsdl:operation name="asynchroniousMessageSent">
+      <wsdl:input name="asynchroniousMessageSent" message="tns:asynchroniousMessageSent" />
+      <wsdl:output name="asynchroniousMessageSentResponse" message="tns:asynchroniousMessageSentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="retryQuarantineMessage">
+      <wsdl:input name="retryQuarantineMessage" message="tns:retryQuarantineMessage" />
+      <wsdl:output name="retryQuarantineMessageResponse" message="tns:retryQuarantineMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="verifyMessage">
+      <wsdl:input name="verifyMessage" message="tns:verifyMessage" />
+      <wsdl:output name="verifyMessageResponse" message="tns:verifyMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineCounts">
+      <wsdl:input name="getQuarantineCounts" message="tns:getQuarantineCounts" />
+      <wsdl:output name="getQuarantineCountsResponse" message="tns:getQuarantineCountsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineMessage">
+      <wsdl:input name="getQuarantineMessage" message="tns:getQuarantineMessage" />
+      <wsdl:output name="getQuarantineMessageResponse" message="tns:getQuarantineMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <wsdl:input name="deleteAccount" message="tns:deleteAccount" />
+      <wsdl:output name="deleteAccountResponse" message="tns:deleteAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="editAccount">
+      <wsdl:input name="editAccount" message="tns:editAccount" />
+      <wsdl:output name="editAccountResponse" message="tns:editAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <wsdl:input name="createAccount" message="tns:createAccount" />
+      <wsdl:output name="createAccountResponse" message="tns:createAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="markAsFetchQuarantineMessage">
+      <wsdl:input name="markAsFetchQuarantineMessage" message="tns:markAsFetchQuarantineMessage" />
+      <wsdl:output name="markAsFetchQuarantineMessageResponse" message="tns:markAsFetchQuarantineMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registerNotificationCallback">
+      <wsdl:input name="registerNotificationCallback" message="tns:registerNotificationCallback" />
+      <wsdl:output name="registerNotificationCallbackResponse" message="tns:registerNotificationCallbackResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelSentMessage">
+      <wsdl:input name="cancelSentMessage" message="tns:cancelSentMessage" />
+      <wsdl:output name="cancelSentMessageResponse" message="tns:cancelSentMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllStates">
+      <wsdl:input name="getAllStates" message="tns:getAllStates" />
+      <wsdl:output name="getAllStatesResponse" message="tns:getAllStatesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage">
+      <wsdl:input name="receiveMessage" message="tns:receiveMessage" />
+      <wsdl:output name="receiveMessageResponse" message="tns:receiveMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchReceiver">
+      <wsdl:input name="searchReceiver" message="tns:searchReceiver" />
+      <wsdl:output name="searchReceiverResponse" message="tns:searchReceiverResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="commitSentMessage">
+      <wsdl:input name="commitSentMessage" message="tns:commitSentMessage" />
+      <wsdl:output name="commitSentMessageResponse" message="tns:commitSentMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deregisterNotificationCallback">
+      <wsdl:input name="deregisterNotificationCallback" message="tns:deregisterNotificationCallback" />
+      <wsdl:output name="deregisterNotificationCallbackResponse" message="tns:deregisterNotificationCallbackResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAccounts">
+      <wsdl:input name="getAllAccounts" message="tns:getAllAccounts" />
+      <wsdl:output name="getAllAccountsResponse" message="tns:getAllAccountsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSynchroniousMessage">
+      <wsdl:input name="sendSynchroniousMessage" message="tns:sendSynchroniousMessage" />
+      <wsdl:output name="sendSynchroniousMessageResponse" message="tns:sendSynchroniousMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <wsdl:input name="getVersion" message="tns:getVersion" />
+      <wsdl:output name="getVersionResponse" message="tns:getVersionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="loadMessageReport">
+      <wsdl:input name="loadMessageReport" message="tns:loadMessageReport" />
+      <wsdl:output name="loadMessageReportResponse" message="tns:loadMessageReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="commitReceivedMessage">
+      <wsdl:input name="commitReceivedMessage" message="tns:commitReceivedMessage" />
+      <wsdl:output name="commitReceivedMessageResponse" message="tns:commitReceivedMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getUncommittedMessageIDs">
+      <wsdl:input name="getUncommittedMessageIDs" message="tns:getUncommittedMessageIDs" />
+      <wsdl:output name="getUncommittedMessageIDsResponse" message="tns:getUncommittedMessageIDsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineOverview">
+      <wsdl:input name="getQuarantineOverview" message="tns:getQuarantineOverview" />
+      <wsdl:output name="getQuarantineOverviewResponse" message="tns:getQuarantineOverviewResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendAsynchroniousMessage">
+      <wsdl:input name="sendAsynchroniousMessage" message="tns:sendAsynchroniousMessage" />
+      <wsdl:output name="sendAsynchroniousMessageResponse" message="tns:sendAsynchroniousMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteQuarantineMessage">
+      <wsdl:input name="deleteQuarantineMessage" message="tns:deleteQuarantineMessage" />
+      <wsdl:output name="deleteQuarantineMessageResponse" message="tns:deleteQuarantineMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getState">
+      <wsdl:input name="getState" message="tns:getState" />
+      <wsdl:output name="getStateResponse" message="tns:getStateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EgvpServiceSoapBinding" type="tns:EgvpPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="asynchroniousMessageSent">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:asynchroniousMessageSent" style="document" />
+      <wsdl:input name="asynchroniousMessageSent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="asynchroniousMessageSentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retryQuarantineMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:retryQuarantineMessage" style="document" />
+      <wsdl:input name="retryQuarantineMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="retryQuarantineMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:verifyMessage" style="document" />
+      <wsdl:input name="verifyMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="verifyMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineCounts">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getQuarantineCounts" style="document" />
+      <wsdl:input name="getQuarantineCounts">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getQuarantineCountsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getQuarantineMessage" style="document" />
+      <wsdl:input name="getQuarantineMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getQuarantineMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:deleteAccount" style="document" />
+      <wsdl:input name="deleteAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editAccount">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:editAccount" style="document" />
+      <wsdl:input name="editAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="editAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:createAccount" style="document" />
+      <wsdl:input name="createAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="markAsFetchQuarantineMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:markAsFetchQuarantineMessage" style="document" />
+      <wsdl:input name="markAsFetchQuarantineMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="markAsFetchQuarantineMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerNotificationCallback">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:registerNotificationCallback" style="document" />
+      <wsdl:input name="registerNotificationCallback">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerNotificationCallbackResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelSentMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:cancelSentMessage" style="document" />
+      <wsdl:input name="cancelSentMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelSentMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllStates">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getAllStates" style="document" />
+      <wsdl:input name="getAllStates">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllStatesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:receiveMessage" style="document" />
+      <wsdl:input name="receiveMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="receiveMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchReceiver">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:searchReceiver" style="document" />
+      <wsdl:input name="searchReceiver">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchReceiverResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commitSentMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:commitSentMessage" style="document" />
+      <wsdl:input name="commitSentMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="commitSentMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deregisterNotificationCallback">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:deregisterNotificationCallback" style="document" />
+      <wsdl:input name="deregisterNotificationCallback">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deregisterNotificationCallbackResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAccounts">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getAllAccounts" style="document" />
+      <wsdl:input name="getAllAccounts">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllAccountsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSynchroniousMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:sendSynchroniousMessage" style="document" />
+      <wsdl:input name="sendSynchroniousMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendSynchroniousMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getVersion" style="document" />
+      <wsdl:input name="getVersion">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getVersionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadMessageReport">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:loadMessageReport" style="document" />
+      <wsdl:input name="loadMessageReport">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="loadMessageReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commitReceivedMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:commitReceivedMessage" style="document" />
+      <wsdl:input name="commitReceivedMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="commitReceivedMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUncommittedMessageIDs">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getUncommittedMessageIDs" style="document" />
+      <wsdl:input name="getUncommittedMessageIDs">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getUncommittedMessageIDsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuarantineOverview">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getQuarantineOverview" style="document" />
+      <wsdl:input name="getQuarantineOverview">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getQuarantineOverviewResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendAsynchroniousMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:sendAsynchroniousMessage" style="document" />
+      <wsdl:input name="sendAsynchroniousMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendAsynchroniousMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteQuarantineMessage">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:deleteQuarantineMessage" style="document" />
+      <wsdl:input name="deleteQuarantineMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteQuarantineMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getState">
+      <soap:operation soapAction="urn:de:bos-bremen:egvp:ws:getState" style="document" />
+      <wsdl:input name="getState">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EgvpService">
+    <wsdl:port name="EgvpPort" binding="tns:EgvpServiceSoapBinding">
+      <soap:address location="http://127.0.0.1:8080/EGVP-WS/EGVP-WebService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

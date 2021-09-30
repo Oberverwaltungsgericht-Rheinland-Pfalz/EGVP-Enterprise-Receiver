@@ -1,0 +1,50 @@
+{
+  "common": [],
+  "postboxes": [
+    {
+      "Id": "DE.Justiz.233a8870-6319-4d4c-8f79-a3bb8fa8f328.51b7",
+      "Name": "OVG RLP Testpostfach",
+      "ExportPath": [
+        "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Import"
+      ],
+      "ExportPath_EEB": [
+        "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Import_eEB"
+      ],
+      "ArchivPath": [
+        "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Archiv\\[yyyy]_[MM]"
+      ],
+      "ReceiveDepartments": {
+        "LogLevelDepartmentNotFound": "Warning",
+        "XPathDepartmentId": "//xjustiz:nachrichtenkopf/xjustiz:auswahl_empfaenger/xjustiz:empfaenger.gericht/code",
+        "Departments": [
+          {
+            "Name": "Department D2700S",
+            "Id": "D2700S__",
+            "ExportPath": [
+              "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Import_D2700S"
+            ],
+            "ExportPath_EEB": [
+              "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Import_eEB_D2700S"
+            ],
+            "ArchivPath": [
+              "\\\\ovgvg\\labor\\VerwG\\VGKO\\ERV\\Archiv_D2700S\\[yyyy]_[MM]"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Id": "DE.Justiz.836d1e07-f830-4641-91ef-0a9c2d44b136.1c84",
+      "Name": "OVG RLP Testpostfach 2",
+      "ExportPath": [
+        "\\\\ovgvg\\labor\\VerwG\\OVGRLP\\ERV\\Import"
+      ],
+      "ExportPath_EEB": [
+        "\\\\ovgvg\\labor\\VerwG\\OVGRLP\\ERV\\Import_eEB"
+      ],
+      "ArchivPath": [
+        "\\\\ovgvg\\labor\\VerwG\\OVGRLP\\ERV\\Archiv\\[yyyy]_[MM]"
+      ]
+    }
+  ]
+}
