@@ -1,6 +1,8 @@
 <img src="icon.png" align="right" />
 
 # EGVP-Enterprise-Receiver
+![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)![License:EUPL-1.2](https://img.shields.io/badge/license-EUPL--1.2-blue)
+
 Bei diesem Projekt handelt es sich um eine .NET Kommandozeilen Anwendung, mit welcher es möglich ist, Nachrichten von dem Egvp-Enterprise Webservice  (von der Firma Governikus) abzuholen und in das Dateisystem zu exportieren.
 
 ## Installation
