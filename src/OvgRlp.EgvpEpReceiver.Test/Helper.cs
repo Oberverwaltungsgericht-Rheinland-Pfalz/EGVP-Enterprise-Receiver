@@ -12,10 +12,8 @@ namespace OvgRlp.EgvpEpReceiver.Test
   {
     public static string GetTestingPath()
     {
-      var codeBaseUrl = new Uri(System.Reflection.Assembly.GetExecutingAssembly().Location);
-      var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
-      var dirPath = Path.GetDirectoryName(codeBasePath);
-      string relPath = Path.Combine(dirPath, @"..\..\..\..\..\..\testing\");
+      var dirPath = getExecutionDirectory();
+      string relPath = Path.Combine(dirPath, @"..\..\..\..\..\testing\");
       return Path.GetFullPath(relPath);
     }
 
@@ -26,9 +24,7 @@ namespace OvgRlp.EgvpEpReceiver.Test
 
     public static string GetResourcesPath()
     {
-      var codeBaseUrl = new Uri(System.Reflection.Assembly.GetExecutingAssembly().Location);
-      var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
-      var dirPath = Path.GetDirectoryName(codeBasePath);
+      var dirPath = getExecutionDirectory();
       string relPath = Path.Combine(dirPath, @"..\..\..\Resources\");
       return Path.GetFullPath(relPath);
     }
@@ -47,6 +43,20 @@ namespace OvgRlp.EgvpEpReceiver.Test
       }
 
       return orig;
+    }
+
+    private static string getExecutionDirectory()
+    {
+      string dir = "";
+      //.NET CORE Projekt:
+      /*
+      var codeBaseUrl = new Uri(System.Reflection.Assembly.GetExecutingAssembly().Location);
+      var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
+      dir = Path.GetDirectoryName(codeBasePath);
+      */
+      //in .NET Framework Projekten:
+      dir = System.AppDomain.CurrentDomain.BaseDirectory;
+      return dir;
     }
   }
 }
