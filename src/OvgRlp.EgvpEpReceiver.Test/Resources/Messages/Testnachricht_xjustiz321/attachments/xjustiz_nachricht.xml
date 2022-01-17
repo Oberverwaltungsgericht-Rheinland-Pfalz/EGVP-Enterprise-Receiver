@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tns:nachricht.gds.uebermittlungSchriftgutobjekte.0005005 xmlns:tns="http://www.xjustiz.de" xmlns:ns3="http://www.w3.org/2001/XMLSchema-instance" ns3:schemaLocation="http://www.xjustiz.de xjustiz_0005_nachrichten_3_0.xsd">
+    <tns:nachrichtenkopf xjustizVersion="3.2.1">
+        <tns:aktenzeichen.absender>Ohne</tns:aktenzeichen.absender>
+        <tns:erstellungszeitpunkt>2021-12-08T11:03:52.313+01:00</tns:erstellungszeitpunkt>
+        <tns:auswahl_absender>
+            <tns:absender.sonstige>DE.Justiz.5d5d58af-adff-55b7-875c-6548acd55b74.2222</tns:absender.sonstige>
+        </tns:auswahl_absender>
+        <tns:auswahl_empfaenger>
+            <tns:empfaenger.sonstige>DE.Justiz.568b4987-2701-4c8d-8a56-abb554fad842.1111</tns:empfaenger.sonstige>
+        </tns:auswahl_empfaenger>
+        <tns:eigeneNachrichtenID>62f956dd-af24-4ab3-a6ae-fbe28244b380</tns:eigeneNachrichtenID>
+    </tns:nachrichtenkopf>
+    <tns:grunddaten>
+        <tns:verfahrensdaten>
+            <tns:instanzdaten>
+                <tns:instanznummer>1</tns:instanznummer>
+                <tns:sachgebiet listURI="urn:xoev-de:xjustiz:codeliste:gds.sachgebiet" listVersionID="2.1">
+                    <code>039</code>
+                </tns:sachgebiet>
+                <tns:auswahl_instanzbehoerde>
+                    <tns:gericht listURI="urn:xoev-de:xjustiz:codeliste:gds.gerichte" listVersionID="">
+                        <code>9A0000</code>
+                    </tns:gericht>
+                </tns:auswahl_instanzbehoerde>
+                <tns:aktenzeichen>
+                    <tns:auswahl_aktenzeichen>
+                        <tns:aktenzeichen.freitext>unbekannt</tns:aktenzeichen.freitext>
+                    </tns:auswahl_aktenzeichen>
+                </tns:aktenzeichen>
+                <tns:verfahrensgegenstand>
+                    <tns:gegenstand>Funktionsabfrage</tns:gegenstand>
+                </tns:verfahrensgegenstand>
+            </tns:instanzdaten>
+        </tns:verfahrensdaten>
+    </tns:grunddaten>
+    <tns:schriftgutobjekte>
+        <tns:dokument>
+            <tns:identifikation>
+                <tns:id>b2043c91-024e-4179-afe7-b060ad67a2f8</tns:id>
+                <tns:nummerImUebergeordnetenContainer>0</tns:nummerImUebergeordnetenContainer>
+            </tns:identifikation>
+            <tns:xjustiz.fachspezifischeDaten>
+                <tns:dokumentklasse listURI="urn:xoev-de:xjustiz:codeliste:gds.dokumentklasse" listVersionID="">
+                    <code>001</code>
+                </tns:dokumentklasse>
+                <tns:anzeigename>001_Ermittlungsübersicht_Abverfügung.pdf</tns:anzeigename>
+                <tns:akteneinsicht>true</tns:akteneinsicht>
+                <tns:datei>
+                    <tns:dateiname>001_Ermittlungsübersicht_Abverfügung.pdf</tns:dateiname>
+                    <tns:bestandteil listURI="urn:xoev-de:xjustiz:codeliste:gds.bestandteiltyp" listVersionID="2.2">
+                        <code>001</code>
+                    </tns:bestandteil>
+                </tns:datei>
+                <tns:ruecksendungEEB.erforderlich>false</tns:ruecksendungEEB.erforderlich>
+            </tns:xjustiz.fachspezifischeDaten>
+        </tns:dokument>
+        <tns:dokument>
+            <tns:identifikation>
+                <tns:id>8319d06f-7b93-46a8-a7e0-409d53e417d2</tns:id>
+                <tns:nummerImUebergeordnetenContainer>0</tns:nummerImUebergeordnetenContainer>
+            </tns:identifikation>
+            <tns:xjustiz.fachspezifischeDaten>
+                <tns:dokumentklasse listURI="urn:xoev-de:xjustiz:codeliste:gds.dokumentklasse" listVersionID="">
+                    <code>001</code>
+                </tns:dokumentklasse>
+                <tns:anzeigename>003_Sachverhalt.pdf</tns:anzeigename>
+                <tns:akteneinsicht>true</tns:akteneinsicht>
+                <tns:datei>
+                    <tns:dateiname>003_Sachverhalt.pdf</tns:dateiname>
+                    <tns:bestandteil listURI="urn:xoev-de:xjustiz:codeliste:gds.bestandteiltyp" listVersionID="2.2">
+                        <code>001</code>
+                    </tns:bestandteil>
+                </tns:datei>
+                <tns:ruecksendungEEB.erforderlich>false</tns:ruecksendungEEB.erforderlich>
+            </tns:xjustiz.fachspezifischeDaten>
+        </tns:dokument>
+        <tns:dokument>
+            <tns:identifikation>
+                <tns:id>c249b7c5-bf46-4058-92b4-c6a779b0401f</tns:id>
+                <tns:nummerImUebergeordnetenContainer>0</tns:nummerImUebergeordnetenContainer>
+            </tns:identifikation>
+            <tns:xjustiz.fachspezifischeDaten>
+                <tns:dokumentklasse listURI="urn:xoev-de:xjustiz:codeliste:gds.dokumentklasse" listVersionID="">
+                    <code>001</code>
+                </tns:dokumentklasse>
+                <tns:anzeigename>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung.pdf</tns:anzeigename>
+                <tns:akteneinsicht>true</tns:akteneinsicht>
+                <tns:datei>
+                    <tns:dateiname>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung.pdf</tns:dateiname>
+                    <tns:bestandteil listURI="urn:xoev-de:xjustiz:codeliste:gds.bestandteiltyp" listVersionID="2.2">
+                        <code>001</code>
+                    </tns:bestandteil>
+                </tns:datei>
+                <tns:ruecksendungEEB.erforderlich>false</tns:ruecksendungEEB.erforderlich>
+            </tns:xjustiz.fachspezifischeDaten>
+        </tns:dokument>
+    </tns:schriftgutobjekte>
+</tns:nachricht.gds.uebermittlungSchriftgutobjekte.0005005>

@@ -25,4 +25,14 @@
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver\OvgRlp.EgvpEpReceiver.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\Configuration\Account_Settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Messages\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns10:VerificationReport xmlns:extEU="http://uri.peppol.eu/xkmsExt/v2#" xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion" xmlns:tsp="http://uri.etsi.org/02231/v2#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xkms="http://www.w3.org/2002/03/xkms#" xmlns:dss="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns7="http://www.w3.org/2000/09/xmldsig#" xmlns:ns8="http://www.w3.org/2001/04/xmlenc#" xmlns:ns10="urn:bos:vr:profile:v1.3:core" xmlns:ns11="urn:bos:vr:profile:v1.3:pades" xmlns:ns12="urn:bos:vr:profile:v1.3:cms" xmlns:ns13="urn:bos:vr:profile:v1.4:osci" creationTime="2021-12-08T11:12:54.365+01:00">
+    <DocumentList>
+        <Document id="doc_0556158117">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung_Revision2.pdf</Name>
+            <DocumentChildren>doc_0043109185</DocumentChildren>
+        </Document>
+        <Document id="doc_3956245325">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:message</Type>
+            <Name>oscicontentdata.osci</Name>
+            <Cumulated status="urn:bos:vr:profile:v1.3:core:status:valid">
+                <Message>urn:bos:vr:profile:v1.3:core:statusreason:overall:valid</Message>
+            </Cumulated>
+            <DocumentChildren>doc_3923064510 doc_0643395239</DocumentChildren>
+            <Other>
+                <ns13:OSCIMessageInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns13:OSCIMessageExtendedInfoType">
+                    <MessageID>govapp_1638957835003741065649003093795</MessageID>
+                    <MessageType>urn:bos:vr:profile:v1.4:osci:messagetype:responsetomediatedelivery</MessageType>
+                    <Subject>Testnachricht</Subject>
+                    <ReceptionOnServer>2021-12-08T11:03:55.000+01:00</ReceptionOnServer>
+                    <Addressee>cert_0739643525</Addressee>
+                    <Originator>cert_1076645700</Originator>
+                    <ProofOfOrigin>VHN_beBPo_valid</ProofOfOrigin>
+                </ns13:OSCIMessageInfo>
+            </Other>
+        </Document>
+        <Document id="doc_0341225494">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>herstellerinformation.xml</Name>
+        </Document>
+        <Document id="doc_3846168699">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>003_Sachverhalt_Revision2.pdf</Name>
+            <DocumentChildren>doc_1266276573</DocumentChildren>
+        </Document>
+        <Document id="doc_1266276573">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>003_Sachverhalt_Revision1.pdf</Name>
+        </Document>
+        <Document id="doc_1110223787">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung.pdf</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_3910539058">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>nachricht.xsl</Name>
+        </Document>
+        <Document id="doc_3923064510">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:contentcontainer</Type>
+            <Name>project_coco</Name>
+            <DocumentChildren>doc_3199534847 doc_3910539058 doc_0001780183 doc_0774858652 doc_0341225494 doc_1036412156 doc_1110223787 doc_3897212600 doc_4078130720</DocumentChildren>
+        </Document>
+        <Document id="doc_2149923406">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:document</Type>
+            <Name>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung.pdf</Name>
+            <DocumentChildren>doc_0556158117</DocumentChildren>
+            <Other>
+                <ns11:PAdESDocumentInfo>
+                    <IsDocumentEncrypted>false</IsDocumentEncrypted>
+                </ns11:PAdESDocumentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_3199534847">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>nachricht.xml</Name>
+        </Document>
+        <Document id="doc_4078130720">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>xjustiz_nachricht.xml</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_0001780183">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>visitenkarte.xml</Name>
+        </Document>
+        <Document id="doc_0043109185">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung_Revision1.pdf</Name>
+        </Document>
+        <Document id="doc_0774858652">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>visitenkarte.xsl</Name>
+        </Document>
+        <Document id="doc_0310989502">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:document</Type>
+            <Name>003_Sachverhalt.pdf</Name>
+            <DocumentChildren>doc_3846168699</DocumentChildren>
+            <Other>
+                <ns11:PAdESDocumentInfo>
+                    <IsDocumentEncrypted>false</IsDocumentEncrypted>
+                </ns11:PAdESDocumentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_3562904199">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:document</Type>
+            <Name>001_Ermittlungsübersicht_Abverfügung.pdf</Name>
+            <DocumentChildren>doc_4120462565</DocumentChildren>
+            <Other>
+                <ns11:PAdESDocumentInfo>
+                    <IsDocumentEncrypted>false</IsDocumentEncrypted>
+                </ns11:PAdESDocumentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_1036412156">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>001_Ermittlungsübersicht_Abverfügung.pdf</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_3897212600">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>003_Sachverhalt.pdf</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_1505818942">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>additional_infos</Name>
+        </Document>
+        <Document id="doc_4120462565">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>001_Ermittlungsübersicht_Abverfügung_Revision1.pdf</Name>
+        </Document>
+        <Document id="doc_0643395239">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:contentcontainer</Type>
+            <Name>govello_coco</Name>
+            <DocumentChildren>doc_1505818942</DocumentChildren>
+        </Document>
+    </DocumentList>
+    <CertificateList>
+        <Certificate id="cert_0739643525">
+            <CertificateContent>MIIFuTCCBKGgAwIBAgIGAW5+BV8FMA0GCSqGSIb3DQEBCwUAMIHTMTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTAeFw0xOTExMTgxMDE1MzBaFw0yMjExMTgxMDE4MzBaMIHTMTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANKkprW6DRiEBx9C/RDUbRyPBsp9tJeIhINh7TivTH0VkCfbIeUmpsKyrLv2Jrcs+v7+AxFZC5eb285FCaN2iXrayoIiGvu4tedSiONnLOD8jAm+A8AZVL2EDRQrG3i36Fb5sIyqeIgN7V5M16j0k49+kBO0HdMja3SrFmSYKDeAC1YSNRavmKInbN50bB9oXnqvjqRmeZrvhn8bSIFriMHVCMnGMpIsutnSduoHx1QEk3F8zmlcojAk9wU6A7VXVS5Ck1LjM/qXYdkEyO9qhiaG9Mr99Y95nAhk9pcl/WqwgwOLro4uS1mfiX/d6Lw5z/fU2kDbkxrSYdB0DAXPqBUCAwEAAaOCAY8wggGLMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgXgMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMBMIIBMwYDVR0OBIIBKgSCASYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSpKa1ug0YhAcfQv0Q1G0cjwbKfbSXiISDYe04r0x9FZAn2yHlJqbCsqy79ia3LPr+/gMRWQuXm9vORQmjdol62sqCIhr7uLXnUojjZyzg/IwJvgPAGVS9hA0UKxt4t+hW+bCMqniIDe1eTNeo9JOPfpATtB3TI2t0qxZkmCg3gAtWEjUWr5iiJ2zedGwfaF56r46kZnma74Z/G0iBa4jB1QjJxjKSLLrZ0nbqB8dUBJNxfM5pXKIwJPcFOgO1V1UuQpNS4zP6l2HZBMjvaoYmhvTK/fWPeZwIZPaXJf1qsIMDi66OLktZn4l/3ei8Oc/31NpA25Ma0mHQdAwFz6gVAgMBAAEwHwYDVR0jBBgwFoAUmcbaDAJ7usDxf9RbJ4hnmob0xNowDQYJKoZIhvcNAQELBQADggEBAIr2Rx8e+R28zpe0bBa6uNjYOBqJd8ySMRndmDKvThOoLUEGgiRd+ZtbS5clUoEaM2GoCwKW74XHkhPtBceCRCompfOx8LIuy6F5kPKlEw/9mXE7AOKxiOihr/Xx/DOFW8v86dnSR0m2RGmLCFRheS1e4slUynFEPaaAQyP2+Qk1TTluCwVTeufagUBMGIPzBOeG/Mllj8kOSYxoPiG8iqswY4kvaDShZg2/66SPeRANktrhBNVd4SXkGsRUh4BT+0hd9cdk5ZgKzKUyG61kFxv/uQB4GERQB/I0YJWCLJ6RRg1t5l9eJ8FS/GCm6tRbUPf6Xno8vzITzOtUOyTlj5c=</CertificateContent>
+            <CertificateDetails>
+                <SubjectDN>CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</SubjectDN>
+                <IssuerDN>CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</IssuerDN>
+                <SerialNumber>1574072311557</SerialNumber>
+                <ValidityPeriod notBefore="2019-11-18T11:15:30.000+01:00" notAfter="2022-11-18T11:18:30.000+01:00"/>
+                <IssuerSignatureAlgorithmIdentifier>
+                    <AlgorithmURI>http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</AlgorithmURI>
+                </IssuerSignatureAlgorithmIdentifier>
+            </CertificateDetails>
+        </Certificate>
+        <Certificate id="cert_1076645700">
+            <CertificateContent>MIIFJTCCBA2gAwIBAgIGAX0iwtE1MA0GCSqGSIb3DQEBCwUAMIGJMUIwQAYDVQQDDDlaWlogVGVzdHBvc3RmYWNoIFBvbGl6ZWlwcsOkc2lkaXVtIEtvYmxlbnogR2VmYWhyZW5hYndlaHIxGjAYBgNVBAoMEVBvbGl6ZWlwcsOkc2lkaXVtMRowGAYDVQQLDBFQb2xpemVpcHLDpHNpZGl1bTELMAkGA1UEBgwCREUwHhcNMjExMTE1MDgzOTEyWhcNMjQxMTE1MDg0MjEyWjCBiTFCMEAGA1UEAww5WlpaIFRlc3Rwb3N0ZmFjaCBQb2xpemVpcHLDpHNpZGl1bSBLb2JsZW56IEdlZmFocmVuYWJ3ZWhyMRowGAYDVQQKDBFQb2xpemVpcHLDpHNpZGl1bTEaMBgGA1UECwwRUG9saXplaXByw6RzaWRpdW0xCzAJBgNVBAYMAkRFMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuwXsuol0eRahXFbrd97Ofvg4Ej4gd/SS8feb6RGpO/nxlH+knvUAIEXPgeQbrGPoK9k/l57ou1V0rzgnaHj0vZtWooytDTYjX6+CNOTJJ/2IHD7FMYc+13qpUBcJnVVtWgrviG09X1zY4b6AGBclTbw43pNtxXH9/S/dQHrZUJRif1Oohfd1qyWnF04zRZE6CcsixARk/8GDjgFQgM3da0dEv9+RsLmsejftG/qxLb3Mm9gzKyFI9wtrCnUyZ6hreVDLzVE7hALWaJQRgN94hUrI9AqJfCVVgwYKVnZZrCPnhyHze8qJwQeqEiubI0nsq8kwuj6lpi3UC3NgFvz2NQIDAQABo4IBjzCCAYswDAYDVR0TAQH/BAIwADALBgNVHQ8EBAMCBeAwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwEwggEzBgNVHQ4EggEqBIIBJjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALsF7LqJdHkWoVxW63fezn74OBI+IHf0kvH3m+kRqTv58ZR/pJ71ACBFz4HkG6xj6CvZP5ee6LtVdK84J2h49L2bVqKMrQ02I1+vgjTkySf9iBw+xTGHPtd6qVAXCZ1VbVoK74htPV9c2OG+gBgXJU28ON6TbcVx/f0v3UB62VCUYn9TqIX3daslpxdOM0WROgnLIsQEZP/Bg44BUIDN3WtHRL/fkbC5rHo37Rv6sS29zJvYMyshSPcLawp1Mmeoa3lQy81RO4QC1miUEYDfeIVKyPQKiXwlVYMGClZ2Wawj54ch83vKicEHqhIrmyNJ7KvJMLo+paYt1AtzYBb89jUCAwEAATAfBgNVHSMEGDAWgBSZSesJ0rxhPAC1C+AyKEJLIYG3PDANBgkqhkiG9w0BAQsFAAOCAQEASm0kTxfp1rb9Ifhos49sSJ/Fq2S7l2gCFK9B3NYrYrzcZSCgKNiJm7Hcs3oyctWRZWdjqmuFRX99MZ2m2Dp5wgDMM5v0NJ5T3yyHvKdbyK6M4F8QaVQDoaajpZhhh0yhH/BkNWEcCeER3/kfkA+BE6ZMO8pkGz5ZcOtXNsLaeJn0PZudVXHlOVELYtV17s37Oimo4myBxMlYA/rzJulc774lOaDwivd0onb1k/sbpQiRyHXb7t/4I7wRkPQnMib1xvj/jU+4GwoFnGH9DKZe/XvxKHgD47vlo8iWh5OPXXb5HAPmbDUE3WxKGycGeDKYTJNy2cENVor+JWinmBHdzg==</CertificateContent>
+            <CertificateDetails>
+                <SubjectDN>CN=ZZZ Testpostfach Polizeipräsidium Koblenz Gefahrenabwehr,O=Polizeipräsidium,OU=Polizeipräsidium,C=DE</SubjectDN>
+                <IssuerDN>CN=ZZZ Testpostfach Polizeipräsidium Koblenz Gefahrenabwehr,O=Polizeipräsidium,OU=Polizeipräsidium,C=DE</IssuerDN>
+                <SerialNumber>1636965732661</SerialNumber>
+                <ValidityPeriod notBefore="2021-11-15T09:39:12.000+01:00" notAfter="2024-11-15T09:42:12.000+01:00"/>
+                <IssuerSignatureAlgorithmIdentifier>
+                    <AlgorithmURI>http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</AlgorithmURI>
+                </IssuerSignatureAlgorithmIdentifier>
+            </CertificateDetails>
+        </Certificate>
+    </CertificateList>
+</ns10:VerificationReport>
