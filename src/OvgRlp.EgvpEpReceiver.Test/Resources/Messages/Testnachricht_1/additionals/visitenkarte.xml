@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Visitenkarte>
+<Organisation>Oberverwaltungsgericht Rheinland-Pfalz</Organisation>
+<Organisationszusatz>Oberverwaltungsgericht Rheinland-Pfalz</Organisationszusatz>
+<Anrede>Juristische Person</Anrede>
+<Titel/>
+<Vorname>- nur für interne Tests -</Vorname>
+<Name>ZZ Testkonto RP OVG RLP</Name>
+<Strasse>Deinhardpassage</Strasse>
+<Hausnummer>1</Hausnummer>
+<Postleitzahl>56068</Postleitzahl>
+<Ort>Koblenz</Ort>
+<Bundesland>Rheinland-Pfalz</Bundesland>
+<Land>DE</Land>
+<E-Mail>support@ovg.jm.rlp.de</E-Mail>
+<Mobiltelefon/>
+<Telefon>0261-1307 40777</Telefon>
+<Fax/>
+<Nutzer_ID>DE.Justiz.233a8870-2319-4dbc-9f68-a4cc9da8f429.9999</Nutzer_ID>
+<Rollen_ID>egvp_justiz</Rollen_ID>
+<Externe_ID/>
+</Visitenkarte>

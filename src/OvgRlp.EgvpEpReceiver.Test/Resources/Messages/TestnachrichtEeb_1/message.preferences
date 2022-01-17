@@ -1,0 +1,13 @@
+#Fri Oct 29 10:35:01 CEST 2021
+id=govapp_1635495652029969999999999999999
+additionals_count=5
+xjustiz.vhn_xml=Sicherer \u00DCbermittlungsweg aus einem besonderen Beh\u00F6rdenpostfach.
+xjustiz.vhn_text=Sicherer \u00DCbermittlungsweg aus einem besonderen Beh\u00F6rdenpostfach.
+sender.userid=DE.Justiz.836cga01-ffff-2856-85ef-268df5e8b136.5555
+status=valid_gueltig
+table.originator=C\=de,OU\=Allgemeines Verwaltunsgpostfach,O\=Obere Landesbeh\u00F6rde,CN\=Pr\u00E4sident des Oberverwaltunsgerichts Rheinland-Pfalz
+osci.subject=Allgemeine Nachricht
+attachments_count=1
+table.date=1635495653000
+RequestSignatureMandatory.available=true
+table.subject=EB zu\: 1 K 519/20.KO

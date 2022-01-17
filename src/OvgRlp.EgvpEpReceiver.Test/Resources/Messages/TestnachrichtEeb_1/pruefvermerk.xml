@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Pruefvermerk xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pruefvermerk.xsd">
+    <Erstellungszeitpunkt>29.10.2021, 10:35:02</Erstellungszeitpunkt>
+    <Uebermittlungsweg>Sicherer Übermittlungsweg aus einem besonderen Behördenpostfach.</Uebermittlungsweg>
+    <Eingangszeitpunkt>29.10.2021, 10:20:53</Eingangszeitpunkt>
+    <Nachrichtenkennzeichen>govapp_1635495652029969999999999999999</Nachrichtenkennzeichen>
+    <AuthentifizierteAbsender>ja</AuthentifizierteAbsender>
+    <Nachricht>
+        <Nachrichtentyp>Allgemeine Nachricht</Nachrichtentyp>
+        <AbsenderAktenzeichen>
+    </AbsenderAktenzeichen>
+        <EmpfaengerAktenzeichen>1 K 519/20.KO</EmpfaengerAktenzeichen>
+        <Betreff>EB zu: 1 K 519/20.KO</Betreff>
+        <Freitext></Freitext>
+    </Nachricht>
+    <Absender>
+        <Anrede>Körperschaft</Anrede>
+        <Bundesland>Rheinland-Pfalz</Bundesland>
+        <E-Mail>poststelle@ovg.jm.rlp.de</E-Mail>
+        <Externe_ID></Externe_ID>
+        <Fax></Fax>
+        <Hausnummer>1</Hausnummer>
+        <Land>DE</Land>
+        <Mobiltelefon></Mobiltelefon>
+        <Name>Präsident des Oberverwaltungsgerichts Rheinland-Pfalz</Name>
+        <Nutzer_ID>DE.Justiz.836cga01-ffff-2856-85ef-268df5e8b136.5555</Nutzer_ID>
+        <Organisation>Obere Landesbehörde</Organisation>
+        <Organisationszusatz>Allgemeines Verwaltunsgpostfach</Organisationszusatz>
+        <Ort>Koblenz</Ort>
+        <Postleitzahl>56068</Postleitzahl>
+        <Rollen_ID>egvp_bebpo</Rollen_ID>
+        <Strasse>Deinhardpassage</Strasse>
+        <Telefon>0261 1307 0</Telefon>
+        <Titel></Titel>
+        <Vorname></Vorname>
+    </Absender>
+    <Empfaenger>
+        <Anrede>Juristische Person</Anrede>
+        <Bundesland>Rheinland-Pfalz</Bundesland>
+        <E-Mail>support@ovg.jm.rlp.de</E-Mail>
+        <Externe_ID></Externe_ID>
+        <Fax></Fax>
+        <Hausnummer>1</Hausnummer>
+        <Land>DE</Land>
+        <Mobiltelefon></Mobiltelefon>
+        <Name>ZZ Testkonto RP OVG RLP</Name>
+        <Nutzer_ID>DE.Justiz.233a8870-2319-4dbc-9f68-a4cc9da8f429.9999</Nutzer_ID>
+        <Organisation>Oberverwaltungsgericht Rheinland-Pfalz</Organisation>
+        <Organisationszusatz>Oberverwaltungsgericht Rheinland-Pfalz</Organisationszusatz>
+        <Ort>Koblenz</Ort>
+        <Postleitzahl>56068</Postleitzahl>
+        <Rollen_ID>egvp_justiz</Rollen_ID>
+        <Strasse>Deinhardpassage</Strasse>
+        <Telefon>0261-1307 40777</Telefon>
+        <Titel></Titel>
+        <Vorname>- nur für interne Tests -</Vorname>
+    </Empfaenger>
+    <Dokument>
+        <OriginalDateiName>xjustiz_nachricht.xml</OriginalDateiName>
+        <DateiName>xjustiz_nachricht.xml</DateiName>
+        <Format>xml</Format>
+        <Hinweis></Hinweis>
+        <FehlerMeldung></FehlerMeldung>
+    </Dokument>
+</Pruefvermerk>

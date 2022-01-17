@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns10:VerificationReport xmlns:extEU="http://uri.peppol.eu/xkmsExt/v2#" xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion" xmlns:tsp="http://uri.etsi.org/02231/v2#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xkms="http://www.w3.org/2002/03/xkms#" xmlns:dss="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns7="http://www.w3.org/2000/09/xmldsig#" xmlns:ns8="http://www.w3.org/2001/04/xmlenc#" xmlns:ns10="urn:bos:vr:profile:v1.3:core" xmlns:ns11="urn:bos:vr:profile:v1.3:pades" xmlns:ns12="urn:bos:vr:profile:v1.3:cms" xmlns:ns13="urn:bos:vr:profile:v1.4:osci" creationTime="2021-09-27T14:22:20.785+02:00">
+    <DocumentList>
+        <Document id="doc_3707707390">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:message</Type>
+            <Name>oscicontentdata.osci</Name>
+            <Cumulated status="urn:bos:vr:profile:v1.3:core:status:valid">
+                <Message>urn:bos:vr:profile:v1.3:core:statusreason:overall:valid</Message>
+            </Cumulated>
+            <DocumentChildren>doc_2785284786 doc_3573110230</DocumentChildren>
+            <Other>
+                <ns13:OSCIMessageInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns13:OSCIMessageExtendedInfoType">
+                    <MessageID>govapp_16327447360399999999999999995325</MessageID>
+                    <MessageType>urn:bos:vr:profile:v1.4:osci:messagetype:responsetomediatedelivery</MessageType>
+                    <Subject>Allgemeine Nachricht</Subject>
+                    <ReceptionOnServer>2021-09-27T14:12:16.000+02:00</ReceptionOnServer>
+                    <Addressee>cert_3210275612</Addressee>
+                    <Originator>cert_0739643525</Originator>
+                    <ProofOfOrigin>VHN_Justiz_valid</ProofOfOrigin>
+                </ns13:OSCIMessageInfo>
+            </Other>
+        </Document>
+        <Document id="doc_3697934174">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>visitenkarte.xml</Name>
+        </Document>
+        <Document id="doc_0559186593">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>xjustiz_nachricht.xml</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_2785284786">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:contentcontainer</Type>
+            <Name>project_coco</Name>
+            <DocumentChildren>doc_3697934174 doc_4146706722 doc_2318309570 doc_0322833626 doc_0559186593</DocumentChildren>
+        </Document>
+        <Document id="doc_0322833626">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:attachment</Type>
+            <Name>99 - Klage.pdf</Name>
+            <Other>
+                <ns13:OSCIAttachmentInfo>
+                    <MimeType>application/octet-stream</MimeType>
+                </ns13:OSCIAttachmentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_1084435445">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:document</Type>
+            <Name>99 - Klage.pdf</Name>
+            <DocumentChildren>doc_0515841705</DocumentChildren>
+            <Other>
+                <ns11:PAdESDocumentInfo>
+                    <IsDocumentEncrypted>false</IsDocumentEncrypted>
+                </ns11:PAdESDocumentInfo>
+            </Other>
+        </Document>
+        <Document id="doc_0515841705">
+            <Type>urn:bos:vr:profile:v1.3:pades:documenttype:revision</Type>
+            <Name>99 - Klage_Revision1.pdf</Name>
+        </Document>
+        <Document id="doc_4146706722">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>visitenkarte.xsl</Name>
+        </Document>
+        <Document id="doc_3573110230">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:contentcontainer</Type>
+            <Name>govello_coco</Name>
+            <DocumentChildren>doc_3195282044</DocumentChildren>
+        </Document>
+        <Document id="doc_2318309570">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>herstellerinformation.xml</Name>
+        </Document>
+        <Document id="doc_3195282044">
+            <Type>urn:bos:vr:profile:v1.4:osci:documenttype:data</Type>
+            <Name>additional_infos</Name>
+        </Document>
+    </DocumentList>
+    <CertificateList>
+        <Certificate id="cert_0739643525">
+            <CertificateContent>MIIFuTCCBKGgAwIBAgIGAW5+BV8FMA0GCSqGSIb3DQEBCwUAMIHTMTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTAeFw0xOTExMTgxMDE1MzBaFw0yMjExMTgxMDE4MzBaMIHTMTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANKkprW6DRiEBx9C/RDUbRyPBsp9tJeIhINh7TivTH0VkCfbIeUmpsKyrLv2Jrcs+v7+AxFZC5eb285FCaN2iXrayoIiGvu4tedSiONnLOD8jAm+A8AZVL2EDRQrG3i36Fb5sIyqeIgN7V5M16j0k49+kBO0HdMja3SrFmSYKDeAC1YSNRavmKInbN50bB9oXnqvjqRmeZrvhn8bSIFriMHVCMnGMpIsutnSduoHx1QEk3F8zmlcojAk9wU6A7VXVS5Ck1LjM/qXYdkEyO9qhiaG9Mr99Y95nAhk9pcl/WqwgwOLro4uS1mfiX/d6Lw5z/fU2kDbkxrSYdB0DAXPqBUCAwEAAaOCAY8wggGLMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgXgMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMBMIIBMwYDVR0OBIIBKgSCASYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSpKa1ug0YhAcfQv0Q1G0cjwbKfbSXiISDYe04r0x9FZAn2yHlJqbCsqy79ia3LPr+/gMRWQuXm9vORQmjdol62sqCIhr7uLXnUojjZyzg/IwJvgPAGVS9hA0UKxt4t+hW+bCMqniIDe1eTNeo9JOPfpATtB3TI2t0qxZkmCg3gAtWEjUWr5iiJ2zedGwfaF56r46kZnma74Z/G0iBa4jB1QjJxjKSLLrZ0nbqB8dUBJNxfM5pXKIwJPcFOgO1V1UuQpNS4zP6l2HZBMjvaoYmhvTK/fWPeZwIZPaXJf1qsIMDi66OLktZn4l/3ei8Oc/31NpA25Ma0mHQdAwFz6gVAgMBAAEwHwYDVR0jBBgwFoAUmcbaDAJ7usDxf9RbJ4hnmob0xNowDQYJKoZIhvcNAQELBQADggEBAIr2Rx8e+R28zpe0bBa6uNjYOBqJd8ySMRndmDKvThOoLUEGgiRd+ZtbS5clUoEaM2GoCwKW74XHkhPtBceCRCompfOx8LIuy6F5kPKlEw/9mXE7AOKxiOihr/Xx/DOFW8v86dnSR0m2RGmLCFRheS1e4slUynFEPaaAQyP2+Qk1TTluCwVTeufagUBMGIPzBOeG/Mllj8kOSYxoPiG8iqswY4kvaDShZg2/66SPeRANktrhBNVd4SXkGsRUh4BT+0hd9cdk5ZgKzKUyG61kFxv/uQB4GERQB/I0YJWCLJ6RRg1t5l9eJ8FS/GCm6tRbUPf6Xno8vzITzOtUOyTlj5c=</CertificateContent>
+            <CertificateDetails>
+                <SubjectDN>CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</SubjectDN>
+                <IssuerDN>CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</IssuerDN>
+                <SerialNumber>1574072311557</SerialNumber>
+                <ValidityPeriod notBefore="2019-11-18T11:15:30.000+01:00" notAfter="2022-11-18T11:18:30.000+01:00"/>
+                <IssuerSignatureAlgorithmIdentifier>
+                    <AlgorithmURI>http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</AlgorithmURI>
+                </IssuerSignatureAlgorithmIdentifier>
+            </CertificateDetails>
+        </Certificate>
+        <Certificate id="cert_3210275612">
+            <CertificateContent>MIIFhTCCBG2gAwIBAgIGAXErr3yqMA0GCSqGSIb3DQEBCwUAMIG5MSIwIAYDVQQDDBlaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCAyMS8wLQYDVQQKDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejEvMC0GA1UECwwmT2JlcnZlcndhbHR1bmdzZ2VyaWNodCBSaGVpbmxhbmQtUGZhbHoxCzAJBgNVBAYTAkRFMSQwIgYJKoZIhvcNAQkBFhVzdXBwb3J0QG92Zy5qbS5ybHAuZGUwHhcNMjAwMzMwMTM0MTEyWhcNMjMwMzMwMTM0NDEyWjCBuTEiMCAGA1UEAwwZWlogVGVzdGtvbnRvIFJQIE9WRyBSTFAgMjEvMC0GA1UECgwmT2JlcnZlcndhbHR1bmdzZ2VyaWNodCBSaGVpbmxhbmQtUGZhbHoxLzAtBgNVBAsMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MQswCQYDVQQGEwJERTEkMCIGCSqGSIb3DQEJARYVc3VwcG9ydEBvdmcuam0ucmxwLmRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7lfV+xQyRQFlON5RAqGR7lTZ50J2RJVMQEAvjLlFi6RDTAMC3wQT39kqm+8S8ZQBP30TLnVdgkhPNW/h4cHFQdOA0YVWKclWObgyESu+Vkm/c6rTCxgFHXU/nxwtm0sDjlk7MwVH6S9EnVkrXamVZ9wKSblRaqZctRpdQAv+zoRdb9n1Y45LsuTCgUOjCLW58nAB8A9ZR5Nv00Zem225TepC1D2W8SJopQ6/dVSQEoCwsHl7SOUujLXketvqSdTeLrg9aFEKdgWw2K+Ed3Kz1/72/t3XEjUsmDg/7IjXAbFaLtcLBb3kGl6bmcGZTzsAyXjURX4PEQpYczkx5cjIswIDAQABo4IBjzCCAYswDAYDVR0TAQH/BAIwADALBgNVHQ8EBAMCBeAwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwEwggEzBgNVHQ4EggEqBIIBJjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAO5X1fsUMkUBZTjeUQKhke5U2edCdkSVTEBAL4y5RYukQ0wDAt8EE9/ZKpvvEvGUAT99Ey51XYJITzVv4eHBxUHTgNGFVinJVjm4MhErvlZJv3Oq0wsYBR11P58cLZtLA45ZOzMFR+kvRJ1ZK12plWfcCkm5UWqmXLUaXUAL/s6EXW/Z9WOOS7LkwoFDowi1ufJwAfAPWUeTb9NGXpttuU3qQtQ9lvEiaKUOv3VUkBKAsLB5e0jlLoy15Hrb6knU3i64PWhRCnYFsNivhHdys9f+9v7d1xI1LJg4P+yI1wGxWi7XCwW95Bpem5nBmU87AMl41EV+DxEKWHM5MeXIyLMCAwEAATAfBgNVHSMEGDAWgBQdwvsgks1sRLvX/CrcFjLUEE2D/jANBgkqhkiG9w0BAQsFAAOCAQEAOlO5PWjrIozvVZoqqutAkp0R2Mndvw2tuQkMeqF0Pnwc0w2zPNlrHVpKvZpUJEb6tmI6tAue+VfTJ1vTWGUUXCNKML5ZJPQ3QhVfQH/VpCs3/lDTqGa1RuORF0dB8ZRXPkqwsLwRzYJlnxlitgXaYlX4i0yGRM0h9obNTtddVsNuIGdbeDkS1h8ngsTxRqXEJqf36acAbcKpSUNBQgvwaaE55rFgY4fRAajavnKp+AuKHb+g36pjIIb44bBVVFUMd4TmIQZFDqW5lU26676RbqVnt4IaE+2izCNFJgWX153Lb6zgQoT3lNQBRq+XZX5XmpMsYTIxq+TWm7EbXKtPeQ==</CertificateContent>
+            <CertificateDetails>
+                <SubjectDN>CN=ZZ Testkonto RP OVG RLP 2,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</SubjectDN>
+                <IssuerDN>CN=ZZ Testkonto RP OVG RLP 2,O=Oberverwaltungsgericht Rheinland-Pfalz,OU=Oberverwaltungsgericht Rheinland-Pfalz,C=DE,E=support@ovg.jm.rlp.de</IssuerDN>
+                <SerialNumber>1585575853226</SerialNumber>
+                <ValidityPeriod notBefore="2020-03-30T15:41:12.000+02:00" notAfter="2023-03-30T15:44:12.000+02:00"/>
+                <IssuerSignatureAlgorithmIdentifier>
+                    <AlgorithmURI>http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</AlgorithmURI>
+                </IssuerSignatureAlgorithmIdentifier>
+            </CertificateDetails>
+        </Certificate>
+    </CertificateList>
+</ns10:VerificationReport>
