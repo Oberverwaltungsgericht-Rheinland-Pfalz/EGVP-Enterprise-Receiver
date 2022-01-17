@@ -32,5 +32,21 @@ namespace OvgRlp.EgvpEpReceiver.Test
       string relPath = Path.Combine(dirPath, @"..\..\..\Resources\");
       return Path.GetFullPath(relPath);
     }
+
+    public static byte[] GetMessageAsZip(string messageName)
+    {
+      byte[] orig = null;
+      string filePath = Path.Combine(GetResourcesPath(), "Messages", messageName);
+
+      if (File.GetAttributes(filePath).HasFlag(FileAttributes.Directory))
+      {
+        string tmpFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".zip");
+        ZipFile.CreateFromDirectory(filePath, tmpFile, CompressionLevel.Fastest, false);
+        orig = File.ReadAllBytes(tmpFile);
+        File.Delete(tmpFile);
+      }
+
+      return orig;
+    }
   }
 }
