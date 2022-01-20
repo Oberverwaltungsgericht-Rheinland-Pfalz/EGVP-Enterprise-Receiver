@@ -137,6 +137,7 @@
     <Compile Include="ConfigurationService.cs" />
     <Compile Include="DepartmentsService.cs" />
     <Compile Include="LoggingHelper.cs" />
+    <Compile Include="MsgSrcEgvpEpWebservice.cs" />
     <Compile Include="PostboxServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolService.cs" />
