@@ -1,4 +1,5 @@
 ﻿using OvgRlp.Core.Types;
+using OvgRlp.EgvpEpReceiver.Infrastructure.Contracts;
 using OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
@@ -12,8 +13,8 @@ namespace OvgRlp.EgvpEpReceiver.Services
 {
   public class ReceiveMessageService
   {
-    private static EgvpPortTypeClient EgvpClient = new EgvpPortTypeClient();
     protected EgvpPostbox _egvpPostbox { get; set; }
+    protected IMessageSource _messageSource;
     protected string _waitingHoursAfterError;
     protected string _tempDir;
     protected string _lockFile;
@@ -24,31 +25,29 @@ namespace OvgRlp.EgvpEpReceiver.Services
       _waitingHoursAfterError = waitingHoursAfterError;
       _tempDir = tempDir;
       _lockFile = lockFile;
+      _messageSource = new MsgSrcEgvpEpWebservice();  // TODO: DI ermöglichen
     }
 
     public void ReceiveMessages()
     {
-      var requ = new getUncommittedMessageIDsRequest();
-      var resp = new getUncommittedMessageIDsResponse();
+      List<MessageIdent> msgIds;
 
       if (null == this._egvpPostbox)
         throw new ArgumentNullException("EgvpPostbox");
 
-      requ.userID = this._egvpPostbox.Id;
-      resp = EgvpClient.getUncommittedMessageIDs(requ);
-      if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
-        throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", this._egvpPostbox.Name, resp.returnCode.ToString()));
+      // Check new Messages
+      msgIds = _messageSource.getNewMessages(this._egvpPostbox.Id, this._egvpPostbox.Name);
 
-      if (null != resp.uncommittedMessages)
+      if (null != msgIds && msgIds.Count > 0)
       {
         try
         {
           CreateLockFile();
-          foreach (var msg in resp.uncommittedMessages)
+          foreach (var msg in msgIds)
           {
-            if (ProtocolService.CheckDBMessageErrorFlag(msg.messageID, _waitingHoursAfterError))
+            if (ProtocolService.CheckDBMessageErrorFlag(msg.MessageId, _waitingHoursAfterError))
               continue;
-            ReceiveMessage(msg.messageID);
+            ReceiveMessage(msg.MessageId);
           }
           DeleteLockFile();
         }
@@ -65,29 +64,27 @@ namespace OvgRlp.EgvpEpReceiver.Services
       string logKontext = messageId;
       LogEntry logEntry = new LogEntry(String.Format("MessageId: {0}", messageId), LogEventLevel.Information);
       var logMetadata = new LogMetadata();
-      var requ = new receiveMessageRequest();
-      var resp = new receiveMessageResponse();
-      var protService = new ProtocolService(EgvpClient);
+      var protService = new ProtocolService(MsgSrcEgvpEpWebservice.EgvpClient);   // TODO: Refactor
 
-      requ.messageID = messageId;
-      requ.userID = this._egvpPostbox.Id;
-      protService.CreateLogMetadata("", ref logMetadata, messageId, this._egvpPostbox);
+      var msgIdent = new MessageIdent { MessageId = messageId, ReceiverId = this._egvpPostbox.Id };
+      protService.CreateLogMetadata("", ref logMetadata, msgIdent.MessageId, this._egvpPostbox);
 
       try
       {
+        // create LockFile (optional)
         if (createLockFile)
           CreateLockFile();
-        resp = EgvpClient.receiveMessage(requ);
-        if (resp.returnCode != ReceiveReturnCodeType.OK)
-          throw new Exception(string.Format("Fehler bei receiveMessage - ID {0}: {1}", messageId, resp.returnCode.ToString()));
 
-        if (null == resp || null == resp.messageZIP)
-          throw new Exception("Fehler bei receiveMessage - resp.messageZIP ist null");
+        // Receive Message
+        Message message = _messageSource.ReceiveMessage(msgIdent);
+        if (null == message || null == message.MessageData)
+          throw new Exception("Fehler bei receiveMessage - MessageData ist null");
 
+        // create Log
         try
         {
           logEntry.AddSubEntry("Aufbau Metadaten für das Logging", LogEventLevel.Information);
-          protService.CreateLogMetadata(resp, ref logMetadata, messageId, this._egvpPostbox);
+          protService.CreateLogMetadata(message, ref logMetadata, messageId, this._egvpPostbox);
         }
         catch (Exception ex)
         {
@@ -95,25 +92,29 @@ namespace OvgRlp.EgvpEpReceiver.Services
           LoggingHelper.AddInnerExceptionToLogEntry(logEntry, ex, LogEventLevel.Warning);
         }
 
+        // extract Files
         try
         {
           logEntry.AddSubEntry("Start Verarbeitung", LogEventLevel.Information);
-          ExtractFiles(resp, logEntry);
+          ExtractFiles(message, logEntry);
         }
         catch (Exception ex)
         { throw new Exception("Fehler bei ExtractFiles aufgetreten", ex); }
 
+        // commit Message
         try
         {
           logEntry.AddSubEntry("Nachricht als empfangen markieren", LogEventLevel.Information);
-          CommitMessage(messageId, logEntry);
+          CommitMessage(message, logEntry);
         }
         catch (Exception ex)
         { throw new Exception("Fehler bei CommitMessage aufgetreten", ex); }
 
+        // create Finished Log
         logEntry.AddSubEntry("Nachricht wurde erfolgreich verarbeitet!", LogEventLevel.Information);
         Logger.Log(logEntry, logKontext, logMetadata);
 
+        // delete LockFile  (optional)
         if (createLockFile)
           DeleteLockFile();
       }
@@ -134,7 +135,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       var resp = new getStateResponse();
       requ.customOrMessageID = messageID;
       requ.userID = this._egvpPostbox.Id;
-      resp = EgvpClient.getState(requ);
+      resp = MsgSrcEgvpEpWebservice.EgvpClient.getState(requ);   // TODO: Refactor
       if (resp.returnCode != GetStateReturnCodeType.OK)
         throw new Exception(resp.returnCode.ToString());
       return resp;
@@ -144,47 +145,45 @@ namespace OvgRlp.EgvpEpReceiver.Services
     public static void CommmitAllUncommittedMessages(string PostboxId, bool write = false)
     {
       bool readOnly = !write;
+
       try
       {
-        var requ = new getUncommittedMessageIDsRequest();
-        var resp = new getUncommittedMessageIDsResponse();
+        List<MessageIdent> msgIds;
 
         if (!readOnly)
           Console.WriteLine("Nachrichten werden als abgeholt gekennzeichnet:");
         else
           Console.WriteLine("Folgende Nachrichten sind als nicht abgeholt gekennzeichnet:");
 
-        requ.userID = PostboxId;
-        resp = EgvpClient.getUncommittedMessageIDs(requ);
-        if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
-          throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", PostboxId, resp.returnCode.ToString()));
+        var messageSource = new MsgSrcEgvpEpWebservice();
+        msgIds = messageSource.getNewMessages(PostboxId);
 
-        if (null != resp.uncommittedMessages)
+        if (null != msgIds && msgIds.Count > 0)
         {
-          foreach (var msg in resp.uncommittedMessages)
+          foreach (var msg in msgIds)
           {
-            Console.WriteLine(msg.messageID + " " + msg.osciDate);
+            Console.WriteLine(msg.MessageId);
 
             if (!readOnly)
             {
-              var RecRequ = new receiveMessageRequest();
-              var RecResp = new receiveMessageResponse();
-              RecRequ.messageID = msg.messageID;
-              RecRequ.userID = PostboxId;
-              RecResp = EgvpClient.receiveMessage(RecRequ);
+              Message message = null;
+              try
+              { message = messageSource.ReceiveMessage(msg); }
+              catch (Exception ex)
+              { Console.WriteLine("Fehler: " + ex.Message); }
 
-              var comRequ = new commitReceivedMessageRequest();
-              var comResp = new commitReceivedMessageResponse();
-              comRequ.messageID = msg.messageID;
-              comRequ.userID = PostboxId;
-              comResp = EgvpClient.commitReceivedMessage(comRequ);
-              if (comResp.returnCode != CommitReturnCodeType.OK)
-                Console.WriteLine("Fehler bei commitReceivedMessage: {0}", comResp.returnCode.ToString());
+              string fh = "";
+              try
+              { fh = messageSource.CommitMessage(message); }
+              catch (Exception ex)
+              { fh = ex.Message; }
+              if (!string.IsNullOrEmpty(fh))
+                Console.WriteLine("Fehler: " + fh);
             }
           }
 
           Console.WriteLine("");
-          Console.WriteLine("Insgesamt {0} Nachrichten", resp.uncommittedMessages.Length);
+          Console.WriteLine("Insgesamt {0} Nachrichten", msgIds.Count);
         }
       }
       catch (Exception ex)
@@ -200,43 +199,41 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
       try
       {
-        var requ = new getUncommittedMessageIDsRequest();
-        var resp = new getUncommittedMessageIDsResponse();
+        List<MessageIdent> msgIds;
 
         Console.WriteLine("Folgende Nachrichten werden gespeichert:");
 
-        requ.userID = PostboxId;
-        resp = EgvpClient.getUncommittedMessageIDs(requ);
-        if (resp.returnCode != GetUncommittedMessageIDsReturnCodeType.OK)
-          throw new Exception(string.Format("Fehler bei getUncommittedMessageIDs im Postfach {0}: {1}", PostboxId, resp.returnCode.ToString()));
+        var messageSource = new MsgSrcEgvpEpWebservice();
+        msgIds = messageSource.getNewMessages(PostboxId);
 
-        if (null != resp.uncommittedMessages)
+        if (null != msgIds && msgIds.Count > 0)
         {
-          foreach (var msg in resp.uncommittedMessages)
+          foreach (var msg in msgIds)
           {
-            Console.WriteLine(msg.messageID + " " + msg.osciDate);
+            Console.WriteLine(msg.MessageId);
 
             if (!readOnly)
             {
-              var RecRequ = new receiveMessageRequest();
-              var RecResp = new receiveMessageResponse();
-              RecRequ.messageID = msg.messageID;
-              RecRequ.userID = PostboxId;
-              RecResp = EgvpClient.receiveMessage(RecRequ);
-
-              string zipTempFilename = Path.Combine(tempdir, msg.messageID + ".zip");
-              string fullfilename = Path.Combine(exportPath, RecResp.messageID);
-              if (!Directory.Exists(fullfilename))
+              Message message = null;
+              try
               {
-                File.WriteAllBytes(zipTempFilename, RecResp.messageZIP);
-                ZipFile.ExtractToDirectory(zipTempFilename, fullfilename);
-                File.Delete(zipTempFilename);
+                message = messageSource.ReceiveMessage(msg);
+                string zipTempFilename = Path.Combine(tempdir, message.header.MessageId + ".zip");
+                string fullfilename = Path.Combine(exportPath, message.header.MessageId);
+                if (!Directory.Exists(fullfilename))
+                {
+                  File.WriteAllBytes(zipTempFilename, message.MessageData);
+                  ZipFile.ExtractToDirectory(zipTempFilename, fullfilename);
+                  File.Delete(zipTempFilename);
+                }
               }
+              catch (Exception ex)
+              { Console.WriteLine("Fehler: " + ex.Message); }
             }
           }
 
           Console.WriteLine("");
-          Console.WriteLine("Insgesamt {0} Nachrichten", resp.uncommittedMessages.Length);
+          Console.WriteLine("Insgesamt {0} Nachrichten", msgIds.Count);
         }
       }
       catch (Exception ex)
@@ -245,34 +242,34 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
-    private void ExtractFiles(receiveMessageResponse resp, LogEntry logEntry)
+    private void ExtractFiles(Message message, LogEntry logEntry)
     {
-      string zipFullFilename = Path.Combine(_tempDir, resp.messageID + ".zip");
+      string zipFullFilename = Path.Combine(_tempDir, message.header.MessageId + ".zip");
       string fullfilename = "";
 
       try
       {
         logEntry.AddSubEntry(String.Format("Nachricht temporär zwischenspeichern nach {0}", zipFullFilename), LogEventLevel.Information);
-        File.WriteAllBytes(zipFullFilename, resp.messageZIP);
+        File.WriteAllBytes(zipFullFilename, message.MessageData);
 
         List<string> exportPaths;
         List<string> archivPaths;
         if (DepartmentsService.DepartmentsModeActive(this._egvpPostbox))
         {
           logEntry.AddSubEntry("Prüfung Empfängergerichte in xjustiz.xml", LogEventLevel.Information);
-          var depService = new DepartmentsService(this._egvpPostbox, resp.messageZIP);
+          var depService = new DepartmentsService(this._egvpPostbox, message.MessageData);
           depService.ValidateDepartmentSettings(logEntry);
           depService.DetermineDestinations(out exportPaths, out archivPaths);
         }
         else
         {
-          exportPaths = XJustizService.IsEeb(resp.messageZIP) ? this._egvpPostbox.ExportPath_EEB : this._egvpPostbox.ExportPath;
+          exportPaths = XJustizService.IsEeb(message.MessageData) ? this._egvpPostbox.ExportPath_EEB : this._egvpPostbox.ExportPath;
           archivPaths = this._egvpPostbox.ArchivPath;
         }
 
         foreach (string expPath in exportPaths)
         {
-          fullfilename = Path.Combine(expPath, resp.messageID);
+          fullfilename = Path.Combine(expPath, message.header.MessageId);
           CheckAndFixAttachmentFails(zipFullFilename, fullfilename, logEntry);
           logEntry.AddSubEntry(String.Format("Nachricht exportieren nach {0}", fullfilename), LogEventLevel.Information);
           ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
@@ -282,7 +279,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
         {
           foreach (string archPath in archivPaths)
           {
-            fullfilename = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(archPath, DateTime.Now), resp.messageID);
+            fullfilename = Path.Combine(DatetimeHelper.ReplaceDatetimeTags(archPath, DateTime.Now), message.header.MessageId);
             CheckAndFixAttachmentFails(zipFullFilename, fullfilename, logEntry);
             logEntry.AddSubEntry(String.Format("Nachricht Archivieren nach {0}", fullfilename), LogEventLevel.Information);
             ZipFile.ExtractToDirectory(zipFullFilename, fullfilename);
@@ -379,23 +376,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
       }
     }
 
-    private void CommitMessage(string messageId, LogEntry logEntry)
+    private void CommitMessage(Message message, LogEntry logEntry)
     {
-      var requ = new commitReceivedMessageRequest();
-      var resp = new commitReceivedMessageResponse();
-
-      requ.messageID = messageId;
-      requ.userID = this._egvpPostbox.Id;
-
-      resp = EgvpClient.commitReceivedMessage(requ);
-      if (resp.returnCode != CommitReturnCodeType.OK)
-      {
-        string ft = string.Format("Fehler bei commitReceivedMessage - ID {0}: {1}", messageId, resp.returnCode.ToString());
-        if (resp.returnCode != CommitReturnCodeType.MESSAGE_ALREADY_COMMITTED)
-        { throw new Exception(ft); }
-        else
-        { logEntry.AddSubEntry(ft, LogEventLevel.Warning); }
-      }
+      string warningText = _messageSource.CommitMessage(message);
+      if (!string.IsNullOrEmpty(warningText))
+        logEntry.AddSubEntry(warningText, LogEventLevel.Warning);  // TODO: refactor
     }
 
     private void CreateLockFile()

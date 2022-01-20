@@ -65,7 +65,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     }
 
     // Logging Metadaten aufbereiten
-    public void CreateLogMetadata(receiveMessageResponse resp, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
+    public void CreateLogMetadata(Message msg, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
     {
       EGVPMessageProps msgProps = null;
       string messageSizeKB = "";
@@ -75,22 +75,22 @@ namespace OvgRlp.EgvpEpReceiver.Services
       if (null == logMetadata)
         logMetadata = new LogMetadata();
 
-      if (null != resp)
+      if (null != msg)
       {
-        try { messageSizeKB = Convert.ToString((Convert.ToInt32(resp.messageZIP.Length) / 1024)); }
+        try { messageSizeKB = Convert.ToString((Convert.ToInt32(msg.MessageData.Length) / 1024)); }
         catch { messageSizeKB = ""; }
-        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(resp.messageZIP) / 1024)); }
+        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(msg.MessageData) / 1024)); }
         catch { messageSizeAttachmentsKB = ""; }
 
         try
         {
           if (null != egvpPostbox && DepartmentsService.DepartmentsModeActive(egvpPostbox))
           {
-            var depService = new DepartmentsService(egvpPostbox, resp.messageZIP);
+            var depService = new DepartmentsService(egvpPostbox, msg.MessageData);
             departmentCode = depService.GetDepartmentId();
           }
 
-          using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
+          using (ZipArchive za = new ZipArchive(new MemoryStream(msg.MessageData)))
           {
             var ze = za.GetEntry("MsgProps.xml");
             if (null != ze)
@@ -226,6 +226,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
+        //TODO: Refactor
         var receiveMessageService = new ReceiveMessageService(egvpPostbox, "", "", "");  //TODO: refactor
         getStateResponse resp = receiveMessageService.GetMessageState(messageID);
 
