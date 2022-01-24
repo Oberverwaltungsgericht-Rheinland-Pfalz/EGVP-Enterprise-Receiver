@@ -33,15 +33,16 @@ namespace OvgRlp.EgvpEpReceiver.Test
     [Fact]
     public void Message_Receive_OK()
     {
-      EgvpPostbox postbox = GetEgvpPostbox();
-      var receiveService = new ReceiveMessageService(new MsgSrcEgvpEpWebservice(), postbox, "", GetTempDir(), "");
+      string logfile = Path.Combine(Helper.GetTestingPath(), LOGFILE);
+      EgvpPostbox postbox = Helper.GetEgvpPostbox(Path.Combine(Helper.GetTestingPath(), TMP_PATH), RECEIVERID);
+      var receiveService = new ReceiveMessageService(new MsgSrcEgvpEpWebservice(), postbox, "", Helper.PrepareTempDir(Path.Combine(Helper.GetTestingPath(), TMP_PATH)), "");
 
-      InitTestLogger();
+      Helper.InitTestLogger(logfile);
       receiveService.ReceiveMessage(MESSAGEID);
       Assert.True(Directory.Exists(Path.Combine(postbox.ExportPath[0], MESSAGEID)));
       Assert.True(Directory.Exists(Path.Combine(postbox.ArchivPath[0], MESSAGEID)));
 
-      string logText = File.ReadAllText(LOGFILE);
+      string logText = File.ReadAllText(logfile);
       Debug.WriteLine("--> Debug.WriteLine: " + logText);
 
       Assert.Contains("Nachricht wurde erfolgreich verarbeitet!", logText);
@@ -60,49 +61,6 @@ namespace OvgRlp.EgvpEpReceiver.Test
 
       Assert.Equal(OSCISTATE, msgMeta.State);
       Assert.False(string.IsNullOrEmpty(msgMeta.Datetime));
-    }
-
-    private EgvpPostbox GetEgvpPostbox()
-    {
-      string archivePath = Path.Combine(Helper.GetTestingPath(), TMP_PATH, "Archive");
-      string exportPath = Path.Combine(Helper.GetTestingPath(), TMP_PATH, "Export");
-      string exportPath_EEB = Path.Combine(Helper.GetTestingPath(), TMP_PATH, "Export_EEB");
-
-      foreach (string dir in new List<string> { archivePath, exportPath, exportPath_EEB })
-      {
-        if (Directory.Exists(dir))
-          Directory.Delete(dir, true);
-        Directory.CreateDirectory(Path.Combine(Helper.GetTestingPath(), dir));
-      }
-
-      return new EgvpPostbox
-      {
-        ArchivPath = new List<string> { archivePath },
-        ExportPath = new List<string> { exportPath },
-        ExportPath_EEB = new List<string> { exportPath_EEB },
-        Id = RECEIVERID,
-        IsDisabled = false,
-        Name = "TestPostfach",
-        ReceiveDepartments = null
-      };
-    }
-
-    private string GetTempDir()
-    {
-      string dir = Path.Combine(Helper.GetTestingPath(), TMP_PATH, "Temp");
-      if (Directory.Exists(dir))
-        Directory.Delete(dir, true);
-      Directory.CreateDirectory(dir);
-      return dir;
-    }
-
-    private void InitTestLogger()
-    {
-      LogTypeFile logType;
-      if (File.Exists(LOGFILE))
-        File.Delete(LOGFILE);
-      logType = new LogTypeFile(Path.GetDirectoryName(LOGFILE), Path.GetFileName(LOGFILE));
-      Logger.LoggingTypes.Add(logType);
     }
   }
 }
