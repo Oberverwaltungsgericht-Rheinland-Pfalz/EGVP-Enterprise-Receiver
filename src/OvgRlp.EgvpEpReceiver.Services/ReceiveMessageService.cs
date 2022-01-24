@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace OvgRlp.EgvpEpReceiver.Services
 {
+  // TODO: weitere Refaktorisierungen, analog zu MessageSource sollte es auch ein MessageTarget geben
   public class ReceiveMessageService
   {
     protected EgvpPostbox _egvpPostbox { get; set; }
@@ -19,13 +20,13 @@ namespace OvgRlp.EgvpEpReceiver.Services
     protected string _tempDir;
     protected string _lockFile;
 
-    public ReceiveMessageService(EgvpPostbox postbox, string waitingHoursAfterError, string tempDir, string lockFile)
+    public ReceiveMessageService(IMessageSource messageSource, EgvpPostbox postbox, string waitingHoursAfterError, string tempDir, string lockFile)
     {
       _egvpPostbox = postbox;
       _waitingHoursAfterError = waitingHoursAfterError;
       _tempDir = tempDir;
       _lockFile = lockFile;
-      _messageSource = new MsgSrcEgvpEpWebservice();  // TODO: DI ermöglichen
+      _messageSource = messageSource;
     }
 
     public void ReceiveMessages()
@@ -64,7 +65,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
       string logKontext = messageId;
       LogEntry logEntry = new LogEntry(String.Format("MessageId: {0}", messageId), LogEventLevel.Information);
       var logMetadata = new LogMetadata();
-      var protService = new ProtocolService(MsgSrcEgvpEpWebservice.EgvpClient);   // TODO: Refactor
+      var protService = new ProtocolService(_messageSource);   // TODO: Refactor
 
       var msgIdent = new MessageIdent { MessageId = messageId, ReceiverId = this._egvpPostbox.Id };
       protService.CreateLogMetadata("", ref logMetadata, msgIdent.MessageId, this._egvpPostbox);
@@ -127,18 +128,6 @@ namespace OvgRlp.EgvpEpReceiver.Services
         Logger.Log(logEntry, logKontext, logMetadata);
         ProtocolService.CreateDBMessageErrorFlag(messageId, ex.Message);
       }
-    }
-
-    public getStateResponse GetMessageState(string messageID)
-    {
-      var requ = new getStateRequest();
-      var resp = new getStateResponse();
-      requ.customOrMessageID = messageID;
-      requ.userID = this._egvpPostbox.Id;
-      resp = MsgSrcEgvpEpWebservice.EgvpClient.getState(requ);   // TODO: Refactor
-      if (resp.returnCode != GetStateReturnCodeType.OK)
-        throw new Exception(resp.returnCode.ToString());
-      return resp;
     }
 
     // nur manuelle Ansteuerung möglich  (vorerst nicht aus der CLI)

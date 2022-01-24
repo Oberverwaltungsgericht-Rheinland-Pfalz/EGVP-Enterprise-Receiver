@@ -80,7 +80,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
 
         this.LogKontext = string.Format("MessageId {0} für {1}", this.MessageId, egvpPostBox.Name);
         Console.WriteLine(string.Format("*** MessageId {0} für {1} verarbeiten ***", this.MessageId, egvpPostBox.Name));
-        var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
+        var receiveMessageService = new ReceiveMessageService(new MsgSrcEgvpEpWebservice(), egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
         receiveMessageService.ReceiveMessage(this.MessageId, true);
       }
       catch (Exception ex)
@@ -91,6 +91,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
+        var messageSource = new MsgSrcEgvpEpWebservice();
         this.LogKontext = "ConfigurationService initialisieren";
         Console.WriteLine("ConfigurationService wird initialisiert");
         var configService = new ConfigurationService(Properties.Settings.Default.configfile);
@@ -106,7 +107,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
               continue;
             this.LogKontext = "Eingangsverarbeitung für " + egvpPostBox.Name;
             Console.WriteLine("*** Eingänge für " + egvpPostBox.Name + " verarbeiten ***");
-            var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
+            var receiveMessageService = new ReceiveMessageService(messageSource, egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
             receiveMessageService.ReceiveMessages();
           }
           catch (Exception ex)
@@ -126,11 +127,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
         if (null == egvpPostBox)
           throw new ArgumentException("EGVP-Postbox zu Id " + this.UserId + " konnte nicht in der Konfigurationsdatei ermittelt werden", "UserId");
 
-        var receiveMessageService = new ReceiveMessageService(egvpPostBox, Properties.Settings.Default.WaitingHoursAfterError, Properties.Settings.Default.tempDir, Properties.Settings.Default.LockFile);
-        getStateResponse resp = receiveMessageService.GetMessageState(this.MessageId);
+        var messageSource = new MsgSrcEgvpEpWebservice();
+        MessageMetadata msgMeta = messageSource.GetMessageMetadata(new MessageIdent { MessageId = this.MessageId, ReceiverId = this.UserId });
 
-        Console.WriteLine("Osci-Status: " + resp.state.ToString());
-        Console.WriteLine("Osci-Datum:  " + resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString());
+        Console.WriteLine("Osci-Status: " + msgMeta.State);
+        Console.WriteLine("Osci-Datum:  " + msgMeta.Datetime);
 
         // Auf Eingabe warten - bspw. bei Aufruf aus Dashboard
         Console.WriteLine("\n\n\nBitte Taste drücken...");

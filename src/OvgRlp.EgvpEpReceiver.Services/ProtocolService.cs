@@ -1,4 +1,5 @@
 ﻿using OvgRlp.EgvpEpReceiver.Infrastructure;
+using OvgRlp.EgvpEpReceiver.Infrastructure.Contracts;
 using OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
@@ -11,11 +12,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
 {
   public class ProtocolService
   {
-    protected EgvpPortTypeClient _egvpClient = null;
+    private IMessageSource _messageSource;
 
-    public ProtocolService(EgvpPortTypeClient egvpClient)
+    public ProtocolService(IMessageSource messageSource)
     {
-      _egvpClient = egvpClient;
+      _messageSource = messageSource;
     }
 
     // Logging Metadaten aufbereiten
@@ -226,14 +227,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
-        //TODO: Refactor
-        var receiveMessageService = new ReceiveMessageService(egvpPostbox, "", "", "");  //TODO: refactor
-        getStateResponse resp = receiveMessageService.GetMessageState(messageID);
-
-        logMetadata.Recipient = resp.receiverID;
-        logMetadata.Sender = resp.senderID;
-        logMetadata.OsciState = resp.state.ToString();
-        logMetadata.OsciDatetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
+        MessageMetadata msgMeta = _messageSource.GetMessageMetadata(new MessageIdent { MessageId = messageID, ReceiverId = egvpPostbox.Id });
+        logMetadata.Recipient = msgMeta.ReceiverId;
+        logMetadata.Sender = msgMeta.SenderId;
+        logMetadata.OsciState = msgMeta.State;
+        logMetadata.OsciDatetime = msgMeta.Datetime;
       }
       catch (Exception ex)
       {
