@@ -14,5 +14,7 @@ namespace OvgRlp.EgvpEpReceiver.Infrastructure.Contracts
     Message ReceiveMessage(MessageIdent messageIdent);
 
     string CommitMessage(Message message);    // TODO: refactor - eleminate string callback
+
+    MessageMetadata GetMessageMetadata(MessageIdent messageIdent);
   }
 }
