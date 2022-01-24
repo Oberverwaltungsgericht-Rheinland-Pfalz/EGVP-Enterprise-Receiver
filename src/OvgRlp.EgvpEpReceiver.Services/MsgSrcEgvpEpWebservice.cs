@@ -73,5 +73,25 @@ namespace OvgRlp.EgvpEpReceiver.Services
       message.MessageData = resp.messageZIP;
       return message;
     }
+
+    public MessageMetadata GetMessageMetadata(MessageIdent messageIdent)
+    {
+      var metadata = new MessageMetadata();
+
+      var requ = new getStateRequest();
+      requ.customOrMessageID = messageIdent.MessageId;
+      requ.userID = messageIdent.ReceiverId;
+
+      getStateResponse resp = EgvpClient.getState(requ);
+      if (resp.returnCode != GetStateReturnCodeType.OK)
+        throw new Exception(resp.returnCode.ToString());
+
+      metadata.ReceiverId = resp.receiverID;
+      metadata.SenderId = resp.senderID;
+      metadata.State = resp.state.ToString();
+      metadata.Datetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
+
+      return metadata;
+    }
   }
 }
