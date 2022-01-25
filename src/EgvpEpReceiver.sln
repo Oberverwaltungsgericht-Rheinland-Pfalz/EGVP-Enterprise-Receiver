@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FB3911E2-4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OvgRlp.EgvpEpReceiver.Test", "OvgRlp.EgvpEpReceiver.Test\OvgRlp.EgvpEpReceiver.Test.csproj", "{325E3AAE-B90C-4181-95E0-E7EF596DFF75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.IntegrationTest", "OvgRlp.EgvpEpReceiver.IntegrationTest\OvgRlp.EgvpEpReceiver.IntegrationTest.csproj", "{969E4485-EC29-4813-8C95-61EFBBC7D7E3}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.TestBase", "OvgRlp.EgvpEpReceiver.TestBase\OvgRlp.EgvpEpReceiver.TestBase.csproj", "{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}"
 EndProject
 Global
