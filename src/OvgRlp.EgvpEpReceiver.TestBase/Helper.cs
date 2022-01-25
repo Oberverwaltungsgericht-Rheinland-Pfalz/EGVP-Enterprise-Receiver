@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace OvgRlp.EgvpEpReceiver.Test
 {
-  internal class Helper
+  public class Helper
   {
     public static string GetTestingPath()
     {
@@ -29,7 +29,7 @@ namespace OvgRlp.EgvpEpReceiver.Test
     public static string GetResourcesPath()
     {
       var dirPath = getExecutionDirectory();
-      string relPath = Path.Combine(dirPath, @"..\..\..\Resources\");
+      string relPath = Path.Combine(dirPath, @"..\..\..\..\", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, "Resources");
       return Path.GetFullPath(relPath);
     }
 

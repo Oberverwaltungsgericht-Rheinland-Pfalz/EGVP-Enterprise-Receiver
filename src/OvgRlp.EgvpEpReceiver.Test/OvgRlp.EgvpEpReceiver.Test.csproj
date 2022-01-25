@@ -23,16 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj" />
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Services\OvgRlp.EgvpEpReceiver.Services.csproj" />
+    <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.TestBase\OvgRlp.EgvpEpReceiver.TestBase.csproj" />
     <ProjectReference Include="..\OvgRlp.EgvpEpReceiver\OvgRlp.EgvpEpReceiver.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Resources\Configuration\Account_Settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\Messages\" />
   </ItemGroup>
 </Project>
