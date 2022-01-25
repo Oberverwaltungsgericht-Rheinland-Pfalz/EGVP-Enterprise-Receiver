@@ -1,0 +1,51 @@
+{
+  "postboxes": [
+    {
+      "Name": "Test Gericht 1",
+      "Id": "DE.Justiz.233a8870-2319-4dbc-9f68-a4cc9da8f429.9999",
+      "ExportPath": [
+        "C:\\dev\\Temp\\ExpPath"
+      ],
+      "ExportPath_EEB": [
+        "C:\\dev\\Temp\\ExportPath_EEB"
+      ],
+      "ArchivPath": [
+        "C:\\dev\\Temp\\ArchivPath_1",
+        "C:\\dev\\Temp\\ArchivPath_2"
+      ],
+      "ReceiveDepartments": {
+        "LogLevelDepartmentNotFound": "Info",
+        "XPathDepartmentId": "//xjustiz:nachrichtenkopf/xjustiz:auswahl_empfaenger/xjustiz:empfaenger.gericht/code",
+        "Departments": [
+          {
+            "Name": "Department 1",
+            "Id": "DepID1",
+            "ExportPath": [
+              "C:\\dev\\Temp\\Department\\ExpPath_1",
+              "C:\\dev\\Temp\\Department\\ExpPath_2"
+            ],
+            "ExportPath_EEB": [
+              "C:\\dev\\Temp\\Department\\ExportPath_EEB"
+            ],
+            "ArchivPath": [
+              "C:\\dev\\Temp\\Department\\ArchivPath"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Name": "Test Gericht 2",
+      "Id": "DE.Justiz.836cga01-ffff-2856-85ef-268df5e8b136.5555",
+      "ExportPath": [
+        "C:\\dev\\Temp\\ArchivPath_Ger2"
+      ],
+      "ExportPath_EEB": [
+        "C:\\dev\\Temp\\ExportPath_EEB_Ger2"
+      ],
+      "ArchivPath": [
+        "C:\\dev\\Temp\\ArchivPath\\[yyyy]_[MM]"
+      ]
+    }
+  ]
+}

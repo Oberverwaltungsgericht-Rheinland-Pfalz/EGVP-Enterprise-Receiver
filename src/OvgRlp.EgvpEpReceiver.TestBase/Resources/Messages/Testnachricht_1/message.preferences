@@ -1,0 +1,13 @@
+#Mon Sep 27 14:22:20 CEST 2021
+id=govapp_16327447360399999999999999995325
+additionals_count=3
+xjustiz.vhn_xml=Diese Nachricht wurde von der Justiz versandt.
+xjustiz.vhn_text=Diese Nachricht wurde von der Justiz versandt.
+sender.userid=DE.Justiz.233a8870-2319-4dbc-9f68-a4cc9da8f429.9999
+status=valid_gueltig
+table.originator=C\=DE,OU\=Oberverwaltungsgericht Rheinland-Pfalz,O\=Oberverwaltungsgericht Rheinland-Pfalz,CN\=ZZ Testkonto RP OVG RLP, - nur f\u00FCr interne Tests -
+osci.subject=Allgemeine Nachricht
+attachments_count=2
+table.date=1632744736000
+RequestSignatureMandatory.available=true
+table.subject=Test CH Asynchron

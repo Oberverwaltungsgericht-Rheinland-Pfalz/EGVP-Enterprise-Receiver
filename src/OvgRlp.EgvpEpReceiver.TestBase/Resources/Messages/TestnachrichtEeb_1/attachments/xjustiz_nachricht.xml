@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tns:nachricht.eeb.zuruecklaufend.2200007 xmlns:tns="http://www.xjustiz.de" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xjustiz.de xjustiz_2200_eeb_2_2.xsd">
+    <tns:nachrichtenkopf>
+        <tns:aktenzeichen.absender>
+    </tns:aktenzeichen.absender>
+        <tns:aktenzeichen.empfaenger>1 K 519/20.KO</tns:aktenzeichen.empfaenger>
+        <tns:erstellungszeitpunkt>2021-10-29T10:20:47.675+02:00</tns:erstellungszeitpunkt>
+        <tns:absender_Sonstige>Oberverwaltungsgericht Rheinland-Pfalz</tns:absender_Sonstige>
+        <tns:empfaenger_Gericht listVersionID="2.6">
+            <code>T6076</code>
+        </tns:empfaenger_Gericht>
+        <tns:eigene_Nachrichten_ID>714967a2-5e13-4c07-91c2-41adb4537bbc</tns:eigene_Nachrichten_ID>
+        <tns:fremde_Nachrichten_ID>e238a754-f63d-4196-98e6-89c50f015b2e</tns:fremde_Nachrichten_ID>
+    </tns:nachrichtenkopf>
+    <tns:grunddaten xjustizVersion="2.4.0"/>
+    <tns:fachdaten>
+        <tns:empfangsbestaetigung>2021-10-29</tns:empfangsbestaetigung>
+    </tns:fachdaten>
+</tns:nachricht.eeb.zuruecklaufend.2200007>

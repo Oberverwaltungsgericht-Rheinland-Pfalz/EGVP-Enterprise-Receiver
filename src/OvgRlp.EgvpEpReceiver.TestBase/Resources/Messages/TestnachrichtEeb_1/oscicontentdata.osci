@@ -1,0 +1,401 @@
+MIME-Version: 1.0
+Content-Type: Multipart/Related; boundary=MIME_boundary_zE80GTexmnE1IL0gtgVOuT7LYZzqnHIg; type=text/xml
+
+--MIME_boundary_zE80GTexmnE1IL0gtgVOuT7LYZzqnHIg
+Content-Type: text/xml; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Content-ID: <osci@message>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soap:Envelope xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ soapResponseToMediateDelivery.xsd http://www.w3.org/2000/09/xmldsig# oscisig.xsd http://www.w3.org/2001/04/xmlenc# oscienc.xsd"><soap:Header><osci:ControlBlock xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="controlblock" soap:actor="http://schemas.xmlsoap.org/soap/actor/next" soap:mustUnderstand="1"></osci:ControlBlock><osci:SupplierSignature Id="suppliersignature" soap:actor="http://schemas.xmlsoap.org/soap/actor/next" soap:mustUnderstand="1"><ds:Signature><ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></ds:SignatureMethod>
+<ds:Reference URI="#responsetofetchdelivery">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>jJ8zDxAT5G3OFrRDqfxuT7O/xt4pDn+8w30lwBDS51A=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#controlblock">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>v9oFGiBUUjVABcDUqPAioN918Ua95mlYda7On6A3wyU=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#nonintermediarycertificates">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>1HDbv3YJqQMyF+Us9MNLsMtn4RIG8Qa5QXpOV8PP9sQ=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#intermediarycertificates">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>NL8foIE9TYs9ycSVxB81N0belooLoGTpmKR3qo9+iSk=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#featuredescription">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>ACnGbWpd+wwTTiUp0OCtAwzb6C/xXZ5O7jAo7KldY4g=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="cid:xjustiz_nachricht.xml">
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>z70e3RB3MrHvsGIsorqWw0bXZJEbRx+j+OW5T0VdahM=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#RequestSignatureMandatory">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>4O/4a2IFaC41jO6w82iX0lvwbb+KF5wpiY3WXipqsu8=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#body">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>tZZvr7nkDbwVFY1ixHJbNThtUyQD6dnWOAk5b59LUeE=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo><ds:SignatureValue>BQf3nKQLGjB8v/n6tgCWPP8Hq0sIXnYoo0FVVQjlZQsm6488rHgvUcfNL/XJlMSkYcdOIaiQWDwC
+Mn305VaXjJwu+rytzJ7sR6SJYtzJgfK+tGHwrxUQJ7ZQbAsAoSptCbUbXAxka8/PLxRpVe/8AgVX
+c0KN7JjKJPPN7nqafkDsaZRi3iR28kQnXKDqxE0sW15w2M27CM86//tDzhohrXh5+m7keypsO4e5
+GtO6cS7wu3iStP+wXgEtKoXEGY1CEXHSbmrz2AItRZN/uDQuh4iH+5N99Pcx6Hg5JkUARfhqcTta
+249BpeV4fdjPS1qr+cyLQPoNI2CO/fatrxgPVQ==</ds:SignatureValue><ds:KeyInfo><ds:RetrievalMethod URI="#intermed_signature_1566f35679e918393d9329de6fc852660d832c45da744ffb4ae895ba4c046adb"></ds:RetrievalMethod></ds:KeyInfo></ds:Signature></osci:SupplierSignature><osci:responseToMediateDelivery xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="responsetomediatedelivery" soap:actor="http://schemas.xmlsoap.org/soap/actor/next" soap:mustUnderstand="1"><osci:Feedback><osci:Entry xml:lang="de"><osci:Code>0801</osci:Code><osci:Text>Request executed, dialog continues to be open</osci:Text></osci:Entry></osci:Feedback></osci:responseToMediateDelivery><osci:IntermediaryCertificates xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="intermediarycertificates" soap:actor="http://www.w3.org/2001/12/soap-envelope/actor/none" soap:mustUnderstand="1"><osci:SignatureCertificateIntermediary Id="intermed_signature_1566f35679e918393d9329de6fc852660d832c45da744ffb4ae895ba4c046adb"><ds:X509Data><ds:X509Certificate>MIIFqjCCBJKgAwIBAgIHAjohQk9R1zANBgkqhkiG9w0BAQsFADBJMQswCQYDVQQGEwJERTEZMBcG
+A1UEChMQUEtJLTEtVmVyd2FsdHVuZzEMMAoGA1UECxMDRE9JMREwDwYDVQQDEwhET0kgQ0EgNzAe
+Fw0xOTExMTUwNzQ0MjZaFw0yMjExMTUyMzU5NTlaMHwxCzAJBgNVBAYTAkRFMRYwFAYDVQQKEw1i
+ZWhvZXJkZW4tcmxwMRwwGgYDVQQLExNsYW5kZXNiZWhvZXJkZW4tcmxwMQ4wDAYDVQQHEwVNYWlu
+ejEnMCUGA1UEAxMeZ292ZXJuaWt1cy1pbnRlcm1lZGlhZXIucmxwLmRlMIIBIjANBgkqhkiG9w0B
+AQEFAAOCAQ8AMIIBCgKCAQEAnAeUiVeyrL82leuHt+jXcUCqofroRQaY1rBzF1nN8ZhPZFTtBFqq
+ENzS8M71O/ckCdskUb979MORcOI2NR7FBfhkEuKqyfo57u986h6Ll9vJUmfHRYI3ea9E+RIeok6d
+NhqD5cmr8x6qNT+1qgC3VM3+0XiH/RAyQDTVGcb/o3NtFMt71dj9WylCM1M8vixi7m9opzMuuiyy
+5LqOqxEPIXT7Ksq7Y3BEYScreySzub8620usHXo2p18wmicj+mYv0Kr2LXo1uQtf9ta1zhNuymuN
+l0cSBd2SlfOC33Q7InK1oHKcVDYBkncf94gOovfRDd+4Jm4wkBvjtdbh0KVCtwIDAQABo4ICYjCC
+Al4wcgYDVR0jBGswaYAUsEUYL25LQfaNTC7tAp/CbjrWmWGhSqRIMEYxCzAJBgNVBAYTAkRFMRkw
+FwYDVQQKExBQS0ktMS1WZXJ3YWx0dW5nMRwwGgYDVQQDExNQQ0EtMS1WZXJ3YWx0dW5nLTE3ggUA
++kD5ATCCASEGA1UdHwSCARgwggEUMIIBEKCCAQygggEIhlxsZGFwOi8veDUwMC5idW5kLmRlL0NO
+PURPSSUyMENBJTIwNyxPVT1ET0ksTz1QS0ktMS1WZXJ3YWx0dW5nLEM9REU/Y2VydGlmaWNhdGVS
+ZXZvY2F0aW9uTGlzdIZobGRhcDovL3BraS1kaXJlY3RvcnkuZG9pLWRlLm5ldC9DTj1ET0klMjBD
+QSUyMDcsT1U9RE9JLE89UEtJLTEtVmVyd2FsdHVuZyxDPURFP2NlcnRpZmljYXRlUmV2b2NhdGlv
+bkxpc3SGPmh0dHA6Ly94NTAwLmJ1bmQuZGUvY2dpLWJpbi9zaG93X2F0dHI/Y249RE9JJTIwQ0El
+MjA3JmF0dHI9Y3JsMBYGA1UdIAQPMA0wCwYJKwYBBAG9dAEBMA4GA1UdDwEB/wQEAwIFoDAdBgNV
+HSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwPAYIKwYBBQUHAQEEMDAuMCwGCCsGAQUFBzABhiBo
+dHRwOi8vb2NzcC5kb2kudGVsZXNlYy5kZS9vY3NwcjA+BgNVHREENzA1gRNoZWxwZGVza0BsZGku
+cmxwLmRlgh5nb3Zlcm5pa3VzLWludGVybWVkaWFlci5ybHAuZGUwDQYJKoZIhvcNAQELBQADggEB
+AGShJ15MB4hr7Snmtyzh+I94pl5ehypkd+6RYhCLKENZqjM3i3sDqwipnwHqjAHk016HVhUcJ7ET
+Wotx05JvBAIwgopQcks1zXJvU1joddnrI5AbkpWEsWV4LFf/OCQWK592a9Vwo8r0tMlz8gyteq0C
+DG8Hs/z9eFFTiYiJ4gY/4MhXZJH5IYQYHl7cNaFxmqYnVp0kVZ7N3bNLbiWZaoSC8rJOhThrbBMd
+m3/Xz78R8XFinv+UWZGbuGSEvacksDHn1JPChn50OqDnXIMzMLC6sgkSe6HtR4bacZ/y/kj981ed
+9LJbpDnx0rbqVMDJP9Ku8Hvwh8k2rTMcwQh6cSk=</ds:X509Certificate></ds:X509Data></osci:SignatureCertificateIntermediary></osci:IntermediaryCertificates><osci:NonIntermediaryCertificates xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="nonintermediarycertificates" soap:actor="http://www.w3.org/2001/12/soap-envelope/actor/none" soap:mustUnderstand="1"><osci:CipherCertificateOriginator Id="originator_cipher_e1aa90e11545600625dc993e5dbe4cc5a03d73f53f9a8b8720e845db787fb08d"><ds:X509Data><ds:X509Certificate>MIIFPzCCBCegAwIBAgIGAXapw1BcMA0GCSqGSIb3DQEBCwUAMIGWMT4wPAYDVQQDDDVQcsOkc2lk
+ZW50IGRlcyBPYmVydmVyd2FsdHVuc2dlcmljaHRzIFJoZWlubGFuZC1QZmFsejEdMBsGA1UECgwU
+T2JlcmUgTGFuZGVzYmVow7ZyZGUxKDAmBgNVBAsMH0FsbGdlbWVpbmVzIFZlcndhbHR1bnNncG9z
+dGZhY2gxCzAJBgNVBAYMAmRlMB4XDTIwMTIyODE0Mjg1M1oXDTIzMTIyODE0MzE1M1owgZYxPjA8
+BgNVBAMMNVByw6RzaWRlbnQgZGVzIE9iZXJ2ZXJ3YWx0dW5zZ2VyaWNodHMgUmhlaW5sYW5kLVBm
+YWx6MR0wGwYDVQQKDBRPYmVyZSBMYW5kZXNiZWjDtnJkZTEoMCYGA1UECwwfQWxsZ2VtZWluZXMg
+VmVyd2FsdHVuc2dwb3N0ZmFjaDELMAkGA1UEBgwCZGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQCt638nVNGTuI23ySIftfLkGjlmWjakzDAGwXZ36r+Brlm9Dt3Rf4IKV3ARa7+nw+Ak
+p7p5HaThc/DLsiiNN08wOs003eWNQFZZ9kSi4/XfB9RnVO2hMyQTYNafQnKXZKPMKdAwOTEGo+px
+oIy9DYg3ndepxTyx+psyxYLiAEH0R20lkcOUc46qoLRTf90IPGzoXWpvokimv4MNlVYZnzwmb5BP
+g1EL3os+5geNA8ix03Nv+ax0bk6mu0TNCde3g3W0jdew5G/GURZ1F4eS4AIGrJDXyLOlrAux5fUR
+hV+JwVeMdsuFnTaZrfZiTKoAWXKThrQuwQZiRaznqm/Mv//5AgMBAAGjggGPMIIBizAMBgNVHRMB
+Af8EAjAAMAsGA1UdDwQEAwIF4DAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATCCATMGA1UdDgSCASoE
+ggEmMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAret/J1TRk7iNt8kiH7Xy5Bo5Zlo2
+pMwwBsF2d+q/ga5ZvQ7d0X+CCldwEWu/p8PgJKe6eR2k4XPwy7IojTdPMDrNNN3ljUBWWfZEouP1
+3wfUZ1TtoTMkE2DWn0Jyl2SjzCnQMDkxBqPqcaCMvQ2IN53XqcU8sfqbMsWC4gBB9EdtJZHDlHOO
+qqC0U3/dCDxs6F1qb6JIpr+DDZVWGZ88Jm+QT4NRC96LPuYHjQPIsdNzb/msdG5OprtEzQnXt4N1
+tI3XsORvxlEWdReHkuACBqyQ18izpawLseX1EYVficFXjHbLhZ02ma32YkyqAFlyk4a0LsEGYkWs
+56pvzL//+QIDAQABMB8GA1UdIwQYMBaAFIGL1xK5os0hE3y0qv0jjbA8tT2RMA0GCSqGSIb3DQEB
+CwUAA4IBAQA5Tj1fuYH6aoVlW5c3j61YYE6+Tuhv6rlvgJy+HESOsN+T1U4icD9eFv8+lkzNq8zW
+3A06U+/QiQ4hpX6WwOtxK3C/JUS4OKRCmMFsQ8xherq1Vnsuv+lLxEGV1+6h+YFBsOHX/GlFwOfv
+V3n/+q5Eo+XYpgdzoJPnDbTcIlUI277OhW/4ZfIej4EjVMSjd+nNf4q1QoRfltZCP60Rth0VNJZE
+okoKZKpbKKzhMF/HtTACvamW+IEuU7KxklSGuSiQYp3hI8CVkfU4tBggjTzEk+p0sukeB2asOp2L
+F7Xai4WHxqhnPJIFErezOIXWIVwg+5tBwKdVwT1+0tsdy2Bv</ds:X509Certificate></ds:X509Data></osci:CipherCertificateOriginator><osci:CipherCertificateAddressee Id="addressee_cipher_c5cdcd8d8001a3b2b1061d6b3f17cd58d8506753f82145947c3d0bb00d1f9227"><ds:X509Data><ds:X509Certificate>MIIFuTCCBKGgAwIBAgIGAW5+BV8FMA0GCSqGSIb3DQEBCwUAMIHTMTwwOgYDVQQDDDNaWiBUZXN0
+a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9i
+ZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2Fs
+dHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEW
+FXN1cHBvcnRAb3ZnLmptLnJscC5kZTAeFw0xOTExMTgxMDE1MzBaFw0yMjExMTgxMDE4MzBaMIHT
+MTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRl
+c3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8w
+LQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMC
+REUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTCCASIwDQYJKoZIhvcNAQEB
+BQADggEPADCCAQoCggEBANKkprW6DRiEBx9C/RDUbRyPBsp9tJeIhINh7TivTH0VkCfbIeUmpsKy
+rLv2Jrcs+v7+AxFZC5eb285FCaN2iXrayoIiGvu4tedSiONnLOD8jAm+A8AZVL2EDRQrG3i36Fb5
+sIyqeIgN7V5M16j0k49+kBO0HdMja3SrFmSYKDeAC1YSNRavmKInbN50bB9oXnqvjqRmeZrvhn8b
+SIFriMHVCMnGMpIsutnSduoHx1QEk3F8zmlcojAk9wU6A7VXVS5Ck1LjM/qXYdkEyO9qhiaG9Mr9
+9Y95nAhk9pcl/WqwgwOLro4uS1mfiX/d6Lw5z/fU2kDbkxrSYdB0DAXPqBUCAwEAAaOCAY8wggGL
+MAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgXgMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMBMIIBMwYD
+VR0OBIIBKgSCASYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSpKa1ug0YhAcfQv0Q
+1G0cjwbKfbSXiISDYe04r0x9FZAn2yHlJqbCsqy79ia3LPr+/gMRWQuXm9vORQmjdol62sqCIhr7
+uLXnUojjZyzg/IwJvgPAGVS9hA0UKxt4t+hW+bCMqniIDe1eTNeo9JOPfpATtB3TI2t0qxZkmCg3
+gAtWEjUWr5iiJ2zedGwfaF56r46kZnma74Z/G0iBa4jB1QjJxjKSLLrZ0nbqB8dUBJNxfM5pXKIw
+JPcFOgO1V1UuQpNS4zP6l2HZBMjvaoYmhvTK/fWPeZwIZPaXJf1qsIMDi66OLktZn4l/3ei8Oc/3
+1NpA25Ma0mHQdAwFz6gVAgMBAAEwHwYDVR0jBBgwFoAUmcbaDAJ7usDxf9RbJ4hnmob0xNowDQYJ
+KoZIhvcNAQELBQADggEBAIr2Rx8e+R28zpe0bBa6uNjYOBqJd8ySMRndmDKvThOoLUEGgiRd+Ztb
+S5clUoEaM2GoCwKW74XHkhPtBceCRCompfOx8LIuy6F5kPKlEw/9mXE7AOKxiOihr/Xx/DOFW8v8
+6dnSR0m2RGmLCFRheS1e4slUynFEPaaAQyP2+Qk1TTluCwVTeufagUBMGIPzBOeG/Mllj8kOSYxo
+PiG8iqswY4kvaDShZg2/66SPeRANktrhBNVd4SXkGsRUh4BT+0hd9cdk5ZgKzKUyG61kFxv/uQB4
+GERQB/I0YJWCLJ6RRg1t5l9eJ8FS/GCm6tRbUPf6Xno8vzITzOtUOyTlj5c=</ds:X509Certificate></ds:X509Data></osci:CipherCertificateAddressee><osci:CipherCertificateOtherReader Id="reader30_cipher_c5cdcd8d8001a3b2b1061d6b3f17cd58d8506753f82145947c3d0bb00d1f9227"><ds:X509Data><ds:X509Certificate>MIIFuTCCBKGgAwIBAgIGAW5+BV8FMA0GCSqGSIb3DQEBCwUAMIHTMTwwOgYDVQQDDDNaWiBUZXN0
+a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRlc3RzIC0xLzAtBgNVBAoMJk9i
+ZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8wLQYDVQQLDCZPYmVydmVyd2Fs
+dHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUxJDAiBgkqhkiG9w0BCQEW
+FXN1cHBvcnRAb3ZnLmptLnJscC5kZTAeFw0xOTExMTgxMDE1MzBaFw0yMjExMTgxMDE4MzBaMIHT
+MTwwOgYDVQQDDDNaWiBUZXN0a29udG8gUlAgT1ZHIFJMUCwgLSBudXIgZsO8ciBpbnRlcm5lIFRl
+c3RzIC0xLzAtBgNVBAoMJk9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHQgUmhlaW5sYW5kLVBmYWx6MS8w
+LQYDVQQLDCZPYmVydmVyd2FsdHVuZ3NnZXJpY2h0IFJoZWlubGFuZC1QZmFsejELMAkGA1UEBhMC
+REUxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAb3ZnLmptLnJscC5kZTCCASIwDQYJKoZIhvcNAQEB
+BQADggEPADCCAQoCggEBANKkprW6DRiEBx9C/RDUbRyPBsp9tJeIhINh7TivTH0VkCfbIeUmpsKy
+rLv2Jrcs+v7+AxFZC5eb285FCaN2iXrayoIiGvu4tedSiONnLOD8jAm+A8AZVL2EDRQrG3i36Fb5
+sIyqeIgN7V5M16j0k49+kBO0HdMja3SrFmSYKDeAC1YSNRavmKInbN50bB9oXnqvjqRmeZrvhn8b
+SIFriMHVCMnGMpIsutnSduoHx1QEk3F8zmlcojAk9wU6A7VXVS5Ck1LjM/qXYdkEyO9qhiaG9Mr9
+9Y95nAhk9pcl/WqwgwOLro4uS1mfiX/d6Lw5z/fU2kDbkxrSYdB0DAXPqBUCAwEAAaOCAY8wggGL
+MAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgXgMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMBMIIBMwYD
+VR0OBIIBKgSCASYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSpKa1ug0YhAcfQv0Q
+1G0cjwbKfbSXiISDYe04r0x9FZAn2yHlJqbCsqy79ia3LPr+/gMRWQuXm9vORQmjdol62sqCIhr7
+uLXnUojjZyzg/IwJvgPAGVS9hA0UKxt4t+hW+bCMqniIDe1eTNeo9JOPfpATtB3TI2t0qxZkmCg3
+gAtWEjUWr5iiJ2zedGwfaF56r46kZnma74Z/G0iBa4jB1QjJxjKSLLrZ0nbqB8dUBJNxfM5pXKIw
+JPcFOgO1V1UuQpNS4zP6l2HZBMjvaoYmhvTK/fWPeZwIZPaXJf1qsIMDi66OLktZn4l/3ei8Oc/3
+1NpA25Ma0mHQdAwFz6gVAgMBAAEwHwYDVR0jBBgwFoAUmcbaDAJ7usDxf9RbJ4hnmob0xNowDQYJ
+KoZIhvcNAQELBQADggEBAIr2Rx8e+R28zpe0bBa6uNjYOBqJd8ySMRndmDKvThOoLUEGgiRd+Ztb
+S5clUoEaM2GoCwKW74XHkhPtBceCRCompfOx8LIuy6F5kPKlEw/9mXE7AOKxiOihr/Xx/DOFW8v8
+6dnSR0m2RGmLCFRheS1e4slUynFEPaaAQyP2+Qk1TTluCwVTeufagUBMGIPzBOeG/Mllj8kOSYxo
+PiG8iqswY4kvaDShZg2/66SPeRANktrhBNVd4SXkGsRUh4BT+0hd9cdk5ZgKzKUyG61kFxv/uQB4
+GERQB/I0YJWCLJ6RRg1t5l9eJ8FS/GCm6tRbUPf6Xno8vzITzOtUOyTlj5c=</ds:X509Certificate></ds:X509Data></osci:CipherCertificateOtherReader><osci:SignatureCertificateOriginator Id="originator_signature_239554e6b0e24a2eaf04dcdab58fb80c30ef022494cf1533a7dda6650ba9cc0a"><ds:X509Data><ds:X509Certificate>MIIFmjCCA06gAwIBAgIIUkzIAGbfACEwQQYJKoZIhvcNAQEKMDSgDzANBglghkgBZQMEAgMFAKEc
+MBoGCSqGSIb3DQEBCDANBglghkgBZQMEAgMFAKIDAgFAMDkxGjAYBgNVBAMMEWJlQlBvIFZITiBD
+QSAyMDE3MQ4wDAYDVQQKDAVCTm90SzELMAkGA1UEBhMCREUwHhcNMTgwMzE1MDcxMjA0WhcNMjUw
+MzEzMDcxMjA0WjCBxzFDMEEGCgmSJomT8ixkAQEMM0RFLkp1c3Rpei5hMTlhZmIzYi1mOTJiLTQz
+NmUtYWFmZi1lOGRlNTZhNmQ1MDcuNzY1MDE6MDgGA1UEAwwxVkhOIC0gYmVzb25kZXJlcyBlbGVr
+dHJvbmlzY2hlcyBCZWjDtnJkZW5wb3N0ZmFjaDEdMBsGA1UEBRMUMjAwMDAwMDAwMDAwMDAwMDAz
+MDUxGDAWBgNVBAgMD1JoZWlubGFuZC1QZmFsejELMAkGA1UEBhMCREUwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQDDhvDPQAcjDXbB3KbgAvVrwOoP3ChbL7fUFg6QkosFQ6Xm4lGljyZo
+90SINkXbrLBCedVCPjxgN6gjnOQE40TFXPB82Ao4DHtVmhk7FncUHacjAMWOkuh/m7em8GSdF5Ej
+9jBQ/J8Kv+9gjeFWHVHLO6OJgBSLcKGJN4Qfi4XHG9/7qcYmFpKQlpkMAguVnp4qsNnIrI+ecqXd
+F5nHh60KQZuP0lF+pjfP/x4wNDQ2xOwdb3nht80IGZ4T2y1FuFvjkaORFipqo30Vufxx57j8VbU1
+sJCBEXUVdYMaulJxm3swPbUTiS4v43b+q7aWGuOLQLjkVBfXrQJyXFai9KtnAgMBAAGjga4wgasw
+DAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBSfyP9c8jrCeCnkbhJFGD3gRnmR+jA2BggrBgEFBQcB
+AQQqMCgwJgYIKwYBBQUHMAGGGmh0dHA6Ly9vY3NwLnpzLmJub3RrLmRlL25xMBMGA1UdJQQMMAoG
+CCsGAQUFBwMCMB0GA1UdDgQWBBSyA0+8b2cFYPgtYOJwi0ZIJ+aKwTAOBgNVHQ8BAf8EBAMCBPAw
+QQYJKoZIhvcNAQEKMDSgDzANBglghkgBZQMEAgMFAKEcMBoGCSqGSIb3DQEBCDANBglghkgBZQME
+AgMFAKIDAgFAA4ICAQB9Y3WRfDuFvkSheVNRoQEFIvGRt18Q+aUpn/vZTS0eapvfNTdnqaA7gugQ
+TXO21HfHNUHArAgUrZgoLeKh32E17wddqFa6/awnAOJoQ7/hcAzntyy68pEiZNi4WgOfrwfjchJL
+cy/mhMuvX69frJTPZaYZrUZCnaZ+YdKmKd2DkKB+iqnnkUjTtEPvfE8JkZzcgvPlpspUjh6mh81x
+nAejlpJ8sKxjOehiLWeuyvTsMsRMjzqZbu41Xf1CyQ8KPqiApBJAXGEXGbfdbpN5na3Lfjjtur7v
+kcDC+ffvdblk49U7zHypTSCNqhGj5UQ7Z5s2Ng9KG3ASNwvJr9bps6R107BU5Egdbr+OgHaSHCT3
+zmHY17knp8d9xkBsGNPB1bY8XS+sZutdWHbz4yVLOwvqq+CnU5hOr1/yCrOT6FLNChAmj5EpJSqR
+GoXb3vyNafILL5RaeZgqIsE7HTg4LKKRNu2gmKsqF1VS7q0ERZQkBCZ8E/xHnxMVYsdomqKRqA82
+XIfpodVitf65yLNUlnZlAKWreq3FHUiNWFPavEAuiU6AraeBBGQQMbUfJ06KNDzjW7NkZhogCguQ
+n0cqqiAbWi5J3VPuuGw/7qlS1ra/ROpqAgOnT8/D9hFNZk7nWOj9kXlPIbSbqG2lhry7xXgzNY1R
+CcBIlrGsjipgutAbHQ==</ds:X509Certificate></ds:X509Data></osci:SignatureCertificateOriginator></osci:NonIntermediaryCertificates><RequestSignatureMandatory xmlns="http://gov.bos-bremen.de/osci/customHeader" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="RequestSignatureMandatory"></RequestSignatureMandatory><osci:responseToFetchGOV2_CE_PROCESSCARD xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="responsetofetchdelivery" soap:actor="http://schemas.xmlsoap.org/soap/actor/next" soap:mustUnderstand="1"><osci:Feedback><osci:Entry xml:lang="de"><osci:Code>0801</osci:Code><osci:Text>Request executed, dialog continues to be open</osci:Text></osci:Entry></osci:Feedback><osci:fetchGOV2_CE_PROCESSCARD><osci:SelectionRule><osci:MessageId>Z292YXBwXzE2MzU0OTU2NTIwMjk5NjI5NjQyMDcyOTI2MjM0NTg=</osci:MessageId></osci:SelectionRule></osci:fetchGOV2_CE_PROCESSCARD><osci:ProcessCardBundle><osci:MessageId>Z292YXBwXzE2MzU0OTU2NTIwMjk5NjI5NjQyMDcyOTI2MjM0NTg=</osci:MessageId><osci:ProcessCard RecentModification="2021-10-29T10:35:01+02:00"><osci:Creation><osci:Plain>2021-10-29T10:20:53+02:00</osci:Plain></osci:Creation><osci:Forwarding><osci:Plain>2021-10-29T10:35:01+02:00</osci:Plain></osci:Forwarding><osci:Subject>Allgemeine Nachricht</osci:Subject></osci:ProcessCard><osci:InspectionReport><osci:Inspection><osci:Timestamp><osci:Plain>2021-10-29T10:20:53+02:00</osci:Plain></osci:Timestamp><osci:X509SubjectName>C=DE,ST=Rheinland-Pfalz,2.5.4.5=#13143230303030303030303030303030303030333035,CN=VHN - besonderes elektronisches Behördenpostfach,UID=DE.Justiz.836cga01-ffff-2856-85ef-268df5e8b136.5555</osci:X509SubjectName><osci:X509IssuerName>C=DE,O=BNotK,CN=beBPo VHN CA 2017</osci:X509IssuerName><osci:X509SerialNumber>5930334713391546401</osci:X509SerialNumber><osci:CertType Type="advanced"></osci:CertType><osci:MathResult Result="ok"></osci:MathResult><osci:OfflineResult Result="valid"></osci:OfflineResult><osci:OnlineResult Result="ok"><osci:OCSP>Tm90IHlldCBzdXBwb3J0ZWQh</osci:OCSP></osci:OnlineResult></osci:Inspection><osci:Inspection><osci:Timestamp><osci:Plain>2021-10-29T10:20:53+02:00</osci:Plain></osci:Timestamp><osci:X509SubjectName>C=de,OU=Allgemeines Verwaltunsgpostfach,O=Obere Landesbehörde,CN=Präsident des Oberverwaltunsgerichts Rheinland-Pfalz</osci:X509SubjectName><osci:X509IssuerName>C=de,OU=Allgemeines Verwaltunsgpostfach,O=Obere Landesbehörde,CN=Präsident des Oberverwaltunsgerichts Rheinland-Pfalz</osci:X509IssuerName><osci:X509SerialNumber>1609165918300</osci:X509SerialNumber><osci:CertType Type="unknown"></osci:CertType><osci:MathResult Result="ok"></osci:MathResult><osci:OfflineResult Result="valid"></osci:OfflineResult></osci:Inspection><osci:Inspection><osci:Timestamp><osci:Plain>2021-10-29T10:20:53+02:00</osci:Plain></osci:Timestamp><osci:X509SubjectName>1.2.840.113549.1.9.1=#1615737570706f7274406f76672e6a6d2e726c702e6465,C=DE,OU=Oberverwaltungsgericht Rheinland-Pfalz,O=Oberverwaltungsgericht Rheinland-Pfalz,CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -</osci:X509SubjectName><osci:X509IssuerName>1.2.840.113549.1.9.1=#1615737570706f7274406f76672e6a6d2e726c702e6465,C=DE,OU=Oberverwaltungsgericht Rheinland-Pfalz,O=Oberverwaltungsgericht Rheinland-Pfalz,CN=ZZ Testkonto RP OVG RLP\, - nur für interne Tests -</osci:X509IssuerName><osci:X509SerialNumber>1574072311557</osci:X509SerialNumber><osci:CertType Type="unknown"></osci:CertType><osci:MathResult Result="ok"></osci:MathResult><osci:OfflineResult Result="valid"></osci:OfflineResult></osci:Inspection></osci:InspectionReport></osci:ProcessCardBundle></osci:responseToFetchGOV2_CE_PROCESSCARD></soap:Header><soap:Body xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="body"><osci:ContentPackage><osci:ContentContainer xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="project_coco"><osci:Content><osci:Base64Content Id="herstellerinformation.xml">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPEhlcnN0ZWxsZXJpbmZvcm1h
+dGlvbj4KCTxOYW1lX2Rlc19Qcm9kdWt0c191bmRfU29mdHdhcmV2ZXJzaW9uPkdvdmVybmlrdXMg
+Q29tbXVuaWNhdG9yIFZlcnNpb24gMzc5MTwvTmFtZV9kZXNfUHJvZHVrdHNfdW5kX1NvZnR3YXJl
+dmVyc2lvbj4KCTxIZXJzdGVsbGVyX2Rlc19Qcm9kdWt0cz5Hb3Zlcm5pa3VzIEdtYkggJmFtcDsg
+Q28uIEtHPC9IZXJzdGVsbGVyX2Rlc19Qcm9kdWt0cz4KCTxSZWdpc3RyaWVydW5nc19JRD4wMDAx
+LjAwMDQuMDAwMi4wMjA5MDA8L1JlZ2lzdHJpZXJ1bmdzX0lEPgo8L0hlcnN0ZWxsZXJpbmZvcm1h
+dGlvbj4=</osci:Base64Content></osci:Content><osci:Content><osci:Base64Content Id="nachricht.xml">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48TmFjaHJpY2h0Pg0KPE5hY2hy
+aWNodGVudHlwPkFsbGdlbWVpbmUgTmFjaHJpY2h0PC9OYWNocmljaHRlbnR5cD4NCjxTaWduYXR1
+cm5pdmVhdT5ubzwvU2lnbmF0dXJuaXZlYXU+DQo8RW1wZmFlbmdlcmtlbm51bmc+REUuSnVzdGl6
+LjIzM2E4ODcwLTYzMTktNGQ0Yy04Zjc5LWEzYmI4ZmE4ZjMyOC41MWI3PC9FbXBmYWVuZ2Vya2Vu
+bnVuZz4NCjxCZXRyZWZmPkVCIHp1OiAxIEsgNTE5LzIwLktPPC9CZXRyZWZmPg0KPEFrdGVuemVp
+Y2hlbl9FbXBmYWVuZ2VyPjEgSyA1MTkvMjAuS088L0FrdGVuemVpY2hlbl9FbXBmYWVuZ2VyPg0K
+PEFrdGVuemVpY2hlbl9BYnNlbmRlcj4NCiAgICA8L0FrdGVuemVpY2hlbl9BYnNlbmRlcj4NCjxG
+cmVpdGV4dC8+DQo8L05hY2hyaWNodD4NCg==</osci:Base64Content></osci:Content><osci:Content><osci:Base64Content Id="nachricht.xsl">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjx4c2w6c3R5bGVzaGVldCB2
+ZXJzaW9uPSIxLjAiIHhtbG5zOnhzbD0iaHR0cDovL3d3dy53My5vcmcvMTk5OS9YU0wvVHJhbnNm
+b3JtIiB4bWxuczpmbz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS9YU0wvRm9ybWF0Ij4NCiAgPHhz
+bDpvdXRwdXQgbWV0aG9kPSJodG1sIiBlbmNvZGluZz0iVVRGLTgiIGRvY3R5cGUtcHVibGljPSIt
+Ly9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwvL0VOIiBjZGF0YS1zZWN0aW9uLWVsZW1l
+bnRzPSJwcmUgbGlzdGluZyIgaW5kZW50PSJ5ZXMiIC8+DQoNCiAgPCEtLSByZWN1cnNpdmUgdGVt
+cGxhdGUgZm9yIHJlcGxhY2luZyBcbiB0byA8YnIvPiAtLT4NCiAgPHhzbDp0ZW1wbGF0ZSBtYXRj
+aD0ibWVzc2FnZSI+DQogICAgPHhzbDpjYWxsLXRlbXBsYXRlIG5hbWU9ImVzY2FwZU5ld0xpbmUi
+Pg0KICAgICAgPHhzbDp3aXRoLXBhcmFtIG5hbWU9InN0cmluZyIgc2VsZWN0PSIuIiAvPg0KICAg
+IDwveHNsOmNhbGwtdGVtcGxhdGU+DQogIDwveHNsOnRlbXBsYXRlPg0KDQogIDwhLS0gcmVjdXJz
+aXZlIHRlbXBsYXRlIGZvciByZXBsYWNpbmcgXG4gdG8gPGJyLz4gLS0+DQogIDx4c2w6dGVtcGxh
+dGUgbmFtZT0iZXNjYXBlTmV3TGluZSI+DQogICAgPHhzbDpwYXJhbSBuYW1lPSJzdHJpbmciIC8+
+DQogICAgPHhzbDpjaG9vc2U+DQogICAgICA8eHNsOndoZW4gdGVzdD0iY29udGFpbnMoJHN0cmlu
+ZywnJiMxMDsnKSI+DQogICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJzdWJzdHJpbmctYmVm
+b3JlKCRzdHJpbmcsJyYjMTA7JykiIC8+DQogICAgICAgIDxiciAvPg0KICAgICAgICA8eHNsOmNh
+bGwtdGVtcGxhdGUgbmFtZT0iZXNjYXBlTmV3TGluZSI+DQogICAgICAgICAgPHhzbDp3aXRoLXBh
+cmFtIG5hbWU9InN0cmluZyIgc2VsZWN0PSJzdWJzdHJpbmctYWZ0ZXIoJHN0cmluZywnJiMxMDsn
+KSIgLz4NCiAgICAgICAgPC94c2w6Y2FsbC10ZW1wbGF0ZT4NCiAgICAgIDwveHNsOndoZW4+DQog
+ICAgICA8eHNsOm90aGVyd2lzZT4NCiAgICAgICAgPHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IiRzdHJp
+bmciIC8+DQogICAgICA8L3hzbDpvdGhlcndpc2U+DQogICAgPC94c2w6Y2hvb3NlPg0KICA8L3hz
+bDp0ZW1wbGF0ZT4NCg0KICA8IS0tIHJlY3Vyc2l2ZSB0ZW1wbGF0ZSBmb3IgcmVwbGFjaW5nIHNw
+YWNlcyB0byAgJiMxNjA7LS0+DQogIDx4c2w6dGVtcGxhdGUgbmFtZT0iZXNjYXBlU3BhY2VzIj4N
+CiAgICA8eHNsOnBhcmFtIG5hbWU9InN0cmluZyIgLz4NCiAgICA8eHNsOmNob29zZT4NCiAgICAg
+IDx4c2w6d2hlbiB0ZXN0PSJjb250YWlucygkc3RyaW5nLCcmIzMyOyYjMzI7JykiPg0KICAgICAg
+ICA8eHNsOnZhbHVlLW9mIHNlbGVjdD0ic3Vic3RyaW5nLWJlZm9yZSgkc3RyaW5nLCcmIzMyOyYj
+MzI7JykiIC8+JiMxNjA7IDx4c2w6Y2FsbC10ZW1wbGF0ZSBuYW1lPSJlc2NhcGVTcGFjZXMiPg0K
+ICAgICAgICAgIDx4c2w6d2l0aC1wYXJhbSBuYW1lPSJzdHJpbmciIHNlbGVjdD0ic3Vic3RyaW5n
+LWFmdGVyKCRzdHJpbmcsJyYjMzI7JiMzMjsnKSIgLz4NCiAgICAgICAgPC94c2w6Y2FsbC10ZW1w
+bGF0ZT4NCiAgICAgIDwveHNsOndoZW4+DQoNCiAgICAgIDx4c2w6b3RoZXJ3aXNlPg0KICAgICAg
+ICA8eHNsOnZhbHVlLW9mIHNlbGVjdD0iJHN0cmluZyIgLz4NCiAgICAgIDwveHNsOm90aGVyd2lz
+ZT4NCiAgICA8L3hzbDpjaG9vc2U+DQogIDwveHNsOnRlbXBsYXRlPg0KDQoNCiAgPHhzbDp0ZW1w
+bGF0ZSBtYXRjaD0iLyI+DQoNCiAgICA8aHRtbD4NCiAgICAgIDxoZWFkPg0KICAgICAgICA8dGl0
+bGU+bmFjaHJpY2h0ZW4uaHRtbDwvdGl0bGU+DQogICAgICAgIDxzdHlsZSB0eXBlPSJ0ZXh0L2Nz
+cyIgbWVkaWE9ImFsbCI+DQogICAgICAgICAgYm9keSB7IHBhZGRpbmc6IDVweCAyMHB4IDIwcHgg
+MjBweDsgYmFja2dyb3VuZDogI2ZmZmZmZjsgY29sb3I6ICMwMDAwMDA7IGZvbnQtZmFtaWx5OiBW
+ZXJkYW5hLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDlweDsgfSB0ZCB7IGZvbnQtZmFtaWx5OiBW
+ZXJkYW5hLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDlweDsgfSB0ZC5sZWZ0IHsgZm9udC13ZWln
+aHQ6IGJvbGQ7IGNvbG9yOg0KICAgICAgICAgICM4MDgwODA7IHRleHQtYWxpZ246IHJpZ2h0OyB3
+aGl0ZS1zcGFjZTogbm93cmFwOyB2ZXJ0aWNhbC1hbGlnbjogdG9wO30gdGQuc3BhY2VyIHsgYmFj
+a2dyb3VuZC1jb2xvcjogI2ZmZmZmZjsgfSBoMSB7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXNp
+emU6IDE2cHg7IH0gZGl2Lm1lc3NhZ2Vfc2VjdGlvbiB7DQogICAgICAgICAgYmFja2dyb3VuZC1j
+b2xvcjogI2ZmZmZmZjsgd2lkdGg6IDU1MHB4OyBib3JkZXItd2lkdGg6IDFweDsgYm9yZGVyLXN0
+eWxlOiBzb2xpZDsgYm9yZGVyLWNvbG9yOiAjODA4MDgwOyB9IGRpdi5zdWIgeyBmb250LXNpemU6
+IDhweDsgfQ0KICAgICAgICA8L3N0eWxlPg0KICAgICAgPC9oZWFkPg0KICAgICAgPGJvZHk+DQog
+ICAgICAgIDxoMT5FbGVrdHJvbmlzY2hlcyBHZXJpY2h0cy0gdW5kIFZlcndhbHR1bmdzcG9zdGZh
+Y2g8L2gxPg0KDQogICAgICAgIDxkaXYgY2xhc3M9Im1lc3NhZ2Vfc2VjdGlvbiI+DQogICAgICAg
+ICAgPHRhYmxlIHN1bW1hcnk9IiI+DQogICAgICAgICAgICA8dHI+DQogICAgICAgICAgICAgIDx0
+ZCBjbGFzcz0ibGVmdCI+TmFjaHJpY2h0ZW50eXA8L3RkPg0KICAgICAgICAgICAgICA8dGQ+DQog
+ICAgICAgICAgICAgICAgPHhzbDp2YWx1ZS1vZiBzZWxlY3Q9Ik5hY2hyaWNodC9OYWNocmljaHRl
+bnR5cCIgLz4NCiAgICAgICAgICAgICAgPC90ZD4NCiAgICAgICAgICAgIDwvdHI+DQogICAgICAg
+ICAgICA8dHI+DQogICAgICAgICAgICAgIDx0ZCBjbGFzcz0ibGVmdCI+QmV0cmVmZjwvdGQ+DQog
+ICAgICAgICAgICAgIDx0ZCB3aWR0aD0iNTAwcHgiPg0KICAgICAgICAgICAgICAgIDx4c2w6dmFs
+dWUtb2Ygc2VsZWN0PSJOYWNocmljaHQvQmV0cmVmZiIgLz4NCiAgICAgICAgICAgICAgPC90ZD4N
+CiAgICAgICAgICAgIDwvdHI+DQogICAgICAgICAgICA8dHI+DQogICAgICAgICAgICAgIDx0ZCBj
+bGFzcz0ibGVmdCI+QWt0ZW56ZWljaGVuIGRlcyBFbXBmw6RuZ2VyczwvdGQ+DQogICAgICAgICAg
+ICAgIDx0ZCB3aWR0aD0iNTAwcHgiPg0KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2Vs
+ZWN0PSJOYWNocmljaHQvQWt0ZW56ZWljaGVuX0VtcGZhZW5nZXIiIC8+DQogICAgICAgICAgICAg
+IDwvdGQ+DQogICAgICAgICAgICA8L3RyPg0KICAgICAgICAgICAgPHRyPg0KICAgICAgICAgICAg
+ICA8dGQgY2xhc3M9ImxlZnQiPkFrdGVuemVpY2hlbiBkZXMgQWJzZW5kZXJzPC90ZD4NCiAgICAg
+ICAgICAgICAgPHRkIHdpZHRoPSI1MDBweCI+DQogICAgICAgICAgICAgICAgPHhzbDp2YWx1ZS1v
+ZiBzZWxlY3Q9Ik5hY2hyaWNodC9Ba3RlbnplaWNoZW5fQWJzZW5kZXIiIC8+DQogICAgICAgICAg
+ICAgIDwvdGQ+DQogICAgICAgICAgICA8L3RyPg0KICAgICAgICAgICAgPHRyPg0KICAgICAgICAg
+ICAgICA8dGQgdmFsaWduPSJ0b3AiIGNsYXNzPSJsZWZ0Ij5OYWNocmljaHQ8L3RkPg0KICAgICAg
+ICAgICAgICA8dGQgd2lkdGg9IjUwMHB4Ij4NCiAgICAgICAgICAgICAgICA8eHNsOmNhbGwtdGVt
+cGxhdGUgbmFtZT0iZXNjYXBlTmV3TGluZSI+DQogICAgICAgICAgICAgICAgICA8eHNsOndpdGgt
+cGFyYW0gbmFtZT0ic3RyaW5nIj4NCiAgICAgICAgICAgICAgICAgICAgPHhzbDpjYWxsLXRlbXBs
+YXRlIG5hbWU9ImVzY2FwZVNwYWNlcyI+DQogICAgICAgICAgICAgICAgICAgICAgPHhzbDp3aXRo
+LXBhcmFtIG5hbWU9InN0cmluZyI+DQogICAgICAgICAgICAgICAgICAgICAgICA8eHNsOnZhbHVl
+LW9mIHNlbGVjdD0iTmFjaHJpY2h0L0ZyZWl0ZXh0IiAvPg0KICAgICAgICAgICAgICAgICAgICAg
+IDwveHNsOndpdGgtcGFyYW0+DQogICAgICAgICAgICAgICAgICAgIDwveHNsOmNhbGwtdGVtcGxh
+dGU+DQogICAgICAgICAgICAgICAgICA8L3hzbDp3aXRoLXBhcmFtPg0KICAgICAgICAgICAgICAg
+IDwveHNsOmNhbGwtdGVtcGxhdGU+DQogICAgICAgICAgICAgIDwvdGQ+DQogICAgICAgICAgICA8
+L3RyPg0KICAgICAgICAgIDwvdGFibGU+DQogICAgICAgIDwvZGl2Pg0KICAgICAgPC9ib2R5Pg0K
+ICAgIDwvaHRtbD4NCiAgPC94c2w6dGVtcGxhdGU+DQogIDx4c2w6dGVtcGxhdGUgbWF0Y2g9IkB2
+ZXJzaW9uIiAvPg0KICA8eHNsOnRlbXBsYXRlIG1hdGNoPSJyb290IiAvPg0KPC94c2w6c3R5bGVz
+aGVldD4NCg==</osci:Base64Content></osci:Content><osci:Content><osci:Base64Content Id="visitenkarte.xml">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48VmlzaXRlbmthcnRlPg0KPE9y
+Z2FuaXNhdGlvbj5PYmVyZSBMYW5kZXNiZWjDtnJkZTwvT3JnYW5pc2F0aW9uPg0KPE9yZ2FuaXNh
+dGlvbnN6dXNhdHo+QWxsZ2VtZWluZXMgVmVyd2FsdHVuc2dwb3N0ZmFjaDwvT3JnYW5pc2F0aW9u
+c3p1c2F0ej4NCjxBbnJlZGU+S8O2cnBlcnNjaGFmdDwvQW5yZWRlPg0KPFRpdGVsLz4NCjxWb3Ju
+YW1lLz4NCjxOYW1lPlByw6RzaWRlbnQgZGVzIE9iZXJ2ZXJ3YWx0dW5nc2dlcmljaHRzIFJoZWlu
+bGFuZC1QZmFsejwvTmFtZT4NCjxTdHJhc3NlPkRlaW5oYXJkcGFzc2FnZTwvU3RyYXNzZT4NCjxI
+YXVzbnVtbWVyPjE8L0hhdXNudW1tZXI+DQo8UG9zdGxlaXR6YWhsPjU2MDY4PC9Qb3N0bGVpdHph
+aGw+DQo8T3J0PktvYmxlbno8L09ydD4NCjxCdW5kZXNsYW5kPlJoZWlubGFuZC1QZmFsejwvQnVu
+ZGVzbGFuZD4NCjxMYW5kPkRFPC9MYW5kPg0KPEUtTWFpbD5wb3N0c3RlbGxlQG92Zy5qbS5ybHAu
+ZGU8L0UtTWFpbD4NCjxNb2JpbHRlbGVmb24vPg0KPFRlbGVmb24+MDI2MSAxMzA3IDA8L1RlbGVm
+b24+DQo8RmF4Lz4NCjxOdXR6ZXJfSUQ+REUuSnVzdGl6LmExOWFmYjNiLWY5MmItNDM2ZS1hYWZm
+LWU4ZGU1NmE2ZDUwNy43NjUwPC9OdXR6ZXJfSUQ+DQo8Um9sbGVuX0lEPmVndnBfYmVicG88L1Jv
+bGxlbl9JRD4NCjxFeHRlcm5lX0lELz4NCjwvVmlzaXRlbmthcnRlPg0K</osci:Base64Content></osci:Content><osci:Content><osci:Base64Content Id="visitenkarte.xsl">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHhzbDpzdHlsZXNoZWV0IHZl
+cnNpb249IjEuMCIgeG1sbnM6eHNsPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L1hTTC9UcmFuc2Zv
+cm0iIHhtbG5zOmZvPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L1hTTC9Gb3JtYXQiPgogIDx4c2w6
+b3V0cHV0IG1ldGhvZD0iaHRtbCIgZW5jb2Rpbmc9IlVURi04IiBkb2N0eXBlLXB1YmxpYz0iLS8v
+VzNDLy9EVEQgSFRNTCA0LjAgVHJhbnNpdGlvbmFsLy9FTiIgY2RhdGEtc2VjdGlvbi1lbGVtZW50
+cz0icHJlIGxpc3RpbmciIGluZGVudD0ieWVzIiAvPgogIDx4c2w6dGVtcGxhdGUgbWF0Y2g9Ii8i
+PgogICAgPGh0bWw+CiAgICAgIDxoZWFkPgogICAgICAgIDx0aXRsZT5idXNpbmVzc2NhcmQuaHRt
+bDwvdGl0bGU+CiAgICAgICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIiBtZWRpYT0iYWxsIj4KICAg
+ICAgICAgIGJvZHkgeyBwYWRkaW5nOiA1cHggMjBweCAyMHB4IDIwcHg7IGJhY2tncm91bmQ6ICNm
+ZmZmZmY7IGNvbG9yOiAjMDAwMDAwOyBmb250LWZhbWlseTogVmVyZGFuYSwgc2Fucy1zZXJpZjsg
+Zm9udC1zaXplOiA5cHg7IH0gdGQgeyBmb250LWZhbWlseTogVmVyZGFuYSwgc2Fucy1zZXJpZjsg
+Zm9udC1zaXplOiA5cHg7IH0gdGQubGVmdCB7IGZvbnQtd2VpZ2h0OiBib2xkOyBjb2xvcjoKICAg
+ICAgICAgICM4MDgwODA7IHRleHQtYWxpZ246IHJpZ2h0OyB3aGl0ZS1zcGFjZTogbm93cmFwOyB9
+IHRkLnNwYWNlciB7IGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7IH0gaDEgeyBmb250LXdlaWdo
+dDogYm9sZDsgZm9udC1zaXplOiAxNnB4OyB9IGRpdi5idXNpbmVzc2NhcmRfc2VjdGlvbiB7IGJh
+Y2tncm91bmQtY29sb3I6CiAgICAgICAgICAjZmZmZmZmOyB3aWR0aDogNTUwcHg7IGJvcmRlci13
+aWR0aDogMXB4OyBib3JkZXItc3R5bGU6IHNvbGlkOyBib3JkZXItY29sb3I6ICM4MDgwODA7IH0g
+ZGl2LnN1YiB7IGZvbnQtc2l6ZTogOHB4OyB9CiAgICAgICAgPC9zdHlsZT4KCiAgICAgIDwvaGVh
+ZD4KICAgICAgPGJvZHk+CgogICAgICAgIDxoMT5WaXNpdGVua2FydGU8L2gxPgogICAgICAgIDxk
+aXYgY2xhc3M9ImJ1c2luZXNzY2FyZF9zZWN0aW9uIj4KICAgICAgICAgIDx0YWJsZSBzdW1tYXJ5
+PSIiPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNzPSJsZWZ0Ij5OdXR6
+ZXItSUQ8L3RkPgogICAgICAgICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUt
+b2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvTnV0emVyX0lEIiAvPgogICAgICAgICAgICAgIDwvdGQ+
+CiAgICAgICAgICAgIDwvdHI+CiAgICAgICAgICAgIDx0cj4KICAgICAgICAgICAgICA8dGQgY2xh
+c3M9ImxlZnQiPkFucmVkZTwvdGQ+CiAgICAgICAgICAgICAgPHRkPgogICAgICAgICAgICAgICAg
+PHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IlZpc2l0ZW5rYXJ0ZS9BbnJlZGUiIC8+CiAgICAgICAgICAg
+ICAgPC90ZD4KICAgICAgICAgICAgPC90cj4KICAgICAgICAgICAgPHRyPgogICAgICAgICAgICAg
+IDx0ZCBjbGFzcz0ibGVmdCI+QWthZGVtaXNjaGVyIEdyYWQ8L3RkPgogICAgICAgICAgICAgIDx0
+ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvVGl0
+ZWwiIC8+CiAgICAgICAgICAgICAgPC90ZD4KICAgICAgICAgICAgPC90cj4KICAgICAgICAgICAg
+PHRyPgogICAgICAgICAgICAgIDx0ZCBjbGFzcz0ibGVmdCI+TmFtZS9GaXJtYTwvdGQ+CiAgICAg
+ICAgICAgICAgPHRkPgogICAgICAgICAgICAgICAgPHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IlZpc2l0
+ZW5rYXJ0ZS9OYW1lIiAvPgogICAgICAgICAgICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+ICAg
+ICAgICAgICAgCiAgICAgICAgICAgIDx0cj4KICAgICAgICAgICAgICA8dGQgY2xhc3M9ImxlZnQi
+PlZvcm5hbWU8L3RkPgogICAgICAgICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFs
+dWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvVm9ybmFtZSIgLz4KICAgICAgICAgICAgICA8L3Rk
+PgogICAgICAgICAgICA8L3RyPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNs
+YXNzPSJsZWZ0Ij5PcmdhbmlzYXRpb248L3RkPgogICAgICAgICAgICAgIDx0ZD4KICAgICAgICAg
+ICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvT3JnYW5pc2F0aW9uIiAv
+PgogICAgICAgICAgICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+CiAgICAgICAgICAgIDx0cj4K
+ICAgICAgICAgICAgICA8dGQgY2xhc3M9ImxlZnQiPk9yZ2FuaXNhdGlvbnN6dXNhdHo8L3RkPgog
+ICAgICAgICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJW
+aXNpdGVua2FydGUvT3JnYW5pc2F0aW9uc3p1c2F0eiIgLz4KICAgICAgICAgICAgICA8L3RkPgog
+ICAgICAgICAgICA8L3RyPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNz
+PSJsZWZ0Ij5TdHJhJiMyMjM7ZTwvdGQ+CiAgICAgICAgICAgICAgPHRkPgogICAgICAgICAgICAg
+ICAgPHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IlZpc2l0ZW5rYXJ0ZS9TdHJhc3NlIiAvPgogICAgICAg
+ICAgICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+CiAgICAgICAgICAgIDx0cj4KICAgICAgICAg
+ICAgICA8dGQgY2xhc3M9ImxlZnQiPkhhdXNudW1tZXI8L3RkPgogICAgICAgICAgICAgIDx0ZD4K
+ICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvSGF1c251
+bW1lciIgLz4KICAgICAgICAgICAgICA8L3RkPgogICAgICAgICAgICA8L3RyPiAgICAgICAgICAg
+IAogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNzPSJsZWZ0Ij5Qb3N0bGVp
+dHphaGw8L3RkPgogICAgICAgICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUt
+b2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvUG9zdGxlaXR6YWhsIiAvPgogICAgICAgICAgICAgIDwv
+dGQ+CiAgICAgICAgICAgIDwvdHI+CiAgICAgICAgICAgIDx0cj4KICAgICAgICAgICAgICA8dGQg
+Y2xhc3M9ImxlZnQiPk9ydDwvdGQ+CiAgICAgICAgICAgICAgPHRkPgogICAgICAgICAgICAgICAg
+PHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IlZpc2l0ZW5rYXJ0ZS9PcnQiIC8+CiAgICAgICAgICAgICAg
+PC90ZD4KICAgICAgICAgICAgPC90cj4KICAgICAgICAgICAgPHRyPgogICAgICAgICAgICAgIDx0
+ZCBjbGFzcz0ibGVmdCI+QnVuZGVzbGFuZDwvdGQ+CiAgICAgICAgICAgICAgPHRkPgogICAgICAg
+ICAgICAgICAgPHhzbDp2YWx1ZS1vZiBzZWxlY3Q9IlZpc2l0ZW5rYXJ0ZS9CdW5kZXNsYW5kIiAv
+PgogICAgICAgICAgICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+ICAgICAgICAgICAgIAogICAg
+ICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNzPSJsZWZ0Ij5MYW5kPC90ZD4KICAg
+ICAgICAgICAgICA8dGQ+CiAgICAgICAgICAgICAgICA8eHNsOnZhbHVlLW9mIHNlbGVjdD0iVmlz
+aXRlbmthcnRlL0xhbmQiIC8+CiAgICAgICAgICAgICAgPC90ZD4KICAgICAgICAgICAgPC90cj4K
+ICAgICAgICAgICAgPHRyPgogICAgICAgICAgICAgIDx0ZCBjbGFzcz0ibGVmdCI+RS1NYWlsPC90
+ZD4KICAgICAgICAgICAgICA8dGQ+CiAgICAgICAgICAgICAgICA8eHNsOnZhbHVlLW9mIHNlbGVj
+dD0iVmlzaXRlbmthcnRlL0UtTWFpbCIgLz4KICAgICAgICAgICAgICA8L3RkPgogICAgICAgICAg
+ICA8L3RyPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNzPSJsZWZ0Ij5N
+b2JpbHRlbGVmb248L3RkPgogICAgICAgICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6
+dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUvTW9iaWx0ZWxlZm9uIiAvPgogICAgICAgICAg
+ICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+ICAgICAgICAgICAgCiAgICAgICAgICAgIDx0cj4K
+ICAgICAgICAgICAgICA8dGQgY2xhc3M9ImxlZnQiPlRlbGVmb248L3RkPgogICAgICAgICAgICAg
+IDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVua2FydGUv
+VGVsZWZvbiIgLz4KICAgICAgICAgICAgICA8L3RkPgogICAgICAgICAgICA8L3RyPgogICAgICAg
+ICAgICA8dHI+CiAgICAgICAgICAgICAgPHRkIGNsYXNzPSJsZWZ0Ij5GYXg8L3RkPgogICAgICAg
+ICAgICAgIDx0ZD4KICAgICAgICAgICAgICAgIDx4c2w6dmFsdWUtb2Ygc2VsZWN0PSJWaXNpdGVu
+a2FydGUvRmF4IiAvPgogICAgICAgICAgICAgIDwvdGQ+CiAgICAgICAgICAgIDwvdHI+CiAgICAg
+ICAgICA8L3RhYmxlPgogICAgICAgIDwvZGl2PgogICAgICA8L2JvZHk+CiAgICA8L2h0bWw+CiAg
+PC94c2w6dGVtcGxhdGU+CiAgPHhzbDp0ZW1wbGF0ZSBtYXRjaD0iQHZlcnNpb24iIC8+CiAgPHhz
+bDp0ZW1wbGF0ZSBtYXRjaD0iVmlzaXRlbmthcnRlIiAvPgo8L3hzbDpzdHlsZXNoZWV0Pgo=</osci:Base64Content></osci:Content><osci:Content Id="xjustiz_nachricht.xml" href="cid:xjustiz_nachricht.xml"></osci:Content></osci:ContentContainer><osci:ContentContainer xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="govello_coco"><osci:Content><osci:Base64Content Id="additional_infos">I0ZyaSBPY3QgMjkgMTA6MjA6NTIgQ0VTVCAyMDIxDQp1c2VyX2lkPURFLkp1c3Rpei5hMTlhZmIz
+Yi1mOTJiLTQzNmUtYWFmZi1lOGRlNTZhNmQ1MDcuNzY1MA0Kc2lnbmF0dXJlX2xldmVsPW5vDQpz
+dWJqZWN0PUVCIHp1XDogMSBLIDUxOS8yMC5LTw0K</osci:Base64Content></osci:Content></osci:ContentContainer></osci:ContentPackage></soap:Body></soap:Envelope>
+--MIME_boundary_zE80GTexmnE1IL0gtgVOuT7LYZzqnHIg
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: 8-bit
+Content-ID: <xjustiz_nachricht.xml>
+Content-Length: 1163
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tns:nachricht.eeb.zuruecklaufend.2200007 xmlns:tns="http://www.xjustiz.de" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xjustiz.de xjustiz_2200_eeb_2_2.xsd">
+    <tns:nachrichtenkopf>
+        <tns:aktenzeichen.absender>
+    </tns:aktenzeichen.absender>
+        <tns:aktenzeichen.empfaenger>1 K 519/20.KO</tns:aktenzeichen.empfaenger>
+        <tns:erstellungszeitpunkt>2021-10-29T10:20:47.675+02:00</tns:erstellungszeitpunkt>
+        <tns:absender_Sonstige>Oberverwaltungsgericht Rheinland-Pfalz</tns:absender_Sonstige>
+        <tns:empfaenger_Gericht listVersionID="2.6">
+            <code>T6076</code>
+        </tns:empfaenger_Gericht>
+        <tns:eigene_Nachrichten_ID>714967a2-5e13-4c07-91c2-41adb4537bbc</tns:eigene_Nachrichten_ID>
+        <tns:fremde_Nachrichten_ID>e238a754-f63d-4196-98e6-89c50f015b2e</tns:fremde_Nachrichten_ID>
+    </tns:nachrichtenkopf>
+    <tns:grunddaten xjustizVersion="2.4.0"/>
+    <tns:fachdaten>
+        <tns:empfangsbestaetigung>2021-10-29</tns:empfangsbestaetigung>
+    </tns:fachdaten>
+</tns:nachricht.eeb.zuruecklaufend.2200007>
+
+--MIME_boundary_zE80GTexmnE1IL0gtgVOuT7LYZzqnHIg--

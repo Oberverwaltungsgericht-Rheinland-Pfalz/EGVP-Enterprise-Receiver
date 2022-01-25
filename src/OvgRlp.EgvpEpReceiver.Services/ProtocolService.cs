@@ -1,4 +1,5 @@
 ﻿using OvgRlp.EgvpEpReceiver.Infrastructure;
+using OvgRlp.EgvpEpReceiver.Infrastructure.Contracts;
 using OvgRlp.EgvpEpReceiver.Infrastructure.EgvpEnterpriseSoap;
 using OvgRlp.EgvpEpReceiver.Infrastructure.Models;
 using OvgRlp.Libs.Logging;
@@ -11,11 +12,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
 {
   public class ProtocolService
   {
-    protected EgvpPortTypeClient _egvpClient = null;
+    private IMessageSource _messageSource;
 
-    public ProtocolService(EgvpPortTypeClient egvpClient)
+    public ProtocolService(IMessageSource messageSource)
     {
-      _egvpClient = egvpClient;
+      _messageSource = messageSource;
     }
 
     // Logging Metadaten aufbereiten
@@ -65,7 +66,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     }
 
     // Logging Metadaten aufbereiten
-    public void CreateLogMetadata(receiveMessageResponse resp, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
+    public void CreateLogMetadata(Message msg, ref LogMetadata logMetadata, string messageID = null, EgvpPostbox egvpPostbox = null)
     {
       EGVPMessageProps msgProps = null;
       string messageSizeKB = "";
@@ -75,22 +76,22 @@ namespace OvgRlp.EgvpEpReceiver.Services
       if (null == logMetadata)
         logMetadata = new LogMetadata();
 
-      if (null != resp)
+      if (null != msg)
       {
-        try { messageSizeKB = Convert.ToString((Convert.ToInt32(resp.messageZIP.Length) / 1024)); }
+        try { messageSizeKB = Convert.ToString((Convert.ToInt32(msg.MessageData.Length) / 1024)); }
         catch { messageSizeKB = ""; }
-        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(resp.messageZIP) / 1024)); }
+        try { messageSizeAttachmentsKB = Convert.ToString((GetAttachmentsSize(msg.MessageData) / 1024)); }
         catch { messageSizeAttachmentsKB = ""; }
 
         try
         {
           if (null != egvpPostbox && DepartmentsService.DepartmentsModeActive(egvpPostbox))
           {
-            var depService = new DepartmentsService(egvpPostbox, resp.messageZIP);
+            var depService = new DepartmentsService(egvpPostbox, msg.MessageData);
             departmentCode = depService.GetDepartmentId();
           }
 
-          using (ZipArchive za = new ZipArchive(new MemoryStream(resp.messageZIP)))
+          using (ZipArchive za = new ZipArchive(new MemoryStream(msg.MessageData)))
           {
             var ze = za.GetEntry("MsgProps.xml");
             if (null != ze)
@@ -226,13 +227,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
     {
       try
       {
-        var receiveMessageService = new ReceiveMessageService(egvpPostbox, "", "", "");  //TODO: refactor
-        getStateResponse resp = receiveMessageService.GetMessageState(messageID);
-
-        logMetadata.Recipient = resp.receiverID;
-        logMetadata.Sender = resp.senderID;
-        logMetadata.OsciState = resp.state.ToString();
-        logMetadata.OsciDatetime = resp.time.ToShortDateString() + " " + resp.time.ToLongTimeString();
+        MessageMetadata msgMeta = _messageSource.GetMessageMetadata(new MessageIdent { MessageId = messageID, ReceiverId = egvpPostbox.Id });
+        logMetadata.Recipient = msgMeta.ReceiverId;
+        logMetadata.Sender = msgMeta.SenderId;
+        logMetadata.OsciState = msgMeta.State;
+        logMetadata.OsciDatetime = msgMeta.Datetime;
       }
       catch (Exception ex)
       {

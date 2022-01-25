@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<EGVPMessageProps xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:osci="http://www.osci.de/2002/04/osci" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" status="valid" xsi:noNamespaceSchemaLocation="http://www.egvp.de/metadatencontainer/2012/04/EGVPMsgProps1.xsd">
+<MessageID>govapp_16327447360399999999999999995325</MessageID>
+<ServerEntryTime>2021-09-27T14:12:16.000+02:00</ServerEntryTime>
+<Originator>
+<EncryptionCertificate>
+<Name>ZZ Testkonto RP OVG RLP, - nur für interne Tests -</Name>
+<Organization>Oberverwaltungsgericht Rheinland-Pfalz</Organization>
+<EncCertName>originator.crt</EncCertName>
+</EncryptionCertificate>
+<BusinessCard>
+<Address>Juristische Person</Address>
+<Title/>
+<Name>ZZ Testkonto RP OVG RLP</Name>
+<ChristianName>- nur für interne Tests -</ChristianName>
+<Organization>Oberverwaltungsgericht Rheinland-Pfalz</Organization>
+<OrganisationalUnit>Oberverwaltungsgericht Rheinland-Pfalz</OrganisationalUnit>
+<Street>Deinhardpassage</Street>
+<StreetNumber>1</StreetNumber>
+<ZipCode>56068</ZipCode>
+<City>Koblenz</City>
+<Country>DE</Country>
+<FederalState>Rheinland-Pfalz</FederalState>
+<Email>support@ovg.jm.rlp.de</Email>
+<CellPhone/>
+<Phone>0261-1307 40777</Phone>
+<Fax/>
+<UserID>DE.Justiz.233a8870-2319-4dbc-9f68-a4cc9da8f429.9999</UserID>
+<FilterID>egvp_justiz</FilterID>
+<Role/>
+</BusinessCard>
+</Originator>
+<AddresseeCertProps>
+<Name>ZZ Testkonto RP OVG RLP 2</Name>
+<Organization>Oberverwaltungsgericht Rheinland-Pfalz</Organization>
+<EncCertName>addressee.crt</EncCertName>
+</AddresseeCertProps>
+<OSCISubject>Allgemeine Nachricht</OSCISubject>
+<MsgSubject>Test CH Asynchron</MsgSubject>
+<VhnText>Diese Nachricht wurde von der Justiz versandt.</VhnText>
+<OSCIContent>
+<OSCIContentName>visitenkarte.xml</OSCIContentName>
+<Stylesheet>visitenkarte.xsl</Stylesheet>
+</OSCIContent>
+<OSCIContent>
+<OSCIContentName>herstellerinformation.xml</OSCIContentName>
+</OSCIContent>
+<Attachment>
+<Filename>99 - Klage.pdf</Filename>
+</Attachment>
+<Attachment>
+<Filename>xjustiz_nachricht.xml</Filename>
+</Attachment>
+</EGVPMessageProps>

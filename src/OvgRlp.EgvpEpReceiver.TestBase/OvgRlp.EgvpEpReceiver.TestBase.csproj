@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OvgRlp.EgvpEpReceiver.TestBase</RootNamespace>
+    <AssemblyName>OvgRlp.EgvpEpReceiver.TestBase</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OvgRlp.libs.Logging, Version=1.4.1.2017, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OvgRlp_Logging.1.4.1.2017\lib\net461\OvgRlp.libs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=5.1.2.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.MSSqlServer.5.1.2\lib\net452\Serilog.Sinks.MSSqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.2.1.1\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper.cs" />
+    <Compile Include="MsgSrcTst.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Configuration\Account_Settings.json" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\certificates\addressee.crt" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\certificates\originator.crt" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\certificates\originator_transportsignatur.crt" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\certificates\osci-manager.crt" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\certificates\readers\1574072311557.crt" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\content.preferences" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\message.preferences" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\oscicontentdata.osci" />
+    <None Include="Resources\Messages\TestnachrichtEeb_1\pruefvermerk.pdf" />
+    <None Include="Resources\Messages\Testnachricht_1\attachments\99 - Klage.pdf" />
+    <None Include="Resources\Messages\Testnachricht_1\certificates\addressee.crt" />
+    <None Include="Resources\Messages\Testnachricht_1\certificates\originator.crt" />
+    <None Include="Resources\Messages\Testnachricht_1\certificates\originator_transportsignatur.crt" />
+    <None Include="Resources\Messages\Testnachricht_1\certificates\osci-manager.crt" />
+    <None Include="Resources\Messages\Testnachricht_1\certificates\readers\1585575853226.crt" />
+    <None Include="Resources\Messages\Testnachricht_1\content.preferences" />
+    <None Include="Resources\Messages\Testnachricht_1\message.preferences" />
+    <None Include="Resources\Messages\Testnachricht_1\oscicontentdata.osci" />
+    <None Include="Resources\Messages\Testnachricht_1\pruefvermerk.pdf" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\attachments\001_Ermittlungsübersicht_Abverfügung.pdf" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\attachments\002_Antrag_auf_richterliche_Entscheidung_zur_Wohnungsdurchsuchung.pdf" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\attachments\003_Sachverhalt.pdf" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\certificates\addressee.crt" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\certificates\originator.crt" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\certificates\originator_transportsignatur.crt" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\certificates\osci-manager.crt" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\certificates\readers\1574072311557.crt" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\content.preferences" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\message.preferences" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\oscicontentdata.osci" />
+    <None Include="Resources\Messages\Testnachricht_xjustiz321\pruefvermerk.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\additionals\herstellerinformation.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\additionals\nachricht.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\additionals\nachricht.xsl" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\additionals\visitenkarte.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\additionals\visitenkarte.xsl" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\attachments\xjustiz_nachricht.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\businesscard.html" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\inspectionsheet.html" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\message.html" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\MsgProps.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\project\transfervermerk.html" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\pruefvermerk.xml" />
+    <Content Include="Resources\Messages\TestnachrichtEeb_1\summarisedinspectionsheet.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\additionals\herstellerinformation.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\additionals\visitenkarte.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\additionals\visitenkarte.xsl" />
+    <Content Include="Resources\Messages\Testnachricht_1\attachments\xjustiz_nachricht.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\businesscard.html" />
+    <Content Include="Resources\Messages\Testnachricht_1\inspectionsheet.html" />
+    <Content Include="Resources\Messages\Testnachricht_1\MsgProps.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\project\transfervermerk.html" />
+    <Content Include="Resources\Messages\Testnachricht_1\pruefvermerk.xml" />
+    <Content Include="Resources\Messages\Testnachricht_1\summarisedinspectionsheet.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\additionals\herstellerinformation.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\additionals\nachricht.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\additionals\nachricht.xsl" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\additionals\visitenkarte.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\additionals\visitenkarte.xsl" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\attachments\xjustiz_nachricht.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\businesscard.html" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\inspectionsheet.html" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\message.html" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\MsgProps.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\project\transfervermerk.html" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\pruefvermerk.xml" />
+    <Content Include="Resources\Messages\Testnachricht_xjustiz321\summarisedinspectionsheet.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OvgRlp.EgvpEpReceiver.Infrastructure\OvgRlp.EgvpEpReceiver.Infrastructure.csproj">
+      <Project>{f091b2ab-6408-48b6-a345-13966a0e1176}</Project>
+      <Name>OvgRlp.EgvpEpReceiver.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

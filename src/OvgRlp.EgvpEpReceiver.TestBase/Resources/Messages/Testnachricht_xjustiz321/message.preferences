@@ -1,0 +1,13 @@
+#Wed Dec 08 11:12:54 CET 2021
+id=govapp_1638957835003741065649003093795
+additionals_count=5
+xjustiz.vhn_xml=Sicherer \u00DCbermittlungsweg aus einem besonderen Beh\u00F6rdenpostfach.
+xjustiz.vhn_text=Sicherer \u00DCbermittlungsweg aus einem besonderen Beh\u00F6rdenpostfach.
+sender.userid=DE.Justiz.5d5d58af-adff-55b7-875c-6548acd55b74.2222
+status=valid_gueltig
+table.originator=C\=DE,OU\=Polizeipr\u00E4sidium,O\=Polizeipr\u00E4sidium,CN\=ZZZ Testpostfach Polizeipr\u00E4sidium Koblenz Gefahrenabwehr
+osci.subject=Testnachricht
+attachments_count=4
+table.date=1638957835000
+RequestSignatureMandatory.available=true
+table.subject=Funktionsabfrage

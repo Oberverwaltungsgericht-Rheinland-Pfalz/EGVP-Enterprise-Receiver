@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.Services", "OvgRlp.EgvpEpReceiver.Services\OvgRlp.EgvpEpReceiver.Services.csproj", "{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FB3911E2-406C-4138-8189-4D5C91C664A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OvgRlp.EgvpEpReceiver.Test", "OvgRlp.EgvpEpReceiver.Test\OvgRlp.EgvpEpReceiver.Test.csproj", "{325E3AAE-B90C-4181-95E0-E7EF596DFF75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.IntegrationTest", "OvgRlp.EgvpEpReceiver.IntegrationTest\OvgRlp.EgvpEpReceiver.IntegrationTest.csproj", "{969E4485-EC29-4813-8C95-61EFBBC7D7E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvgRlp.EgvpEpReceiver.TestBase", "OvgRlp.EgvpEpReceiver.TestBase\OvgRlp.EgvpEpReceiver.TestBase.csproj", "{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +35,26 @@ Global
 		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE5F6A7-60A9-4EA0-A40E-4421AE46193A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325E3AAE-B90C-4181-95E0-E7EF596DFF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325E3AAE-B90C-4181-95E0-E7EF596DFF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325E3AAE-B90C-4181-95E0-E7EF596DFF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325E3AAE-B90C-4181-95E0-E7EF596DFF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969E4485-EC29-4813-8C95-61EFBBC7D7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969E4485-EC29-4813-8C95-61EFBBC7D7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969E4485-EC29-4813-8C95-61EFBBC7D7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969E4485-EC29-4813-8C95-61EFBBC7D7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{325E3AAE-B90C-4181-95E0-E7EF596DFF75} = {FB3911E2-406C-4138-8189-4D5C91C664A0}
+		{969E4485-EC29-4813-8C95-61EFBBC7D7E3} = {FB3911E2-406C-4138-8189-4D5C91C664A0}
+		{EC2D35D9-CB7B-4C96-B17C-BBA43978FEBD} = {FB3911E2-406C-4138-8189-4D5C91C664A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {268EF639-9471-4E99-9B41-E6C481B7BF1C}
