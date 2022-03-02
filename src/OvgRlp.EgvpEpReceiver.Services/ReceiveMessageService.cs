@@ -346,7 +346,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
                   newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
                   logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' ist zu lang, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
                 }
-                if (System.Text.RegularExpressions.Regex.IsMatch(entry.FullName, illigalFileChars))
+                if (System.Text.RegularExpressions.Regex.IsMatch(oldName, illigalFileChars))
                 {
                   newName = System.Text.RegularExpressions.Regex.Replace(oldName, illigalFileChars, "_");
                   logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' enthält ungültige Zeichen, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
