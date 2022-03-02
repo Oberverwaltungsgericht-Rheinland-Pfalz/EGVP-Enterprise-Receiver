@@ -294,6 +294,7 @@ namespace OvgRlp.EgvpEpReceiver.Services
     private void CheckAndFixAttachmentFails(string zipFullFilename, string targetFolder, LogEntry logEntry)
     {
       bool fixNames = false;
+      string illigalFileChars = @"[/:*?""<>|]";
 
       try
       {
@@ -309,6 +310,10 @@ namespace OvgRlp.EgvpEpReceiver.Services
                 fixNames = true;
               }
               if (entries.Where(e => e.FullName.Trim().ToLower() == entry.FullName.Trim().ToLower()).ToArray().Length > 1)
+              {
+                fixNames = true;
+              }
+              if (System.Text.RegularExpressions.Regex.IsMatch(entry.Name, illigalFileChars))
               {
                 fixNames = true;
               }
@@ -340,6 +345,11 @@ namespace OvgRlp.EgvpEpReceiver.Services
                 {
                   newName = Guid.NewGuid().ToString() + Path.GetExtension(oldName);
                   logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' ist zu lang, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
+                }
+                if (System.Text.RegularExpressions.Regex.IsMatch(entry.FullName, illigalFileChars))
+                {
+                  newName = System.Text.RegularExpressions.Regex.Replace(oldName, illigalFileChars, "_");
+                  logEntry.AddSubEntry(String.Format("Der Dateiname der Anlage '{0}' enthält ungültige Zeichen, es erfolgt eine Umbenennung zu {1}", oldName, newName), LogEventLevel.Warning);
                 }
 
                 if (!string.IsNullOrEmpty(newName))
