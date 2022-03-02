@@ -1,6 +1,12 @@
 
 <a name="2.0.0.2123"></a>
 
+### 2.0.1.2209 (02.03.2022)
+
+#### &Auml;nderungen
+
+* Ungültige Zeichen im Dateinamen der Nachrichtenanhänge werden nun abgefangen (#13)
+
 ### 2.0.0.2123 (07.06.2021)
 
 #### &Auml;nderungen
